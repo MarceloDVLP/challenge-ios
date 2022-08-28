@@ -11,9 +11,19 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        let session = URLSession.shared
+        let service = ServiceAPI(client: HTTPClient(session: session))
+        
+        service.fetchTVShowList(page: nil, completion: { result in
+            switch result {
+            case .success(let tvShows):
+                print(tvShows ?? [])
+            case .failure(let error):
+                print(error)
+            }
+        })
     }
-
-
 }
+
 

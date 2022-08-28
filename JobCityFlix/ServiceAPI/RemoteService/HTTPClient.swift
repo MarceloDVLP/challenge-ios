@@ -7,26 +7,37 @@
 
 import Foundation
 
-final class HTTPClient {
+protocol HTTPClientProtocol {
     
-    enum HTTPClientError: Error {
+    func request(url: URL, completion: @escaping (HTTPClient.RequestResult) -> ())
+}
+
+public enum HTTPClientError: Error {
+    case serverError
+    case connectionError
+}
+ 
+final class HTTPClient: HTTPClientProtocol {
+
+    private let session: URLSession
+
+    public typealias RequestResult = Result<Data, HTTPClientError>
+    
+    public enum HTTPClientError: Error {
         case serverError
         case connectionError
     }
-    
-    private let session: URLSession
-    
+        
     init(session: URLSession) {
         self.session = session
     }
     
-    func request(url: URL, completion: @escaping (Result<Data, HTTPClientError>) -> ()) {
+    func request(url: URL, completion: @escaping (RequestResult) -> ()) {
+
         let task = session.dataTask(with: url, completionHandler: {
             (data, response, error) in
 
-            if error != nil {
-                completion(.failure(HTTPClientError.serverError))
-            } else if let data = data {
+            if error != nil, let data = data {
                 completion(.success(data))
             } else {
                 completion(.failure(HTTPClientError.serverError))
