@@ -1,13 +1,23 @@
 import UIKit
 
 
+
 final class TVShowListViewController: UIViewController {
 
     var interactor: TVShowInteractorProtocol
     
     init(interactor: TVShowInteractor) {
-        self.interactor = interactor
+        self.interactor = interactor        
         super.init(nibName: nil, bundle: nil)
+        self.title = "Netflix"
+        tabBarItem = UITabBarItem(title: "Home",
+                                  image: UIImage(named: "tab-home"),
+                                  selectedImage: UIImage(named: "tab-home")?.withRenderingMode(.alwaysOriginal))
+        
+        tabBarItem.setTitleTextAttributes([.foregroundColor: UIColor.black], for: .selected)
+        tabBarItem.setTitleTextAttributes([.foregroundColor: UIColor.lightGray], for: .normal)
+
+
     }
     
     required init?(coder: NSCoder) {
@@ -16,6 +26,8 @@ final class TVShowListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+
         interactor.viewDidLoad()
     }
 }
@@ -30,6 +42,7 @@ extension TVShowListViewController: TVShowListViewControllerProtocol {
 
     func showEpisodes(_ tvShows: [TVShowCodable]) {
         let listView = TVShowListView()
+        listView.items = tvShows
         listView.center = view.center
         listView.frame = view.frame
         view.addSubview(listView)

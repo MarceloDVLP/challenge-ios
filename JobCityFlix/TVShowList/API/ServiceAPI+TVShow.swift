@@ -39,10 +39,10 @@ struct TVShowCodable: Decodable {
     let status:String?
     let runtime:Int?
     let premiered:String?
-//    let schedule:Schedule?
-//    let rating:Rating?
-//    let network:Network?
-//    let image:Media?
+    let schedule:Schedule?
+    let rating:Rating?
+    let network:Network?
+    let image:Media?
     let summary:String?
     let updated:Int?
     var premierDate: Date? {
@@ -61,12 +61,38 @@ struct TVShowCodable: Decodable {
         case status
         case runtime
         case premiered
-//        case schedule
-//        case rating
-//        case network
-//        case image
+        case schedule
+        case rating
+        case network
+        case image
         case summary
         case updated
     }
     
+}
+
+struct Schedule:Decodable {
+    let time:String?
+    let days:[String]?
+}
+
+struct Rating:Decodable {
+    let average:Double?
+}
+
+struct Media:Decodable {
+    let medium:String?
+    let original:String?
+}
+
+struct Network:Decodable {
+    let id:Int?
+    let name:String?
+    let country: Country?
+}
+
+struct Country:Decodable {
+    let name:String?
+    let code:String?
+    let timezone:String?
 }

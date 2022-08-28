@@ -1,4 +1,5 @@
 import UIKit
+import SDWebImage
 
 final class TVShowListCell: UICollectionViewCell {
     
@@ -17,6 +18,12 @@ final class TVShowListCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func configure(_ tvShow: TVShowCodable) {
+        let url = URL(string: tvShow.image!.medium!)
+        imageView.sd_imageTransition = .fade
+        imageView.sd_setImage(with: url)
     }
     
     private func constrainImageView() {

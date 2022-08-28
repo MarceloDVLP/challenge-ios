@@ -2,7 +2,7 @@ import UIKit
 
 final class TVShowListConfigurator {
     
-    static func make() -> UINavigationController {
+    static func make() -> UIViewController {
         let session = URLSession.shared
         let service = ServiceAPI(client: HTTPClient(session: session))
 

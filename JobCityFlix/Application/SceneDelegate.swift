@@ -11,7 +11,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if let windowScene = scene as? UIWindowScene {
             
             self.window = UIWindow(windowScene: windowScene)
-            let mainNavigationController = TVShowListConfigurator.make()
+            let mainNavigationController = TabViewController()
             self.window?.rootViewController = mainNavigationController
             self.window?.makeKeyAndVisible()
         }
