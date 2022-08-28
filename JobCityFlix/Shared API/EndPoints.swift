@@ -7,7 +7,8 @@
 
 import Foundation
 
-class Endpoints {
+struct Endpoints {
+    static let baseURL = "http://api.tvmaze.com/"
     static let showList = "shows?page="
 }
 
