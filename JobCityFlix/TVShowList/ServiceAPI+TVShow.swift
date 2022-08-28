@@ -1,5 +1,5 @@
 //
-//  TVShow.swift
+//  ServiceAPI+TvShow.swift
 //  JobCityFlix
 //
 //  Created by Marcelo Carvalho on 28/08/22.
@@ -7,7 +7,34 @@
 
 import Foundation
 
-struct Show:Decodable {
+extension ServiceAPI {
+
+    func fetchTVShowList(page:Int?, completion: @escaping(Result<[TVShowCodable], Error>) -> Void) {
+        let endpoint = "\(Endpoints.baseURL)\(Endpoints.showList)\(page ?? 0)"
+        let url = URL(string: endpoint)!
+
+        client.request(url: url, completion: { result in
+            
+            switch result {
+            case .success(let data):
+
+                let decoder = JSONDecoder()
+                do {
+                    let showList = try decoder.decode([TVShowCodable].self, from: data)
+                    completion(.success(showList))
+                } catch {
+                    completion(.failure(ServiceAPIError.clientError))
+                }
+                
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        })
+    }
+}
+
+
+struct TVShowCodable: Decodable {
     
     let id:Int?
     let url:String?

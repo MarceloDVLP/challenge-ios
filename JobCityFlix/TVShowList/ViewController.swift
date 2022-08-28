@@ -11,14 +11,14 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        view.backgroundColor = .darkGray
         let session = URLSession.shared
         let service = ServiceAPI(client: HTTPClient(session: session))
         
         service.fetchTVShowList(page: nil, completion: { result in
             switch result {
             case .success(let tvShows):
-                print(tvShows ?? [])
+                print(tvShows)
             case .failure(let error):
                 print(error)
             }

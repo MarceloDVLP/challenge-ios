@@ -37,7 +37,7 @@ final class HTTPClient: HTTPClientProtocol {
         let task = session.dataTask(with: url, completionHandler: {
             (data, response, error) in
 
-            if error != nil, let data = data {
+            if let data = data, error == nil  {
                 completion(.success(data))
             } else {
                 completion(.failure(HTTPClientError.serverError))
