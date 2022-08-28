@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		C74B384228BAC068000E728D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74B384128BAC068000E728D /* AppDelegate.swift */; };
-		C74B384428BAC068000E728D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74B384328BAC068000E728D /* SceneDelegate.swift */; };
 		C74B384628BAC068000E728D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74B384528BAC068000E728D /* ViewController.swift */; };
 		C74B384928BAC068000E728D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C74B384728BAC068000E728D /* Main.storyboard */; };
 		C74B384B28BAC069000E728D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C74B384A28BAC069000E728D /* Assets.xcassets */; };
@@ -18,7 +17,6 @@
 /* Begin PBXFileReference section */
 		C74B383E28BAC068000E728D /* JobCityFlix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JobCityFlix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C74B384128BAC068000E728D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C74B384328BAC068000E728D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		C74B384528BAC068000E728D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C74B384828BAC068000E728D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C74B384A28BAC069000E728D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -57,7 +55,6 @@
 			isa = PBXGroup;
 			children = (
 				C74B384128BAC068000E728D /* AppDelegate.swift */,
-				C74B384328BAC068000E728D /* SceneDelegate.swift */,
 				C74B384528BAC068000E728D /* ViewController.swift */,
 				C74B384728BAC068000E728D /* Main.storyboard */,
 				C74B384A28BAC069000E728D /* Assets.xcassets */,
@@ -140,7 +137,6 @@
 			files = (
 				C74B384628BAC068000E728D /* ViewController.swift in Sources */,
 				C74B384228BAC068000E728D /* AppDelegate.swift in Sources */,
-				C74B384428BAC068000E728D /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,7 +300,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -332,7 +328,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
