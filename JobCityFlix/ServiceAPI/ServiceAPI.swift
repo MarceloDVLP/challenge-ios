@@ -1,10 +1,3 @@
-//
-//  ServiceAPI.swift
-//  JobCityFlix
-//
-//  Created by Marcelo Carvalho on 28/08/22.
-//
-
 import Foundation
 
 final class ServiceAPI {

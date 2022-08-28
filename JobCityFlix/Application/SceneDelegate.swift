@@ -1,9 +1,3 @@
-//
-//  SceneDelegate.swift
-//  JobCityFlix
-//
-//  Created by Marcelo Carvalho on 28/08/22.
-//
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -17,7 +11,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if let windowScene = scene as? UIWindowScene {
             
             self.window = UIWindow(windowScene: windowScene)
-            let mainNavigationController = UINavigationController(rootViewController: ViewController())
+            let mainNavigationController = TVShowListConfigurator.make()
             self.window?.rootViewController = mainNavigationController
             self.window?.makeKeyAndVisible()
         }

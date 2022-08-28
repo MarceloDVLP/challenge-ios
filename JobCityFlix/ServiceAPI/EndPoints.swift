@@ -1,15 +1,20 @@
-//
-//  EndPoints.swift
-//  JobCityFlix
-//
-//  Created by Marcelo Carvalho on 28/08/22.
-//
-
 import Foundation
 
-struct Endpoints {
-    static let baseURL = "http://api.tvmaze.com/"
-    static let showList = "shows?page="
+enum Endpoints {
+    
+    case tvShowList(Int)    
+
+    var baseURL: String {
+        "http://api.tvmaze.com/"
+    }
+
+    var url: URL {
+        
+        switch self {
+        case .tvShowList( let page):
+            return URL(string: "\(baseURL)shows?page=\(page)")!
+        }
+    }
 }
 
 

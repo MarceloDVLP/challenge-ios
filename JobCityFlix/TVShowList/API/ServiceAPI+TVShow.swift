@@ -1,35 +1,29 @@
-//
-//  ServiceAPI+TvShow.swift
-//  JobCityFlix
-//
-//  Created by Marcelo Carvalho on 28/08/22.
-//
-
 import Foundation
 
 extension ServiceAPI {
 
     func fetchTVShowList(page:Int?, completion: @escaping(Result<[TVShowCodable], Error>) -> Void) {
-        let endpoint = "\(Endpoints.baseURL)\(Endpoints.showList)\(page ?? 0)"
-        let url = URL(string: endpoint)!
-
-        client.request(url: url, completion: { result in
+        let url = Endpoints.tvShowList(page ?? 0).url
+        client.request(url: url, completion: { [weak self] result in
+            guard let self = self else { return }
             
             switch result {
             case .success(let data):
-
-                let decoder = JSONDecoder()
-                do {
-                    let showList = try decoder.decode([TVShowCodable].self, from: data)
-                    completion(.success(showList))
-                } catch {
-                    completion(.failure(ServiceAPIError.clientError))
-                }
-                
+                completion(self.decode(data))
             case .failure(let error):
                 completion(.failure(error))
             }
         })
+    }
+    
+    func decode (_ data: Data) -> Result<[TVShowCodable], Error> {
+        let decoder = JSONDecoder()
+        do {
+            let showList = try decoder.decode([TVShowCodable].self, from: data)
+            return Result.success(showList)
+        } catch {
+            return Result.failure(ServiceAPIError.clientError)
+        }
     }
 }
 
