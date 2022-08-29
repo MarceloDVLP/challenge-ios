@@ -1,12 +1,12 @@
 import UIKit
 
 
-final class TVShowListViewController: UIViewController {
+final class TVShowDetailViewController: UIViewController {
 
 
-    var interactor: TVShowInteractorProtocol
+    var interactor: TVShowDetailInteractorProtocol
     
-    init(interactor: TVShowInteractor) {
+    init(interactor: TVShowDetailInteractor) {
         self.interactor = interactor        
         super.init(nibName: nil, bundle: nil)
 
@@ -26,7 +26,7 @@ final class TVShowListViewController: UIViewController {
     }
 }
 
-extension TVShowListViewController: TVShowListViewControllerProtocol {
+extension TVShowDetailViewController: TVShowDetailViewControllerProtocol {
     
     func showLoadig() {
         let loadingView = makeActivityIndicatorView()
@@ -34,8 +34,8 @@ extension TVShowListViewController: TVShowListViewControllerProtocol {
         loadingView.startAnimating()
     }
 
-    func showEpisodes(_ tvShows: [TVShowCodable]) {
-        let listView = TVShowListView()
+    func showEpisodes(_ tvShows: [TVShowDetailCodable]) {
+        let listView = TVShowDetailView()
         listView.items = tvShows
         view.constrainSubView(view: listView, top: -90, bottom: 0, left: 0, right: 0)
     }
@@ -53,7 +53,7 @@ extension TVShowListViewController: TVShowListViewControllerProtocol {
 
 //MARK: Helpers
 
-extension TVShowListViewController {
+extension TVShowDetailViewController {
     
     private func makeActivityIndicatorView() -> UIActivityIndicatorView {
         let indicator = UIActivityIndicatorView()

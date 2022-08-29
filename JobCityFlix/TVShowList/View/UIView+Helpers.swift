@@ -60,4 +60,21 @@ extension UIView {
         layer.shadowOpacity = 0.8
         layer.cornerRadius = 8
     }
+    
+
+}
+
+extension UIViewController {
+
+    func setupNavigationImage(_ name :String) {
+        let frame = CGRect(x: 0, y: 0, width: 100, height: 40)
+        let logoContainer = UIView(frame: frame)
+        let imageView = UIImageView(frame: frame)
+        imageView.contentMode = .scaleAspectFit
+
+        let image = UIImage(named: name)
+        imageView.image = image
+        logoContainer.addSubview(imageView)
+        navigationItem.titleView = logoContainer
+    }
 }

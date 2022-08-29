@@ -25,6 +25,14 @@
 		C7D2F7FB28BBFDBF00EEC146 /* UIView+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D2F7FA28BBFDBF00EEC146 /* UIView+Helpers.swift */; };
 		C7D2F7FD28BBFE6F00EEC146 /* TVShowMainHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D2F7FC28BBFE6F00EEC146 /* TVShowMainHeader.swift */; };
 		C7D2F80028BC01D000EEC146 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D2F7FF28BC01D000EEC146 /* TabViewController.swift */; };
+		C7D2F80F28BD60FC00EEC146 /* TVShowDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D2F80328BD60FC00EEC146 /* TVShowDetailPresenter.swift */; };
+		C7D2F81128BD60FC00EEC146 /* TVShowDetailMainHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D2F80628BD60FC00EEC146 /* TVShowDetailMainHeader.swift */; };
+		C7D2F81228BD60FC00EEC146 /* TVShowDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D2F80728BD60FC00EEC146 /* TVShowDetailViewController.swift */; };
+		C7D2F81328BD60FC00EEC146 /* TVShowDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D2F80828BD60FC00EEC146 /* TVShowDetailCell.swift */; };
+		C7D2F81428BD60FC00EEC146 /* TVShowDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D2F80928BD60FC00EEC146 /* TVShowDetailView.swift */; };
+		C7D2F81528BD60FC00EEC146 /* ServiceAPI+TVShowDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D2F80B28BD60FC00EEC146 /* ServiceAPI+TVShowDetail.swift */; };
+		C7D2F81628BD60FC00EEC146 /* TVShowDetailConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D2F80C28BD60FC00EEC146 /* TVShowDetailConfigurator.swift */; };
+		C7D2F81728BD60FC00EEC146 /* TVShowDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D2F80E28BD60FC00EEC146 /* TVShowDetailInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +57,14 @@
 		C7D2F7FA28BBFDBF00EEC146 /* UIView+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Helpers.swift"; sourceTree = "<group>"; };
 		C7D2F7FC28BBFE6F00EEC146 /* TVShowMainHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowMainHeader.swift; sourceTree = "<group>"; };
 		C7D2F7FF28BC01D000EEC146 /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
+		C7D2F80328BD60FC00EEC146 /* TVShowDetailPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVShowDetailPresenter.swift; sourceTree = "<group>"; };
+		C7D2F80628BD60FC00EEC146 /* TVShowDetailMainHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVShowDetailMainHeader.swift; sourceTree = "<group>"; };
+		C7D2F80728BD60FC00EEC146 /* TVShowDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVShowDetailViewController.swift; sourceTree = "<group>"; };
+		C7D2F80828BD60FC00EEC146 /* TVShowDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVShowDetailCell.swift; sourceTree = "<group>"; };
+		C7D2F80928BD60FC00EEC146 /* TVShowDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVShowDetailView.swift; sourceTree = "<group>"; };
+		C7D2F80B28BD60FC00EEC146 /* ServiceAPI+TVShowDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ServiceAPI+TVShowDetail.swift"; sourceTree = "<group>"; };
+		C7D2F80C28BD60FC00EEC146 /* TVShowDetailConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVShowDetailConfigurator.swift; sourceTree = "<group>"; };
+		C7D2F80E28BD60FC00EEC146 /* TVShowDetailInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVShowDetailInteractor.swift; sourceTree = "<group>"; };
 		F1625695AE93BD1C6F2BF30B /* Pods-JobCityFlix.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JobCityFlix.debug.xcconfig"; path = "Target Support Files/Pods-JobCityFlix/Pods-JobCityFlix.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -102,6 +118,7 @@
 		C74B384028BAC068000E728D /* JobCityFlix */ = {
 			isa = PBXGroup;
 			children = (
+				C7D2F80128BD60FC00EEC146 /* TVShowDetail */,
 				C74B386428BBB7D7000E728D /* Application */,
 				C74B385A28BBACC5000E728D /* ServiceAPI */,
 				C7D2F7FE28BC016200EEC146 /* MenuBar */,
@@ -194,6 +211,53 @@
 				C7D2F7FF28BC01D000EEC146 /* TabViewController.swift */,
 			);
 			path = MenuBar;
+			sourceTree = "<group>";
+		};
+		C7D2F80128BD60FC00EEC146 /* TVShowDetail */ = {
+			isa = PBXGroup;
+			children = (
+				C7D2F80228BD60FC00EEC146 /* Presenter */,
+				C7D2F80428BD60FC00EEC146 /* View */,
+				C7D2F80A28BD60FC00EEC146 /* API */,
+				C7D2F80C28BD60FC00EEC146 /* TVShowDetailConfigurator.swift */,
+				C7D2F80D28BD60FC00EEC146 /* Interactor */,
+			);
+			path = TVShowDetail;
+			sourceTree = "<group>";
+		};
+		C7D2F80228BD60FC00EEC146 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				C7D2F80328BD60FC00EEC146 /* TVShowDetailPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		C7D2F80428BD60FC00EEC146 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C7D2F80628BD60FC00EEC146 /* TVShowDetailMainHeader.swift */,
+				C7D2F80728BD60FC00EEC146 /* TVShowDetailViewController.swift */,
+				C7D2F80828BD60FC00EEC146 /* TVShowDetailCell.swift */,
+				C7D2F80928BD60FC00EEC146 /* TVShowDetailView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C7D2F80A28BD60FC00EEC146 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				C7D2F80B28BD60FC00EEC146 /* ServiceAPI+TVShowDetail.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		C7D2F80D28BD60FC00EEC146 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				C7D2F80E28BD60FC00EEC146 /* TVShowDetailInteractor.swift */,
+			);
+			path = Interactor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -313,17 +377,25 @@
 				C74B386328BBB72C000E728D /* ServiceAPI+TVShow.swift in Sources */,
 				C74B384628BAC068000E728D /* TVShowListViewController.swift in Sources */,
 				C74B384228BAC068000E728D /* AppDelegate.swift in Sources */,
+				C7D2F80F28BD60FC00EEC146 /* TVShowDetailPresenter.swift in Sources */,
 				C7D2F80028BC01D000EEC146 /* TabViewController.swift in Sources */,
 				C74B385928BBACA7000E728D /* ServiceAPI.swift in Sources */,
 				C74B386028BBB32E000E728D /* HTTPClient.swift in Sources */,
+				C7D2F81228BD60FC00EEC146 /* TVShowDetailViewController.swift in Sources */,
 				C74B385E28BBAD13000E728D /* EndPoints.swift in Sources */,
 				C74B386628BBB8A6000E728D /* SceneDelegate.swift in Sources */,
 				C74B386C28BBCB4E000E728D /* TVShowInteractor.swift in Sources */,
 				C7D2F7FD28BBFE6F00EEC146 /* TVShowMainHeader.swift in Sources */,
+				C7D2F81128BD60FC00EEC146 /* TVShowDetailMainHeader.swift in Sources */,
+				C7D2F81328BD60FC00EEC146 /* TVShowDetailCell.swift in Sources */,
+				C7D2F81728BD60FC00EEC146 /* TVShowDetailInteractor.swift in Sources */,
+				C7D2F81428BD60FC00EEC146 /* TVShowDetailView.swift in Sources */,
 				C74B386E28BBCB5F000E728D /* TVShowPresenter.swift in Sources */,
 				C7D2F7FB28BBFDBF00EEC146 /* UIView+Helpers.swift in Sources */,
 				C74B387028BBCB6E000E728D /* TVShowConfigurator.swift in Sources */,
+				C7D2F81528BD60FC00EEC146 /* ServiceAPI+TVShowDetail.swift in Sources */,
 				C7D2F7F928BBFD7E00EEC146 /* TVShowListCell.swift in Sources */,
+				C7D2F81628BD60FC00EEC146 /* TVShowDetailConfigurator.swift in Sources */,
 				C7D2F7F728BBFD5000EEC146 /* TVShowListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
