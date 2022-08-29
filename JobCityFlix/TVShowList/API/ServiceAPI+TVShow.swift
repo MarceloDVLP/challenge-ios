@@ -69,6 +69,25 @@ struct TVShowCodable: Decodable {
         case updated
     }
     
+    public init(_ id: Int) {
+        self.id = id
+        
+        url = nil
+        type = nil
+        name = nil
+        language = nil
+        genres = nil
+        status = nil
+        runtime = nil
+        premiered = nil
+        schedule = nil
+        rating = nil
+        network = nil
+        image = nil
+        summary = nil
+        updated = nil
+    }
+    
 }
 
 struct Schedule:Decodable {

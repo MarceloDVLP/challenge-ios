@@ -66,7 +66,11 @@ final class TVShowMainHeader: UICollectionReusableView {
         favoriteButton.layer.cornerRadius = 8
     }
     
-    func configure(_ tvShow: TVShowCodable) {
+    func configure(_ tvShow: TVShowCodable?) {
+        guard let tvShow = tvShow else {
+            return
+        }
+
         let url = URL(string: tvShow.image!.original!)
         imageView.sd_setImage(with: url)
         let text = "Não perca HOJE a série \(tvShow.name ?? "")!"

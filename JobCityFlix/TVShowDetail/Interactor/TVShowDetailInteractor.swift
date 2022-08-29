@@ -5,30 +5,30 @@ final class TVShowDetailInteractor: TVShowDetailInteractorProtocol {
     
     private var service: ServiceAPI
     private var presenter: TVShowDetailPresenterProtocol
+    private var tvShow: TVShowCodable
+
     
-    init (service: ServiceAPI, presenter: TVShowDetailPresenterProtocol) {
+    init (service: ServiceAPI, presenter: TVShowDetailPresenterProtocol, tvShow: TVShowCodable) {
         self.service = service
         self.presenter = presenter
+        self.tvShow = tvShow
     }
     
     func viewDidLoad() {
         presenter.willStartFetch()
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            self.fetchEpisodes()
-        }
+        fetchDetail()
     }
     
-    private func fetchEpisodes() {
-        service.fetchTVShowDetail(page: nil, completion: { [weak self] result in
+    private func fetchDetail() {
+        service.fetchTVShowDetail(id: tvShow.id ?? 0, completion: { [weak self] result in
             
             guard let self = self else { return }
             
             switch result {
-            case .success(let tvShows):
+            case .success(let tvShow):
 
                 DispatchQueue.main.async {
-                    self.presenter.showEpisodes(tvShows)
+                    self.presenter.show(tvShow)
                 }
                 
             case .failure(let error):

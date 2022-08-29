@@ -7,9 +7,9 @@ final class TVShowDetailPresenter: TVShowDetailPresenterProtocol {
     func willStartFetch() {
         viewController?.showLoadig()
     }
-    func showEpisodes(_ tvShows: [TVShowDetailCodable]) {
+    func show(_ tvShow: TVShowCodable) {
         viewController?.removeLoading()
-        viewController?.showEpisodes(tvShows)
+        viewController?.show(tvShow)
     }
     func showError(_ error: Error) {
         viewController?.showError(error)

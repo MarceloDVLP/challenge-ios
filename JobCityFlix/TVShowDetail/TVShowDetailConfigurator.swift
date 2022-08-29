@@ -2,13 +2,13 @@ import UIKit
 
 final class TVShowDetailConfigurator {
     
-    static func make() -> UIViewController {
+    static func make(_ tvShow: TVShowCodable) -> UIViewController {
         let session = URLSession.shared
         let service = ServiceAPI(client: HTTPClient(session: session))
 
         let presenter = TVShowDetailPresenter()
 
-        let interactor = TVShowDetailInteractor(service: service, presenter: presenter)
+        let interactor = TVShowDetailInteractor(service: service, presenter: presenter, tvShow: tvShow)
         let viewController = TVShowDetailViewController(interactor: interactor)
 
         presenter.viewController = viewController
@@ -22,7 +22,7 @@ final class TVShowDetailConfigurator {
 
 protocol TVShowDetailPresenterProtocol: AnyObject {
     func willStartFetch()
-    func showEpisodes(_ tvShows: [TVShowDetailCodable])
+    func show(_ tvShow: TVShowCodable)
     func showError(_ error: Error)
     
 }
@@ -33,7 +33,7 @@ protocol TVShowDetailInteractorProtocol {
 
 protocol TVShowDetailViewControllerProtocol: AnyObject {
     func showLoadig()
-    func showEpisodes(_ tvShows: [TVShowDetailCodable])
+    func show(_ tvShow: TVShowCodable)
     func showError(_ error: Error)
     func removeLoading()
 }

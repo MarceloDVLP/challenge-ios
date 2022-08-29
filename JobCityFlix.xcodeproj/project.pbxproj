@@ -118,10 +118,10 @@
 		C74B384028BAC068000E728D /* JobCityFlix */ = {
 			isa = PBXGroup;
 			children = (
-				C7D2F80128BD60FC00EEC146 /* TVShowDetail */,
 				C74B386428BBB7D7000E728D /* Application */,
-				C74B385A28BBACC5000E728D /* ServiceAPI */,
 				C7D2F7FE28BC016200EEC146 /* MenuBar */,
+				C74B385A28BBACC5000E728D /* ServiceAPI */,
+				C7D2F80128BD60FC00EEC146 /* TVShowDetail */,
 				C74B385728BBAC76000E728D /* TVShowList */,
 			);
 			path = JobCityFlix;
@@ -160,6 +160,7 @@
 		C74B386428BBB7D7000E728D /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				C7D2F81828BD649D00EEC146 /* Shared Resources */,
 				C74B384C28BAC069000E728D /* LaunchScreen.storyboard */,
 				C74B384128BAC068000E728D /* AppDelegate.swift */,
 				C74B386528BBB8A6000E728D /* SceneDelegate.swift */,
@@ -175,7 +176,6 @@
 				C74B384528BAC068000E728D /* TVShowListViewController.swift */,
 				C7D2F7F628BBFD5000EEC146 /* TVShowListView.swift */,
 				C7D2F7F828BBFD7E00EEC146 /* TVShowListCell.swift */,
-				C7D2F7FA28BBFDBF00EEC146 /* UIView+Helpers.swift */,
 				C7D2F7FC28BBFE6F00EEC146 /* TVShowMainHeader.swift */,
 			);
 			path = View;
@@ -258,6 +258,22 @@
 				C7D2F80E28BD60FC00EEC146 /* TVShowDetailInteractor.swift */,
 			);
 			path = Interactor;
+			sourceTree = "<group>";
+		};
+		C7D2F81828BD649D00EEC146 /* Shared Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C7D2F81928BD64B600EEC146 /* Extensions */,
+			);
+			path = "Shared Resources";
+			sourceTree = "<group>";
+		};
+		C7D2F81928BD64B600EEC146 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C7D2F7FA28BBFDBF00EEC146 /* UIView+Helpers.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -66,7 +66,7 @@ final class TVShowDetailMainHeader: UICollectionReusableView {
         favoriteButton.layer.cornerRadius = 8
     }
     
-    func configure(_ tvShow: TVShowDetailCodable) {
+    func configure(_ tvShow: TVShowCodable) {
 
     }
    

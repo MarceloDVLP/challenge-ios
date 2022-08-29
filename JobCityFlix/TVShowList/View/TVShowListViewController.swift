@@ -6,11 +6,15 @@ final class TVShowListViewController: UIViewController {
 
     var interactor: TVShowInteractorProtocol
     
+    private lazy var tvShowView: TVShowListView = {
+        return TVShowListView()
+    }()
+    
     init(interactor: TVShowInteractor) {
         self.interactor = interactor        
         super.init(nibName: nil, bundle: nil)
-
         tabBarItem = makeTabBarItem()
+        setupTVShowView()
     }
     
     override func viewDidLoad() {
@@ -35,9 +39,8 @@ extension TVShowListViewController: TVShowListViewControllerProtocol {
     }
 
     func showEpisodes(_ tvShows: [TVShowCodable]) {
-        let listView = TVShowListView()
-        listView.items = tvShows
-        view.constrainSubView(view: listView, top: -90, bottom: 0, left: 0, right: 0)
+        tvShowView.items = tvShows
+        tvShowView.collectionView.reloadData()
     }
 
     func showError(_ error: Error) {
@@ -54,6 +57,17 @@ extension TVShowListViewController: TVShowListViewControllerProtocol {
 //MARK: Helpers
 
 extension TVShowListViewController {
+    
+    private func setupTVShowView() {
+        view.constrainSubView(view: tvShowView, top: -90, bottom: 0, left: 0, right: 0)
+        
+        tvShowView.didSelectTVShow = { [weak self] tvShow in
+            guard let self = self else { return }
+
+            let viewController = TVShowDetailConfigurator.make(tvShow)
+            self.present(viewController, animated: true)
+        }
+    }
     
     private func makeActivityIndicatorView() -> UIActivityIndicatorView {
         let indicator = UIActivityIndicatorView()

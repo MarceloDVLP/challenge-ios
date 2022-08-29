@@ -2,7 +2,9 @@ import UIKit
 
 final class TVShowListView: UIView {
     
-    private lazy var collectionView: UICollectionView = {
+    var didSelectTVShow: ((TVShowCodable) ->())?
+    
+    public lazy var collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .vertical
         
@@ -63,11 +65,10 @@ extension TVShowListView: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-
-        let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "TVShowMainHeader", for: indexPath) as! TVShowMainHeader
         
-        let randomInt = Int.random(in: 0..<items.count)
-        cell.configure(items[randomInt])
+        let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "TVShowMainHeader", for: indexPath) as! TVShowMainHeader
+                
+        cell.configure(items.first)
         
         return cell
     }
@@ -82,7 +83,11 @@ extension TVShowListView: UICollectionViewDataSource {
 }
 
 extension TVShowListView: UICollectionViewDelegate {
-    
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let item = items[indexPath.item]
+        didSelectTVShow?(item)
+    }
 }
 
 extension TVShowListView: UICollectionViewDelegateFlowLayout {

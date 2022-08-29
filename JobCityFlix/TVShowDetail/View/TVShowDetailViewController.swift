@@ -3,14 +3,18 @@ import UIKit
 
 final class TVShowDetailViewController: UIViewController {
 
-
     var interactor: TVShowDetailInteractorProtocol
+    
+    private lazy var tvShowView: TVShowDetailView = {
+        return TVShowDetailView()
+    }()
     
     init(interactor: TVShowDetailInteractor) {
         self.interactor = interactor        
         super.init(nibName: nil, bundle: nil)
 
         tabBarItem = makeTabBarItem()
+        setupTVShowView()
     }
     
     override func viewDidLoad() {
@@ -34,10 +38,9 @@ extension TVShowDetailViewController: TVShowDetailViewControllerProtocol {
         loadingView.startAnimating()
     }
 
-    func showEpisodes(_ tvShows: [TVShowDetailCodable]) {
-        let listView = TVShowDetailView()
-        listView.items = tvShows
-        view.constrainSubView(view: listView, top: -90, bottom: 0, left: 0, right: 0)
+    func show(_ tvShow: TVShowCodable) {
+        tvShowView.item = tvShow
+        tvShowView.collectionView.reloadData()
     }
 
     func showError(_ error: Error) {
@@ -54,6 +57,10 @@ extension TVShowDetailViewController: TVShowDetailViewControllerProtocol {
 //MARK: Helpers
 
 extension TVShowDetailViewController {
+    
+    private func setupTVShowView() {
+        view.constrainSubView(view: tvShowView, top: -90, bottom: 0, left: 0, right: 0)
+    }
     
     private func makeActivityIndicatorView() -> UIActivityIndicatorView {
         let indicator = UIActivityIndicatorView()
