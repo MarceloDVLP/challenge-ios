@@ -1,8 +1,8 @@
 import UIKit
 
 
-
 final class TVShowListViewController: UIViewController {
+
 
     var interactor: TVShowInteractorProtocol
     
@@ -16,6 +16,18 @@ final class TVShowListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         interactor.viewDidLoad()
+        
+        
+        let frame = CGRect(x: 0, y: 0, width: 100, height: 40)
+        let logoContainer = UIView(frame: frame)
+        let imageView = UIImageView(frame: frame)
+        imageView.contentMode = .scaleAspectFit
+
+        let image = UIImage(named: "logo-home")
+        imageView.image = image
+        logoContainer.addSubview(imageView)
+        navigationItem.titleView = logoContainer
+        self.title = "JobCityFlix"
     }
     
     required init?(coder: NSCoder) {

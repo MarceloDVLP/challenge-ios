@@ -70,7 +70,6 @@
 				F1625695AE93BD1C6F2BF30B /* Pods-JobCityFlix.debug.xcconfig */,
 				67AD985944EC39BB3EA13557 /* Pods-JobCityFlix.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
