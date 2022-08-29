@@ -6,7 +6,7 @@ final class TVShowListCell: UICollectionViewCell {
     private lazy var imageView: UIImageView = {
         let image = UIImage(named: "re")!
         let view = UIImageView(image: image)
-        view.contentMode = .scaleAspectFit
+        view.contentMode = .scaleAspectFill
         return view
     }()
         

@@ -9,26 +9,17 @@ final class TVShowListViewController: UIViewController {
     init(interactor: TVShowInteractor) {
         self.interactor = interactor        
         super.init(nibName: nil, bundle: nil)
-        self.title = "Netflix"
-        tabBarItem = UITabBarItem(title: "Home",
-                                  image: UIImage(named: "tab-home"),
-                                  selectedImage: UIImage(named: "tab-home")?.withRenderingMode(.alwaysOriginal))
-        
-        tabBarItem.setTitleTextAttributes([.foregroundColor: UIColor.black], for: .selected)
-        tabBarItem.setTitleTextAttributes([.foregroundColor: UIColor.lightGray], for: .normal)
 
-
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        tabBarItem = makeTabBarItem()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-
         interactor.viewDidLoad()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
 
@@ -67,6 +58,17 @@ extension TVShowListViewController {
         indicator.color = .white
         indicator.style = .large
         return indicator
+    }
+    
+    private func makeTabBarItem() -> UITabBarItem {
+
+        tabBarItem = UITabBarItem(title: "Home",
+                                  image: UIImage(named: "tab-home"),
+                                  tag: 0)
+
+        tabBarItem.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
+        tabBarItem.setTitleTextAttributes([.foregroundColor: UIColor.lightGray], for: .normal)
+        return tabBarItem
     }
 }
 

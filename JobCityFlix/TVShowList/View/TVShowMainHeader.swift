@@ -1,17 +1,12 @@
-//
-//  TVShowMainHeader.swift
-//  JobCityFlix
-//
-//  Created by Marcelo Carvalho on 28/08/22.
-//
-
 import UIKit
+import SDWebImage
 
 final class TVShowMainHeader: UICollectionReusableView {
 
     private lazy var imageView: UIImageView = {
         let view = UIImageView()
         view.contentMode = .scaleAspectFill
+        view.sd_imageTransition = .fade
         return view
     }()
     
@@ -26,13 +21,27 @@ final class TVShowMainHeader: UICollectionReusableView {
         return button
     }()
     
+    private lazy var favoriteButton: UIButton = {
+        let button = UIButton()
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        button.setTitle(" + Adicionar", for: .normal)
+        
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.setTitleColor(.clear, for: .highlighted)
+        button.backgroundColor = .clear
+        button.layer.borderColor = UIColor.white.cgColor
+        button.layer.borderWidth = 2
+        
+        return button
+    }()
+    
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
         label.numberOfLines = 2
         label.textAlignment = .center
         label.lineBreakMode = .byTruncatingTail
-        label.font = UIFont.boldSystemFont(ofSize: 14)
+        label.font = UIFont.boldSystemFont(ofSize: 17)
         return label
     }()
         
@@ -41,6 +50,7 @@ final class TVShowMainHeader: UICollectionReusableView {
         constrainImageView()
         constrainDetailButton()
         constrainTitleLabel()
+        constrainFavoriteButton()
         clipsToBounds = true
     }
     
@@ -51,7 +61,9 @@ final class TVShowMainHeader: UICollectionReusableView {
     override func layoutSubviews() {
         super.layoutSubviews()
         setGradientBackground()
-        detailButton.circularShadow()
+        
+        detailButton.layer.cornerRadius = 8
+        favoriteButton.layer.cornerRadius = 8
     }
     
     func configure(_ tvShow: TVShowCodable) {
@@ -65,10 +77,18 @@ final class TVShowMainHeader: UICollectionReusableView {
         constrainSubView(view: detailButton,
                          bottom: -50,
                          width: 120,
-                         height: 40,
-                         x: 0
+                         height: 44,
+                         x: -70
         )
-        
+    }
+    
+    private func constrainFavoriteButton() {
+        constrainSubView(view: favoriteButton,
+                         bottom: -50,
+                         width: 120,
+                         height: 44,
+                         x: 70
+        )
     }
     
     private func constrainImageView() {
