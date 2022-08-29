@@ -43,9 +43,7 @@ extension TVShowListViewController: TVShowListViewControllerProtocol {
     func showEpisodes(_ tvShows: [TVShowCodable]) {
         let listView = TVShowListView()
         listView.items = tvShows
-        listView.center = view.center
-        listView.frame = view.frame
-        view.addSubview(listView)
+        view.constrainSubView(view: listView, top: -90, bottom: 0, left: 0, right: 0)
     }
 
     func showError(_ error: Error) {

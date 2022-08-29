@@ -8,7 +8,9 @@ extension UIView {
                           left: CGFloat? = nil,
                           right: CGFloat? = nil,
                           width: CGFloat? = nil,
-                          height: CGFloat? = nil
+                          height: CGFloat? = nil,
+                          x: CGFloat? = nil,
+                          y: CGFloat? = nil
     ) {
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
@@ -32,15 +34,30 @@ extension UIView {
         }
 
         if let width = width {
-            constraints.append(view.widthAnchor.constraint(equalTo: widthAnchor, constant: width))
+            constraints.append(view.widthAnchor.constraint(equalToConstant: width))
         }
 
         if let height = height {
-            constraints.append(view.heightAnchor.constraint(equalTo: heightAnchor, constant: height))
+            constraints.append(view.heightAnchor.constraint(equalToConstant: height))
         }
         
+        if let x = x {
+            constraints.append(view.centerXAnchor.constraint(equalTo: centerXAnchor, constant: x))
+        }
+
+        if let y = y {
+            constraints.append(view.centerYAnchor.constraint(equalTo: centerYAnchor, constant: y))
+        }
+
         NSLayoutConstraint.activate(constraints)
     }
     
-    
+    func circularShadow() {
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOffset = CGSize(width: 1.0, height: 1.0)
+        layer.masksToBounds = false
+        layer.shadowRadius = 3.0
+        layer.shadowOpacity = 0.8
+        layer.cornerRadius = 8
+    }
 }

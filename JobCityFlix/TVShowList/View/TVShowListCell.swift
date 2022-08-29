@@ -13,7 +13,15 @@ final class TVShowListCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         constrainImageView()
-        contentView.backgroundColor = .brown
+        contentView.backgroundColor = .clear
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        circularShadow()
+        imageView.layer.cornerRadius = 8
+        imageView.clipsToBounds = true
+
     }
     
     required init?(coder: NSCoder) {
@@ -26,10 +34,17 @@ final class TVShowListCell: UICollectionViewCell {
         imageView.sd_setImage(with: url)
     }
     
+    override func prepareForReuse() {
+        imageView.sd_cancelCurrentImageLoad()
+        imageView.image = nil
+    }
+    
     private func constrainImageView() {
         contentView.constrainSubView(view: imageView,
                                      top: 0,
                                      bottom: 0, left: 0,
                                      right: 0)
     }
+    
+
 }

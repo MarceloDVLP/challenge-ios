@@ -18,6 +18,8 @@ final class TVShowListView: UIView {
         super.init(frame: .zero)
         constrainCollectionView()
         registerCell()
+        backgroundColor = .darkGray
+        collectionView.backgroundColor = .clear
     }
     
     required init?(coder: NSCoder) {
@@ -31,7 +33,7 @@ final class TVShowListView: UIView {
         NSLayoutConstraint.activate([
             collectionView.leftAnchor.constraint(equalTo: leftAnchor),
             collectionView.rightAnchor.constraint(equalTo: rightAnchor),
-            collectionView.topAnchor.constraint(equalTo: topAnchor, constant: 50),
+            collectionView.topAnchor.constraint(equalTo: topAnchor, constant: 0),
             collectionView.heightAnchor.constraint(equalToConstant: 900)
         ])
     }
@@ -60,12 +62,15 @@ extension TVShowListView: UICollectionViewDataSource {
         }
     }
     
-//    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-//
-//        let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "TVShowMainHeader", for: indexPath)
-//        
-//        return cell
-//    }
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+
+        let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "TVShowMainHeader", for: indexPath) as! TVShowMainHeader
+        
+        let randomInt = Int.random(in: 0..<items.count)
+        cell.configure(items[randomInt])
+        
+        return cell
+    }
 }
 
 extension TVShowListView: UICollectionViewDelegate {
