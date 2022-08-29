@@ -16,7 +16,8 @@ final class TVShowMainHeader: UICollectionReusableView {
         button.setTitle("Veja mais", for: .normal)
         
         button.setTitleColor(UIColor.darkGray, for: .normal)
-        button.setTitleColor(.clear, for: .highlighted)
+        button.setTitleColor(UIColor.lightGray, for: .highlighted)
+
         button.backgroundColor = .white
         return button
     }()
@@ -26,8 +27,8 @@ final class TVShowMainHeader: UICollectionReusableView {
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         button.setTitle(" + Adicionar", for: .normal)
         
-        button.setTitleColor(UIColor.white, for: .normal)
-        button.setTitleColor(.clear, for: .highlighted)
+        button.setupWithMainColors()
+
         button.backgroundColor = .clear
         button.layer.borderColor = UIColor.white.cgColor
         button.layer.borderWidth = 2
