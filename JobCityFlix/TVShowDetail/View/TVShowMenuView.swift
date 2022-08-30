@@ -29,7 +29,6 @@ final class TVShowDetailNavigationMenuCell: UICollectionViewCell {
         
         buttons.forEach({ button in
             stackView.addArrangedSubview(button)
-            button.widthAnchor.constraint(equalToConstant: 100).isActive = true
         })
         
         addBottomLineView()

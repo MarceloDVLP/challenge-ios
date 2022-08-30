@@ -40,7 +40,7 @@ final class TVShowDetailView: UIView {
     }
     
     private func registerCell() {
-        collectionView.register(TVShowDetailCell.self, forCellWithReuseIdentifier: "TVShowDetailCell")
+        collectionView.register(TVShowEpisodeCell.self, forCellWithReuseIdentifier: "TVShowEpisodeCell")
         collectionView.register(TVShowDetailNavigationMenuCell.self, forCellWithReuseIdentifier: "TVShowDetailNavigationMenuCell")
     }
     
@@ -63,17 +63,23 @@ extension TVShowDetailView: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        1
+
+        switch section {
+        case 0: return 1
+        case 1: return episodes[selectedSeason].count
+        default: fatalError()
+        }
     }
     
     private func dequeueNavigationMenuCell(_ collectionView: UICollectionView, _ indexPath: IndexPath) -> UICollectionViewCell {
         return collectionView.dequeueReusableCell(withReuseIdentifier: "TVShowDetailNavigationMenuCell", for: indexPath)
     }
 
-    private func dequeueDetailCell(_ collectionView: UICollectionView, _ indexPath: IndexPath) -> TVShowDetailCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TVShowDetailCell", for: indexPath) as! TVShowDetailCell
+    private func dequeueEpisodeCell(_ collectionView: UICollectionView, _ indexPath: IndexPath) -> TVShowEpisodeCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TVShowEpisodeCell", for: indexPath) as! TVShowEpisodeCell
+        let episodes = episodes[selectedSeason]
         
-        cell.configure(nil, episodes[selectedSeason], self)
+        cell.configure(episodes[indexPath.item])
         return cell
     }
 
@@ -81,10 +87,8 @@ extension TVShowDetailView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         switch indexPath.section {
-        
             case 0: return dequeueNavigationMenuCell(collectionView, indexPath)
-            case 1: return dequeueDetailCell(collectionView, indexPath)
-
+            case 1: return dequeueEpisodeCell(collectionView, indexPath)
             default: fatalError()
         }
     }
@@ -104,7 +108,7 @@ extension TVShowDetailView: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        return UIEdgeInsets(top: 20, left: 16, bottom: 0, right: 16)
     }
 }
 
@@ -117,8 +121,8 @@ extension TVShowDetailView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
                 
         switch indexPath.section {
-        case 0: return CGSize(width: collectionView.frame.width, height: 30)
-        case 1: return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
+        case 0: return CGSize(width: collectionView.frame.width-32, height: 30)
+        case 1: return CGSize(width: collectionView.frame.width-32, height: 150)
         default: fatalError()
         }
     }

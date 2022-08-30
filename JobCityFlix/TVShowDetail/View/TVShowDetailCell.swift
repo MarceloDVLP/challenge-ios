@@ -17,45 +17,17 @@ protocol TVShowDetailCellDelegate: AnyObject {
 
 final class TVShowDetailCell: UICollectionViewCell {
     
-    let episodeList = TVShowEpisodeListView()
     weak var delegate: TVShowDetailCellDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .clear
-        setupMenu()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(_ tvShow: TVShowCodable?, _ episodes: [Episode], _ delegate: TVShowDetailCellDelegate?) {
-        self.delegate = delegate
-        episodeList.show(episodes)
-    }
-        
-    private func setupMenu() {
-
-        constrainSubView(view: episodeList, bottom: 0, left: 20, right: 0)
-        
-        episodeList.didTapSeasonButton = { [weak self] in
-            self?.delegate?.didTapSeasonButton()
-        }
-    }
-}
-
-
-extension UIView {
-    
-    func constraintRelated(in view: UIView, top: CGFloat? = nil) {
-
-        var constraints: [NSLayoutConstraint] = []
-        
-        if let top = top {
-            constraints.append(view.topAnchor.constraint(equalTo: topAnchor, constant: top))
-        }
-
-        NSLayoutConstraint.activate(constraints)
+    func configure(_ tvShow: TVShowCodable?, delegate: TVShowDetailCellDelegate?) {
     }
 }
