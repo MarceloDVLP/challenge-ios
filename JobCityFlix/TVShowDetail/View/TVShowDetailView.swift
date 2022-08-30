@@ -4,6 +4,7 @@ protocol TVShowDetailViewDelegate: AnyObject {
     func didTapSeasonButton()
 }
 
+
 final class TVShowDetailView: UIView {
     
     weak var delegate: TVShowDetailViewDelegate?
@@ -26,9 +27,8 @@ final class TVShowDetailView: UIView {
     enum Section: Int, CaseIterable {
         case detail = 0
         case menu = 1
-        case episodes = 2
-        
-        
+        case season = 2
+        case episodes = 3
     }
 
     init() {
@@ -51,22 +51,23 @@ final class TVShowDetailView: UIView {
         collectionView.register(TVShowEpisodeCell.self, forCellWithReuseIdentifier: "TVShowEpisodeCell")
         collectionView.register(TVShowDetailNavigationMenuCell.self, forCellWithReuseIdentifier: "TVShowDetailNavigationMenuCell")
         collectionView.register(TVShowDetailCell.self, forCellWithReuseIdentifier: "TVShowDetailCell")
+        collectionView.register(SeasonButtonCell.self, forCellWithReuseIdentifier: "SeasonButtonCell")
     }
     
     public func show(_ episodes: [[Episode]],  _ seasons: [String]) {
         self.episodes = episodes
         self.seasons = seasons
-        collectionView.reloadData()
+        collectionView.reloadSections([Section.season.rawValue, Section.episodes.rawValue])
     }
     
     public func show(_ seasonIndex: Int) {
         self.selectedSeason = seasonIndex
-        collectionView.reloadData()
+        collectionView.reloadSections([Section.season.rawValue, Section.episodes.rawValue])
     }
     
     public func show(_ detail: TVShowCodable) {
         self.tvShow = detail
-        collectionView.reloadData()
+        collectionView.reloadSections([Section.detail.rawValue])
     }
 }
 
@@ -79,11 +80,10 @@ extension TVShowDetailView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
         switch Section(rawValue: section)! {
-            
         case .detail: return 1
         case .menu: return 1
+        case .season: return 1
         case .episodes: return episodes[selectedSeason].count
-
         }
     }
     
@@ -105,13 +105,24 @@ extension TVShowDetailView: UICollectionViewDataSource {
         cell.configure(tvShow)
         return cell
     }
-
+    
+    private func dequeueSeasonCell(_ collectionView: UICollectionView, _ indexPath: IndexPath) -> SeasonButtonCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SeasonButtonCell", for: indexPath) as! SeasonButtonCell
+        cell.show(season: selectedSeason+1, episodes: episodes[selectedSeason].count)
+        
+        cell.didTapSeasonButton = { [weak self] in
+            self?.didTapSeasonButton()
+        }
+        
+        return cell
+    }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         switch Section(rawValue: indexPath.section)! {
             case .detail: return dequeueDetailCell(collectionView, indexPath)
             case .menu: return dequeueNavigationMenuCell(collectionView, indexPath)
+            case .season: return dequeueSeasonCell(collectionView, indexPath)
             case .episodes: return dequeueEpisodeCell(collectionView, indexPath)
         }
     }
@@ -146,6 +157,7 @@ extension TVShowDetailView: UICollectionViewDelegateFlowLayout {
         switch Section(rawValue: indexPath.section)! {
         case .detail: return CGSize(width: collectionView.frame.width, height: 400)
         case .menu: return CGSize(width: collectionView.frame.width-32, height: 30)
+        case .season: return CGSize(width: collectionView.frame.width-32, height: 30)
         case .episodes: return CGSize(width: collectionView.frame.width-32, height: 150)
         }
     }
@@ -156,5 +168,59 @@ extension TVShowDetailView: TVShowDetailCellDelegate {
 
     func didTapSeasonButton() {
         delegate?.didTapSeasonButton()
+    }
+}
+
+final class SeasonButtonCell: UICollectionViewCell {
+
+    var didTapSeasonButton: (() -> ())?
+    
+    lazy var seasonButton: UIButton = {
+        let button = UIButton()
+        button.setupWithMainColors()
+        
+        let image = UIImage(named: "arrow-down")!
+        button.setImage(image, for: .normal)
+
+        button.contentHorizontalAlignment = .left
+        button.alignImageToRight()
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
+        return button
+    }()
+    
+    lazy var totalEpisodeLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 12)
+        label.textColor = Colors.titleInactiveColor
+        return label
+    }()
+    
+    override init(frame: CGRect) {
+           super.init(frame: frame)
+           constrainSubView(view: seasonButton, top: 0, left: 0, width: 130, height: 30)
+           
+           addSubview(totalEpisodeLabel)
+           totalEpisodeLabel.translatesAutoresizingMaskIntoConstraints = false
+           
+           NSLayoutConstraint.activate([
+               totalEpisodeLabel.leftAnchor.constraint(equalTo: seasonButton.rightAnchor, constant: 8),
+               totalEpisodeLabel.centerYAnchor.constraint(equalTo: seasonButton.centerYAnchor)
+           ])
+           
+           seasonButton.addTarget(self, action: #selector(didTapSeasonButtonFunc), for: .touchUpInside)
+       }
+       
+    func show(season: Int, episodes: Int) {
+        let seasonTitle = "\(season)ª Temporada   "
+        seasonButton.setTitle(seasonTitle, for: .normal)
+        totalEpisodeLabel.text = "\(episodes) episódios"
+    }
+        
+    @objc func didTapSeasonButtonFunc(_ sender: UIButton) {
+            didTapSeasonButton?()
+    }
+    
+    required init?(coder: NSCoder) {
+           fatalError("init(coder:) has not been implemented")
     }
 }

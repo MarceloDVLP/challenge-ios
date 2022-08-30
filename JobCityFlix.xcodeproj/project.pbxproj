@@ -245,7 +245,6 @@
 			isa = PBXGroup;
 			children = (
 				C7D2F82328BE46A500EEC146 /* SeasonView */,
-				C7D2F81E28BD855700EEC146 /* EpisodeList */,
 				C7D2F80728BD60FC00EEC146 /* TVShowDetailViewController.swift */,
 				C7D2F81F28BD856E00EEC146 /* TVShowEpisodeCell.swift */,
 				C7D2F80828BD60FC00EEC146 /* TVShowDetailCell.swift */,
@@ -286,13 +285,6 @@
 				C7D2F82628BE6B2D00EEC146 /* UIButton+Helpers.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		C7D2F81E28BD855700EEC146 /* EpisodeList */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = EpisodeList;
 			sourceTree = "<group>";
 		};
 		C7D2F82328BE46A500EEC146 /* SeasonView */ = {

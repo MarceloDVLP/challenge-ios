@@ -59,6 +59,7 @@ final class TVShowDetailCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        
     }
     
     func configure(_ tvShow: TVShowCodable?) {
@@ -83,6 +84,10 @@ final class TVShowDetailCell: UICollectionViewCell {
     private func constrainImageView() {
         constrainSubView(view: imageView, top: 0, left: 0, right: 0)
         
+        let darkLayer = UIView()
+        darkLayer.backgroundColor = .black.withAlphaComponent(0.2)
+        
+                
         imageView.addConstraint(NSLayoutConstraint(item: imageView,
                                                   attribute: .height,
                                                   relatedBy: .equal,
@@ -90,6 +95,11 @@ final class TVShowDetailCell: UICollectionViewCell {
                                                   attribute: .width,
                                                    multiplier: 1.4,
                                                   constant: 0))
+        
+        layoutIfNeeded()
+        
+        darkLayer.frame = imageView.frame
+        addSubview(darkLayer)
     }
     
     private func constraintDescriptionLabel() {
