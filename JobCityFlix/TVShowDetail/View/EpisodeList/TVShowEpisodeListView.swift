@@ -39,7 +39,7 @@ final class TVShowEpisodeListView: UIView {
         return collection
     }()
     
-    var items: [TVShowCodable] = []
+    var episodes: [Episode] = []
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -56,6 +56,11 @@ final class TVShowEpisodeListView: UIView {
         constrainCollectionView()
         registerCell()
 
+    }
+    
+    func show(_ episodes: [Episode]) {
+        self.episodes = episodes
+        collectionView.reloadData()
     }
     
     required init?(coder: NSCoder) {
@@ -83,13 +88,13 @@ final class TVShowEpisodeListView: UIView {
 extension TVShowEpisodeListView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        30
+        episodes.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TVShowEpisodeCell", for: indexPath) as? TVShowEpisodeCell {
-            cell.configure(nil)
+            cell.configure(episodes[indexPath.item])
             return cell
         } else {
             return UICollectionViewCell()

@@ -16,7 +16,8 @@ final class TVShowDetailInteractor: TVShowDetailInteractorProtocol {
     
     func viewDidLoad() {
         presenter.willStartFetch()
-        fetchDetail()
+//        fetchDetail()
+        fetchEpisodes()
     }
     
     private func fetchDetail() {
@@ -36,4 +37,23 @@ final class TVShowDetailInteractor: TVShowDetailInteractorProtocol {
             }
         })
     }
+
+    private func fetchEpisodes() {
+        service.fetchEpisodeList(id: tvShow.id ?? 0, completion: { [weak self] result in
+            
+            guard let self = self else { return }
+            
+            switch result {
+            case .success(let episodes):
+
+                DispatchQueue.main.async {
+                    self.presenter.show(episodes)
+                }
+                
+            case .failure(let error):
+                self.presenter.showError(error)
+            }
+        })
+    }
+
 }

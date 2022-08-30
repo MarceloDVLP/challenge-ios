@@ -23,6 +23,7 @@ final class TVShowDetailConfigurator {
 protocol TVShowDetailPresenterProtocol: AnyObject {
     func willStartFetch()
     func show(_ tvShow: TVShowCodable)
+    func show(_ episodes: [Episode])
     func showError(_ error: Error)
     
 }
@@ -33,6 +34,7 @@ protocol TVShowDetailInteractorProtocol {
 
 protocol TVShowDetailViewControllerProtocol: AnyObject {
     func showLoadig()
+    func show(_ episodes: [Episode])
     func show(_ tvShow: TVShowCodable)
     func showError(_ error: Error)
     func removeLoading()

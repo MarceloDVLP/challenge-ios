@@ -42,6 +42,10 @@ extension TVShowDetailViewController: TVShowDetailViewControllerProtocol {
         tvShowView.item = tvShow
         tvShowView.collectionView.reloadData()
     }
+    
+    func show(_ episodes: [Episode]) {
+        tvShowView.show(episodes)
+    }
 
     func showError(_ error: Error) {
         

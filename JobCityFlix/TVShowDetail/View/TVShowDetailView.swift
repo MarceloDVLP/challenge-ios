@@ -13,6 +13,7 @@ final class TVShowDetailView: UIView {
     }()
     
     var item: TVShowCodable?
+    var episodes: [Episode] = []
     
     init() {
         super.init(frame: .zero)
@@ -34,6 +35,11 @@ final class TVShowDetailView: UIView {
         collectionView.register(TVShowDetailCell.self,
                                 forCellWithReuseIdentifier: "TVShowDetailCell")
     }
+    
+    public func show(_ episodes: [Episode]) {
+        self.episodes = episodes
+        collectionView.reloadData()
+    }
 }
 
 extension TVShowDetailView: UICollectionViewDataSource {
@@ -44,7 +50,7 @@ extension TVShowDetailView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TVShowDetailCell", for: indexPath) as! TVShowDetailCell
-        cell.configure(item)
+        cell.configure(nil, episodes)
         return cell
     }
     

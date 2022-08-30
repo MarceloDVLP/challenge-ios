@@ -1,14 +1,6 @@
-//
-//  HTTPClient.swift
-//  JobCityFlix
-//
-//  Created by Marcelo Carvalho on 28/08/22.
-//
-
 import Foundation
 
-protocol HTTPClientProtocol {
-    
+protocol HTTPClientProtocol {    
     func request(url: URL, completion: @escaping (HTTPClient.RequestResult) -> ())
 }
 

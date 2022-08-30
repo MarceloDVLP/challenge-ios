@@ -5,6 +5,7 @@ final class TVShowEpisodeCell: UICollectionViewCell {
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = .black
+        imageView.clipsToBounds = true
         return imageView
     }()
 
@@ -47,18 +48,36 @@ final class TVShowEpisodeCell: UICollectionViewCell {
         constrainDownloadButton()
     }
     
-    func configure(_ episode: TVShowEpisode? = nil) {
-        titleLabel.text = "1. Consequencias"
-        durationLabel.text = "45 min"
-        descLabel.text = "McCall volta a ativa ao aceitar o detetive Marcus Dante como cliente,  que precisa de sua ajuda para achar um grupo de asssaltantes."
+    override func prepareForReuse() {
+        titleLabel.text = nil
+        durationLabel.text = nil
+        descLabel.text = nil
+        imageView.sd_cancelCurrentImageLoad()
+        imageView.image = nil
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        imageView.layer.cornerRadius = 10        
+    }
+    
+    func configure(_ episode: Episode) {
+        titleLabel.text = "\(episode.number ?? 0). \(episode.name ?? "")"
+        durationLabel.text = "\(episode.runtime ?? 0) min"
+        descLabel.text = episode.summary
+        let url = URL(string: episode.image!.medium!)
+        imageView.sd_setImage(with: url)
     }
     
     private func constrainTitleLabel() {
+        downloadButton.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         addSubview(titleLabel)
+        addSubview(downloadButton)
         
         NSLayoutConstraint.activate([
             titleLabel.leftAnchor.constraint(equalTo: imageView.rightAnchor, constant: 10),
+            titleLabel.rightAnchor.constraint(equalTo: downloadButton.leftAnchor, constant: 10),
             titleLabel.centerYAnchor.constraint(equalTo: imageView.centerYAnchor)
         ])
     }
@@ -80,7 +99,7 @@ final class TVShowEpisodeCell: UICollectionViewCell {
         addSubview(descLabel)
         
         NSLayoutConstraint.activate([
-            descLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 8),
+            descLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 16),
             descLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 8),
             descLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -8)
         ])

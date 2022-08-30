@@ -13,7 +13,8 @@ enum Colors {
 
 final class TVShowDetailCell: UICollectionViewCell {
     
-        
+    let episodeList = TVShowEpisodeListView()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .clear
@@ -24,22 +25,19 @@ final class TVShowDetailCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(_ tvShow: TVShowCodable?) {}
+    func configure(_ tvShow: TVShowCodable?, _ episodes: [Episode]) {
+        episodeList.show(episodes)
+    }
         
     private func setupMenu() {
         let menuView = TVShowDetailMenuView()
         constrainSubView(view: menuView, top: 100, left: 10, right: 0, height: 30)
 
-        let episodeList = TVShowEpisodeListView()
         constrainSubView(view: episodeList, bottom: 0, left: 20, right: 0)
         NSLayoutConstraint.activate([
             episodeList.topAnchor.constraint(equalTo: menuView.bottomAnchor, constant: 20)
         ])
-        
-        
-        
     }
-    
 }
 
 
