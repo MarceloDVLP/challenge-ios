@@ -59,6 +59,7 @@ final class TVShowEpisodeCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         imageView.layer.cornerRadius = 10
+        imageView.circularShadow()
     }
     
     func configure(_ episode: Episode) {

@@ -20,7 +20,7 @@ final class TVShowListView: UIView {
         super.init(frame: .zero)
         constrainCollectionView()
         registerCell()
-        backgroundColor = .darkGray
+        backgroundColor = Colors.backGroundColor
         collectionView.backgroundColor = .clear
     }
     

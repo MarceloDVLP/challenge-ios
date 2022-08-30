@@ -115,7 +115,7 @@ final class TVShowMainHeader: UICollectionReusableView {
     
     func setGradientBackground() {
         let colorTop =  UIColor.clear.cgColor
-        let colorBottom = UIColor.darkGray.cgColor
+        let colorBottom = Colors.backGroundColor.cgColor
                     
         let gradientLayer = CAGradientLayer()
         gradientLayer.colors = [colorTop, colorBottom]

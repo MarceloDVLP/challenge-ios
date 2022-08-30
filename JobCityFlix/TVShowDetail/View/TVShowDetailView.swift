@@ -155,7 +155,7 @@ extension TVShowDetailView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
                 
         switch Section(rawValue: indexPath.section)! {
-        case .detail: return CGSize(width: collectionView.frame.width, height: 400)
+        case .detail: return CGSize(width: collectionView.frame.width, height: 500)
         case .menu: return CGSize(width: collectionView.frame.width-32, height: 30)
         case .season: return CGSize(width: collectionView.frame.width-32, height: 30)
         case .episodes: return CGSize(width: collectionView.frame.width-32, height: 150)
