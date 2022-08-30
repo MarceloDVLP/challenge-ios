@@ -5,6 +5,7 @@ final class TVShowDetailViewController: UIViewController {
 
     var interactor: TVShowDetailInteractorProtocol
     
+    var tvShowDetail: TVShowCodable!
     var seasons: [String] = []
     var selectedSeasonIndex: Int = 0
     
@@ -44,8 +45,8 @@ extension TVShowDetailViewController: TVShowDetailViewControllerProtocol {
     }
 
     func show(_ tvShow: TVShowCodable) {
-        tvShowView.item = tvShow
-        tvShowView.collectionView.reloadData()
+        tvShowView.tvShow = tvShow
+        tvShowView.show(tvShow)
     }
     
     func show(_ episodes: [[Episode]], _ seasons: [String]) {
@@ -53,9 +54,7 @@ extension TVShowDetailViewController: TVShowDetailViewControllerProtocol {
         tvShowView.show(episodes, seasons)
     }
 
-    func showError(_ error: Error) {
-        
-    }
+    func showError(_ error: Error) {}
     
     func removeLoading() {
         let loadingView = view.subviews.first(where: { type(of: $0.self) == UIActivityIndicatorView.self })

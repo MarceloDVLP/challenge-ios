@@ -18,7 +18,7 @@ enum Endpoints {
             return URL(string: "\(baseURL)shows?page=\(page)")!
 
         case .tvShowDetail( let id):
-            return URL(string: "\(baseURL)show/\(id)")!
+            return URL(string: "\(baseURL)shows/\(id)")!
 
         case .tvShowEpisodeList( let id):
             return URL(string: "\(baseURL)shows/\(id)/episodes")!

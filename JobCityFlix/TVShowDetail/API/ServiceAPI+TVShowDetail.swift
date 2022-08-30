@@ -35,7 +35,8 @@ extension ServiceAPI {
         do {
             let showList = try decoder.decode(TVShowCodable.self, from: data)
             return Result.success(showList)
-        } catch {
+        } catch let error {
+            print(error.localizedDescription)
             return Result.failure(ServiceAPIError.clientError)
         }
     }

@@ -16,7 +16,7 @@ final class TVShowDetailInteractor: TVShowDetailInteractorProtocol {
     
     func viewDidLoad() {
         presenter.willStartFetch()
-//        fetchDetail()
+        fetchDetail()
         fetchEpisodes()
     }
     

@@ -3,7 +3,6 @@ import UIKit
 
 final class TVShowListViewController: UIViewController {
 
-
     var interactor: TVShowInteractorProtocol
     
     private lazy var tvShowView: TVShowListView = {
