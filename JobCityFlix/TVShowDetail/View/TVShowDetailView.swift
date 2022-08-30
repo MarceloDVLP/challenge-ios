@@ -18,9 +18,11 @@ final class TVShowDetailView: UIView {
         return collection
     }()
     
+    var episodes: [[Episode]] = [[]]
+    var seasons: [String] = []
+    var selectedSeason = 0
     var item: TVShowCodable?
-    var episodes: [Episode] = []
-    
+
     init() {
         super.init(frame: .zero)
         constrainCollectionView()
@@ -42,8 +44,14 @@ final class TVShowDetailView: UIView {
                                 forCellWithReuseIdentifier: "TVShowDetailCell")
     }
     
-    public func show(_ episodes: [Episode]) {
+    public func show(_ episodes: [[Episode]],  _ seasons: [String]) {
         self.episodes = episodes
+        self.seasons = seasons
+        collectionView.reloadData()
+    }
+    
+    public func show(_ seasonIndex: Int) {
+        self.selectedSeason = seasonIndex
         collectionView.reloadData()
     }
 }
@@ -56,7 +64,8 @@ extension TVShowDetailView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TVShowDetailCell", for: indexPath) as! TVShowDetailCell
-        cell.configure(nil, episodes, self)
+        
+        cell.configure(nil, episodes[selectedSeason], self)
         return cell
     }
     

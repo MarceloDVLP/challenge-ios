@@ -18,6 +18,7 @@ protocol TVShowDetailCellDelegate: AnyObject {
 final class TVShowDetailCell: UICollectionViewCell {
     
     let episodeList = TVShowEpisodeListView()
+    let menuView = TVShowDetailMenuView()
 
     weak var delegate: TVShowDetailCellDelegate?
     
@@ -37,7 +38,6 @@ final class TVShowDetailCell: UICollectionViewCell {
     }
         
     private func setupMenu() {
-        let menuView = TVShowDetailMenuView()
         constrainSubView(view: menuView, top: 100, left: 10, right: 0, height: 30)
 
         constrainSubView(view: episodeList, bottom: 0, left: 20, right: 0)

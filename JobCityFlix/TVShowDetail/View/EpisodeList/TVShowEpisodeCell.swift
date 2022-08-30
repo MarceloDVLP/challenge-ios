@@ -121,9 +121,3 @@ final class TVShowEpisodeCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 }
-
-struct TVShowEpisode {
-    
-}
-
-

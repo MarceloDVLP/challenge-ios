@@ -5,6 +5,9 @@ final class TVShowDetailViewController: UIViewController {
 
     var interactor: TVShowDetailInteractorProtocol
     
+    var seasons: [String] = []
+    var selectedSeasonIndex: Int = 0
+    
     private lazy var tvShowView: TVShowDetailView = {
         let view = TVShowDetailView()
         view.delegate = self
@@ -45,8 +48,9 @@ extension TVShowDetailViewController: TVShowDetailViewControllerProtocol {
         tvShowView.collectionView.reloadData()
     }
     
-    func show(_ episodes: [Episode]) {
-        tvShowView.show(episodes)
+    func show(_ episodes: [[Episode]], _ seasons: [String]) {
+        self.seasons = seasons
+        tvShowView.show(episodes, seasons)
     }
 
     func showError(_ error: Error) {
@@ -91,16 +95,12 @@ extension TVShowDetailViewController {
 extension TVShowDetailViewController: TVShowDetailViewDelegate {
     
     func didTapSeasonButton() {
-        let seasons = [
-            "1ª Temporada",
-            "2ª Temporada",
-            "3ª Temporada",
-            "4ª Temporada",
-            "5ª Temporada",
-            "6ª Temporada",
-        ]
+        let seasonViewController = SeasonListViewController(seasons: seasons, selectedIndex: selectedSeasonIndex)
         
-        let seasonViewController = SeasonListViewController(seasons: seasons, selectedIndex: 4)
+        seasonViewController.didSelectSeason = { [weak self] index in
+            self?.selectedSeasonIndex = index
+            self?.tvShowView.show(index)
+        }
         
         present(seasonViewController, animated: true)
     }

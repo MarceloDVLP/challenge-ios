@@ -34,7 +34,7 @@ protocol TVShowDetailInteractorProtocol {
 
 protocol TVShowDetailViewControllerProtocol: AnyObject {
     func showLoadig()
-    func show(_ episodes: [Episode])
+    func show(_ episodes: [[Episode]], _ seasons: [String])
     func show(_ tvShow: TVShowCodable)
     func showError(_ error: Error)
     func removeLoading()

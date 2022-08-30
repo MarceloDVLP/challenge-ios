@@ -36,6 +36,8 @@
 		C7D2F81B28BD7B2900EEC146 /* TVShowMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D2F81A28BD7B2900EEC146 /* TVShowMenuView.swift */; };
 		C7D2F81D28BD7B5B00EEC146 /* TVShowEpisodeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D2F81C28BD7B5B00EEC146 /* TVShowEpisodeListView.swift */; };
 		C7D2F82028BD856E00EEC146 /* TVShowEpisodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D2F81F28BD856E00EEC146 /* TVShowEpisodeCell.swift */; };
+		C7D2F82228BE465400EEC146 /* SeasonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D2F82128BE465400EEC146 /* SeasonViewController.swift */; };
+		C7D2F82528BE46BA00EEC146 /* SeasonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D2F82428BE46BA00EEC146 /* SeasonCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +73,8 @@
 		C7D2F81A28BD7B2900EEC146 /* TVShowMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowMenuView.swift; sourceTree = "<group>"; };
 		C7D2F81C28BD7B5B00EEC146 /* TVShowEpisodeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowEpisodeListView.swift; sourceTree = "<group>"; };
 		C7D2F81F28BD856E00EEC146 /* TVShowEpisodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowEpisodeCell.swift; sourceTree = "<group>"; };
+		C7D2F82128BE465400EEC146 /* SeasonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonViewController.swift; sourceTree = "<group>"; };
+		C7D2F82428BE46BA00EEC146 /* SeasonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonCell.swift; sourceTree = "<group>"; };
 		F1625695AE93BD1C6F2BF30B /* Pods-JobCityFlix.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JobCityFlix.debug.xcconfig"; path = "Target Support Files/Pods-JobCityFlix/Pods-JobCityFlix.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -242,6 +246,7 @@
 		C7D2F80428BD60FC00EEC146 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C7D2F82328BE46A500EEC146 /* SeasonView */,
 				C7D2F81E28BD855700EEC146 /* EpisodeList */,
 				C7D2F80628BD60FC00EEC146 /* TVShowDetailMainHeader.swift */,
 				C7D2F80728BD60FC00EEC146 /* TVShowDetailViewController.swift */,
@@ -291,6 +296,15 @@
 				C7D2F81F28BD856E00EEC146 /* TVShowEpisodeCell.swift */,
 			);
 			path = EpisodeList;
+			sourceTree = "<group>";
+		};
+		C7D2F82328BE46A500EEC146 /* SeasonView */ = {
+			isa = PBXGroup;
+			children = (
+				C7D2F82128BE465400EEC146 /* SeasonViewController.swift */,
+				C7D2F82428BE46BA00EEC146 /* SeasonCell.swift */,
+			);
+			path = SeasonView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -415,6 +429,7 @@
 				C74B385928BBACA7000E728D /* ServiceAPI.swift in Sources */,
 				C74B386028BBB32E000E728D /* HTTPClient.swift in Sources */,
 				C7D2F81228BD60FC00EEC146 /* TVShowDetailViewController.swift in Sources */,
+				C7D2F82528BE46BA00EEC146 /* SeasonCell.swift in Sources */,
 				C74B385E28BBAD13000E728D /* EndPoints.swift in Sources */,
 				C74B386628BBB8A6000E728D /* SceneDelegate.swift in Sources */,
 				C74B386C28BBCB4E000E728D /* TVShowInteractor.swift in Sources */,
@@ -424,6 +439,7 @@
 				C7D2F81328BD60FC00EEC146 /* TVShowDetailCell.swift in Sources */,
 				C7D2F81728BD60FC00EEC146 /* TVShowDetailInteractor.swift in Sources */,
 				C7D2F81428BD60FC00EEC146 /* TVShowDetailView.swift in Sources */,
+				C7D2F82228BE465400EEC146 /* SeasonViewController.swift in Sources */,
 				C74B386E28BBCB5F000E728D /* TVShowPresenter.swift in Sources */,
 				C7D2F7FB28BBFDBF00EEC146 /* UIView+Helpers.swift in Sources */,
 				C7D2F81B28BD7B2900EEC146 /* TVShowMenuView.swift in Sources */,
