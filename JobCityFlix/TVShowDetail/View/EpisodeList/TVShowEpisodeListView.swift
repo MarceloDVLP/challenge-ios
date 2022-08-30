@@ -69,58 +69,50 @@ final class TVShowEpisodeListView: UIView {
         NSLayoutConstraint.activate([
             collectionView.leftAnchor.constraint(equalTo: leftAnchor),
             collectionView.rightAnchor.constraint(equalTo: rightAnchor),
-            collectionView.topAnchor.constraint(equalTo: topAnchor, constant: 0),
-            collectionView.heightAnchor.constraint(equalToConstant: 900)
+            collectionView.topAnchor.constraint(equalTo: topAnchor, constant: 100),
+            collectionView.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
     }
     
     private func registerCell() {
-        collectionView.register(TVShowListCell.self,
-                                forCellWithReuseIdentifier: "TVShowListCell")
-        collectionView.register(TVShowMainHeader.self,
-                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "TVShowMainHeader")
+        collectionView.register(TVShowEpisodeCell.self,
+                                forCellWithReuseIdentifier: "TVShowEpisodeCell")
     }
 }
 
 extension TVShowEpisodeListView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        items.count
+        30
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TVShowListCell", for: indexPath) as? TVShowListCell {
-            cell.configure(items[indexPath.item])
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TVShowEpisodeCell", for: indexPath) as? TVShowEpisodeCell {
+            cell.configure(nil)
             return cell
         } else {
             return UICollectionViewCell()
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+//    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+//
+//        let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "TVShowMainHeader", for: indexPath) as! TVShowMainHeader
+//
+//        cell.configure(items.first)
+//
+//        return cell
+//    }
         
-        let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "TVShowMainHeader", for: indexPath) as! TVShowMainHeader
-                
-        cell.configure(items.first)
-        
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        16
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
-    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+//        return UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+//    }
 }
 
 extension TVShowEpisodeListView: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let item = items[indexPath.item]
-        didSelectTVShow?(item)
     }
 }
 
@@ -128,15 +120,15 @@ extension TVShowEpisodeListView: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
                 
-        return CGSize(width: 85, height: 130)
+        return CGSize(width: collectionView.frame.width, height: 150)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        
-        let height = collectionView.frame.height*0.6
-
-        return CGSize(width: collectionView.frame.width, height: height)
-    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+//
+//        let height = collectionView.frame.height*0.6
+//
+//        return CGSize(width: collectionView.frame.width, height: height)
+//    }
 }
 
 
