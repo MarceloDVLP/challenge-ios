@@ -84,6 +84,7 @@ final class TVShowDetailMenuView: UIView {
             
             self.layoutForButton(uiButton, isSelected: button == sender)
         })
+    
     }
     
     private func layoutForButton(_ button: UIButton, isSelected: Bool) {

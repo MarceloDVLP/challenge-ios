@@ -58,7 +58,7 @@ final class TVShowEpisodeCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        imageView.layer.cornerRadius = 10        
+        imageView.layer.cornerRadius = 10
     }
     
     func configure(_ episode: Episode) {
@@ -111,7 +111,7 @@ final class TVShowEpisodeCell: UICollectionViewCell {
         
         NSLayoutConstraint.activate([
             downloadButton.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor),
-            downloadButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -30),
+            downloadButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -20),
             downloadButton.heightAnchor.constraint(equalToConstant: 30),
             downloadButton.widthAnchor.constraint(equalToConstant: 30)
         ])
@@ -125,3 +125,5 @@ final class TVShowEpisodeCell: UICollectionViewCell {
 struct TVShowEpisode {
     
 }
+
+

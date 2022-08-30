@@ -11,10 +11,16 @@ enum Colors {
     static let activeLineColor = UIColor(red: 0.66, green: 0.66, blue: 0.66, alpha: 1.00)
 }
 
+protocol TVShowDetailCellDelegate: AnyObject {
+    func didTapSeasonButton()
+}
+
 final class TVShowDetailCell: UICollectionViewCell {
     
     let episodeList = TVShowEpisodeListView()
 
+    weak var delegate: TVShowDetailCellDelegate?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .clear
@@ -25,7 +31,8 @@ final class TVShowDetailCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(_ tvShow: TVShowCodable?, _ episodes: [Episode]) {
+    func configure(_ tvShow: TVShowCodable?, _ episodes: [Episode], _ delegate: TVShowDetailCellDelegate?) {
+        self.delegate = delegate
         episodeList.show(episodes)
     }
         
@@ -37,6 +44,10 @@ final class TVShowDetailCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             episodeList.topAnchor.constraint(equalTo: menuView.bottomAnchor, constant: 20)
         ])
+        
+        episodeList.didTapSeasonButton = { [weak self] in
+            self?.delegate?.didTapSeasonButton()
+        }
     }
 }
 

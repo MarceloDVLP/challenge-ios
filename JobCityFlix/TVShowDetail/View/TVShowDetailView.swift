@@ -1,6 +1,12 @@
 import UIKit
 
+protocol TVShowDetailViewDelegate: AnyObject {
+    func didTapSeasonButton()
+}
+
 final class TVShowDetailView: UIView {
+    
+    weak var delegate: TVShowDetailViewDelegate?
     
     public lazy var collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
@@ -50,7 +56,7 @@ extension TVShowDetailView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TVShowDetailCell", for: indexPath) as! TVShowDetailCell
-        cell.configure(nil, episodes)
+        cell.configure(nil, episodes, self)
         return cell
     }
     
@@ -90,4 +96,12 @@ extension TVShowDetailView: UICollectionViewDelegateFlowLayout {
 //
 //        return CGSize(width: collectionView.frame.width, height: height)
 //    }
+}
+
+
+extension TVShowDetailView: TVShowDetailCellDelegate {
+
+    func didTapSeasonButton() {
+        delegate?.didTapSeasonButton()
+    }
 }

@@ -6,7 +6,9 @@ final class TVShowDetailViewController: UIViewController {
     var interactor: TVShowDetailInteractorProtocol
     
     private lazy var tvShowView: TVShowDetailView = {
-        return TVShowDetailView()
+        let view = TVShowDetailView()
+        view.delegate = self
+        return view
     }()
     
     init(interactor: TVShowDetailInteractor) {
@@ -86,6 +88,22 @@ extension TVShowDetailViewController {
     }
 }
 
-
+extension TVShowDetailViewController: TVShowDetailViewDelegate {
+    
+    func didTapSeasonButton() {
+        let seasons = [
+            "1ª Temporada",
+            "2ª Temporada",
+            "3ª Temporada",
+            "4ª Temporada",
+            "5ª Temporada",
+            "6ª Temporada",
+        ]
+        
+        let seasonViewController = SeasonListViewController(seasons: seasons, selectedIndex: 4)
+        
+        present(seasonViewController, animated: true)
+    }
+}
 
 
