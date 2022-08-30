@@ -40,8 +40,8 @@ final class TVShowDetailView: UIView {
     }
     
     private func registerCell() {
-        collectionView.register(TVShowDetailCell.self,
-                                forCellWithReuseIdentifier: "TVShowDetailCell")
+        collectionView.register(TVShowDetailCell.self, forCellWithReuseIdentifier: "TVShowDetailCell")
+        collectionView.register(TVShowDetailNavigationMenuCell.self, forCellWithReuseIdentifier: "TVShowDetailNavigationMenuCell")
     }
     
     public func show(_ episodes: [[Episode]],  _ seasons: [String]) {
@@ -58,15 +58,35 @@ final class TVShowDetailView: UIView {
 
 extension TVShowDetailView: UICollectionViewDataSource {
     
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        2
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         1
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    private func dequeueNavigationMenuCell(_ collectionView: UICollectionView, _ indexPath: IndexPath) -> UICollectionViewCell {
+        return collectionView.dequeueReusableCell(withReuseIdentifier: "TVShowDetailNavigationMenuCell", for: indexPath)
+    }
+
+    private func dequeueDetailCell(_ collectionView: UICollectionView, _ indexPath: IndexPath) -> TVShowDetailCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TVShowDetailCell", for: indexPath) as! TVShowDetailCell
         
         cell.configure(nil, episodes[selectedSeason], self)
         return cell
+    }
+
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+
+        switch indexPath.section {
+        
+            case 0: return dequeueNavigationMenuCell(collectionView, indexPath)
+            case 1: return dequeueDetailCell(collectionView, indexPath)
+
+            default: fatalError()
+        }
     }
     
 //    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -96,7 +116,11 @@ extension TVShowDetailView: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
                 
-        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
+        switch indexPath.section {
+        case 0: return CGSize(width: collectionView.frame.width, height: 30)
+        case 1: return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
+        default: fatalError()
+        }
     }
     
 //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {

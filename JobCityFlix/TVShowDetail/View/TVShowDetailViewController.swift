@@ -69,7 +69,7 @@ extension TVShowDetailViewController: TVShowDetailViewControllerProtocol {
 extension TVShowDetailViewController {
     
     private func setupTVShowView() {
-        view.constrainSubView(view: tvShowView, top: -90, bottom: 0, left: 0, right: 0)
+        view.constrainSubView(view: tvShowView, top: 16, bottom: 0, left: 0, right: 0)
     }
     
     private func makeActivityIndicatorView() -> UIActivityIndicatorView {

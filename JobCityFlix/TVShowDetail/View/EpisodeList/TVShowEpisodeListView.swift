@@ -82,7 +82,7 @@ final class TVShowEpisodeListView: UIView {
         NSLayoutConstraint.activate([
             collectionView.leftAnchor.constraint(equalTo: leftAnchor),
             collectionView.rightAnchor.constraint(equalTo: rightAnchor),
-            collectionView.topAnchor.constraint(equalTo: topAnchor, constant: 100),
+            collectionView.topAnchor.constraint(equalTo: topAnchor, constant: 0),
             collectionView.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
     }
@@ -103,14 +103,24 @@ extension TVShowEpisodeListView: UICollectionViewDataSource {
         episodes.count
     }
     
+    private func dequeueNavigationMenuCell(_ collectionView: UICollectionView, _ indexPath: IndexPath) -> UICollectionViewCell {
+        return collectionView.dequeueReusableCell(withReuseIdentifier: "TVShowDetailNavigationMenuCell", for: indexPath)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TVShowEpisodeCell", for: indexPath) as? TVShowEpisodeCell {
-            cell.configure(episodes[indexPath.item])
-            return cell
-        } else {
-            return UICollectionViewCell()
+        switch indexPath.item {
+        
+            case 0: return dequeueNavigationMenuCell(collectionView, indexPath)
+            default: fatalError()
         }
+//        
+//        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TVShowEpisodeCell", for: indexPath) as? TVShowEpisodeCell {
+//            cell.configure(episodes[indexPath.item])
+//            return cell
+//        } else {
+//            return UICollectionViewCell()
+//        }
     }
     
 //    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {

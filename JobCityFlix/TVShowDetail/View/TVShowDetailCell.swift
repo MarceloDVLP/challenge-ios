@@ -18,8 +18,6 @@ protocol TVShowDetailCellDelegate: AnyObject {
 final class TVShowDetailCell: UICollectionViewCell {
     
     let episodeList = TVShowEpisodeListView()
-    let menuView = TVShowDetailMenuView()
-
     weak var delegate: TVShowDetailCellDelegate?
     
     override init(frame: CGRect) {
@@ -38,12 +36,8 @@ final class TVShowDetailCell: UICollectionViewCell {
     }
         
     private func setupMenu() {
-        constrainSubView(view: menuView, top: 100, left: 10, right: 0, height: 30)
 
         constrainSubView(view: episodeList, bottom: 0, left: 20, right: 0)
-        NSLayoutConstraint.activate([
-            episodeList.topAnchor.constraint(equalTo: menuView.bottomAnchor, constant: 20)
-        ])
         
         episodeList.didTapSeasonButton = { [weak self] in
             self?.delegate?.didTapSeasonButton()

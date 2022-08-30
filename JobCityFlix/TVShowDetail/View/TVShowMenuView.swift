@@ -1,6 +1,6 @@
 import UIKit
 
-final class TVShowDetailMenuView: UIView {
+final class TVShowDetailNavigationMenuCell: UICollectionViewCell {
 
     private lazy var stackView: UIStackView = {
         let stack = UIStackView()
@@ -20,7 +20,7 @@ final class TVShowDetailMenuView: UIView {
     }
     
     private func setupButtons() {
-        constrainSubView(view: stackView, top: 0, bottom: 0, left: 0, right: 0)
+        contentView.constrainSubView(view: stackView, top: 0, bottom: 0, left: 0, right: 0)
         
         let buttons = [makeButton("Episódios", true),
                        makeButton("Detalhes", false),
@@ -29,7 +29,6 @@ final class TVShowDetailMenuView: UIView {
         
         buttons.forEach({ button in
             stackView.addArrangedSubview(button)
-            
             button.widthAnchor.constraint(equalToConstant: 100).isActive = true
         })
         
