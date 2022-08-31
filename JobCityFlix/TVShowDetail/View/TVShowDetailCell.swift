@@ -166,7 +166,7 @@ final class TVShowDetailCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 10),
             titleLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -10),
-            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -150)
+            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -130)
         ])
     }
     

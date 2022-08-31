@@ -4,6 +4,13 @@ protocol TVShowDetailViewDelegate: AnyObject {
     func didTapSeasonButton()
 }
 
+enum Section: Int, CaseIterable {
+    case detail = 0
+    case menu = 1
+    case season = 2
+    case episodes = 3
+    case about = 4
+}
 
 final class TVShowDetailView: UIView {
     
@@ -23,13 +30,9 @@ final class TVShowDetailView: UIView {
     var seasons: [String] = []
     var selectedSeason = 0
     var tvShow: TVShowCodable?
+    var selectedMenu = NavigationMenu.episodes
     
-    enum Section: Int, CaseIterable {
-        case detail = 0
-        case menu = 1
-        case season = 2
-        case episodes = 3
-    }
+
 
     init() {
         super.init(frame: .zero)
@@ -52,22 +55,23 @@ final class TVShowDetailView: UIView {
         collectionView.register(TVShowDetailNavigationMenuCell.self, forCellWithReuseIdentifier: "TVShowDetailNavigationMenuCell")
         collectionView.register(TVShowDetailCell.self, forCellWithReuseIdentifier: "TVShowDetailCell")
         collectionView.register(SeasonButtonCell.self, forCellWithReuseIdentifier: "SeasonButtonCell")
+        collectionView.register(TVShowAboutCell.self, forCellWithReuseIdentifier: "TVShowAboutCell")
     }
     
     public func show(_ episodes: [[Episode]],  _ seasons: [String]) {
         self.episodes = episodes
         self.seasons = seasons
-        collectionView.reloadSections([Section.season.rawValue, Section.episodes.rawValue])
+        collectionView.reloadData()// reloadSections([Section.season.rawValue, Section.episodes.rawValue])
     }
     
     public func show(_ seasonIndex: Int) {
         self.selectedSeason = seasonIndex
-        collectionView.reloadSections([Section.season.rawValue, Section.episodes.rawValue])
+        collectionView.reloadData()//reloadSections([Section.season.rawValue, Section.episodes.rawValue])
     }
     
     public func show(_ detail: TVShowCodable) {
         self.tvShow = detail
-        collectionView.reloadSections([Section.detail.rawValue])
+        collectionView.reloadData()//reloadSections([Section.detail.rawValue])
     }
 }
 
@@ -79,16 +83,24 @@ extension TVShowDetailView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
-        switch Section(rawValue: section)! {
-        case .detail: return 1
-        case .menu: return 1
-        case .season: return 1
-        case .episodes: return episodes[selectedSeason].count
-        }
+            switch Section(rawValue: section)! {
+            case .detail: return 1
+            case .menu: return 1
+            case .season: return selectedMenu == .episodes ? 1 : 0
+            case .episodes: return selectedMenu == .episodes ? episodes[selectedSeason].count : 0
+            case .about: return 1
+            }
     }
     
     private func dequeueNavigationMenuCell(_ collectionView: UICollectionView, _ indexPath: IndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCell(withReuseIdentifier: "TVShowDetailNavigationMenuCell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TVShowDetailNavigationMenuCell", for: indexPath) as! TVShowDetailNavigationMenuCell
+        
+        cell.didSelectMenu = { [weak self] menu in
+            self?.selectedMenu = menu
+            self?.collectionView.reloadData()
+        }
+        
+        return cell
     }
 
     private func dequeueEpisodeCell(_ collectionView: UICollectionView, _ indexPath: IndexPath) -> TVShowEpisodeCell {
@@ -116,6 +128,12 @@ extension TVShowDetailView: UICollectionViewDataSource {
         
         return cell
     }
+    
+    private func dequeueAboutCell(_ collectionView: UICollectionView, _ indexPath: IndexPath) -> TVShowAboutCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TVShowAboutCell", for: indexPath) as! TVShowAboutCell
+        cell.configure(tvShow)
+        return cell
+    }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
@@ -124,6 +142,7 @@ extension TVShowDetailView: UICollectionViewDataSource {
             case .menu: return dequeueNavigationMenuCell(collectionView, indexPath)
             case .season: return dequeueSeasonCell(collectionView, indexPath)
             case .episodes: return dequeueEpisodeCell(collectionView, indexPath)
+            case .about: return dequeueAboutCell(collectionView, indexPath)
         }
     }
     
@@ -142,7 +161,11 @@ extension TVShowDetailView: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 20, left: 16, bottom: 0, right: 16)
+        
+        switch Section.init(rawValue: section) {
+        case .about, .detail: return .zero
+        default: return UIEdgeInsets(top: 20, left: 16, bottom: 0, right: 16)
+        }
     }
 }
 
@@ -155,10 +178,12 @@ extension TVShowDetailView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
                 
         switch Section(rawValue: indexPath.section)! {
-        case .detail: return CGSize(width: collectionView.frame.width, height: 500)
+        case .detail: return CGSize(width: collectionView.frame.width, height: 550)
         case .menu: return CGSize(width: collectionView.frame.width-32, height: 30)
         case .season: return CGSize(width: collectionView.frame.width-32, height: 30)
         case .episodes: return CGSize(width: collectionView.frame.width-32, height: 150)
+        case .about: return CGSize(width: collectionView.frame.width-32, height: 700)
+            
         }
     }
 }
@@ -222,5 +247,182 @@ final class SeasonButtonCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
            fatalError("init(coder:) has not been implemented")
+    }
+}
+
+final class TVShowAboutCell: UICollectionViewCell {
+    
+    enum Fields: CaseIterable {
+        case originalTitle
+        case gender
+        case language
+        case runtime
+        case schedule
+        case channel
+        case country
+        case year
+        
+        var title: String {
+            switch self {
+            case .originalTitle:
+                return "Titulo Original: "
+            case .gender:
+                return "Genero: "
+            case .language:
+                return "Idioma: "
+            case .runtime:
+                return "Duração média: "
+            case .schedule:
+                return "Data de Exibição: "
+            case .country:
+                return "País: "
+            case .channel:
+                return "Canal: "
+            case .year:
+                return "Ano de lançamento: "
+            }
+        }
+    }
+    
+    private var titleLabel = UILabel()
+
+    private var sumaryLabel = UILabel()
+    
+    private var sumaryValueLabel = UILabel()
+    
+    private var mainStackView = UIStackView()
+    
+    private var fields: [(UILabel, Fields)] = []
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        titleLabel = makeTitleLabel("Ficha Técnica")
+        sumaryLabel = makeTitleLabel("Sinopse")
+        setupMainStackView()
+        setupSumaryLabel()
+        contentView.constrainSubView(view: titleLabel, top: 0, left: 0)
+        constrainMainStack(stackView: mainStackView)
+        constrainSumaryLabel()
+        constrainSumaryValueLabel()
+    }
+    
+    func configure(_ tvShow: TVShowCodable?) {
+        guard let tvShow = tvShow else {
+            return
+        }
+
+        for field in fields {
+            switch field.1 {
+                
+            case .originalTitle:
+                field.0.text = tvShow.name
+            case .gender:
+                field.0.text = tvShow.genres?.joined(separator: ",")
+            case .language:
+                field.0.text = tvShow.language
+            case .runtime:
+                field.0.text = "\(tvShow.runtime ?? 0)min"
+            case .schedule:
+                field.0.text = "at \(tvShow.schedule?.time ?? "") on \(tvShow.schedule?.days?.joined(separator: ",") ?? "")"
+            case .channel:
+                field.0.text = tvShow.network?.name
+            case .country:
+                field.0.text = tvShow.network?.country?.name
+            case .year:
+                field.0.text = tvShow.premiered
+            }
+        }
+        
+        sumaryValueLabel.text = tvShow.summary
+    }
+    
+    private func setupMainStackView() {
+        mainStackView = makeStackViewContainer()
+        
+        for field in Fields.allCases {
+            let (stack, label) = makeLabelStack(labelSting: field.title, valueString: "")
+            mainStackView.addArrangedSubview(stack)
+            fields.append((label, field))
+        }
+    }
+    
+    private func constrainMainStack(stackView: UIView) {
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(stackView)
+        
+        NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20),
+            stackView.leftAnchor.constraint(equalTo: titleLabel.leftAnchor),
+            stackView.rightAnchor.constraint(equalTo: titleLabel.rightAnchor)
+        ])
+    }
+    
+    private func constrainSumaryLabel() {
+        sumaryLabel.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(sumaryLabel)
+        
+        NSLayoutConstraint.activate([
+            sumaryLabel.topAnchor.constraint(equalTo: mainStackView.bottomAnchor, constant: 20),
+            sumaryLabel.leftAnchor.constraint(equalTo: leftAnchor),
+            sumaryLabel.rightAnchor.constraint(equalTo: rightAnchor)
+        ])
+    }
+
+    private func constrainSumaryValueLabel() {
+        sumaryValueLabel.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(sumaryValueLabel)
+        
+        NSLayoutConstraint.activate([
+            sumaryValueLabel.topAnchor.constraint(equalTo: sumaryLabel.bottomAnchor, constant: 10),
+            sumaryValueLabel.leftAnchor.constraint(equalTo: leftAnchor),
+            sumaryValueLabel.rightAnchor.constraint(equalTo: rightAnchor)
+        ])
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func makeTitleLabel(_ title: String) -> UILabel {
+        let label = UILabel()
+        label.textColor = .white
+        label.font = UIFont.systemFont(ofSize: 17, weight: .heavy)
+        label.text = title
+        return label
+    }
+    
+    func makeStackViewContainer() -> UIStackView {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.distribution = .equalSpacing
+        stackView.spacing = 10
+        return stackView
+    }
+    
+    func makeLabelStack(labelSting: String, valueString: String) -> (UIStackView, UILabel) {
+        
+        let label = UILabel()
+        label.textColor = Colors.titleInactiveColor
+        label.font = UIFont.systemFont(ofSize: 14, weight: .bold)
+        label.text = labelSting
+        label.textAlignment = .left
+
+        let value = UILabel()
+        value.textColor = Colors.titleInactiveColor
+        value.font = UIFont.systemFont(ofSize: 14, weight: .heavy)
+        value.text = valueString
+        value.textAlignment = .left
+        
+        let stackView = UIStackView(arrangedSubviews: [label, value])
+//        stackView.alignment = .leading
+        stackView.distribution = .fillEqually
+        return (stackView, value)
+    }
+    
+    func setupSumaryLabel() {
+        sumaryValueLabel.textColor = Colors.titleInactiveColor
+        sumaryValueLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        sumaryValueLabel.numberOfLines = 4
+        sumaryValueLabel.text = "<p><b>Murder in the First</b> follows homicide detectives Terry English and Hildy Mulligan as they investigate two seemingly unrelated murders. The mystery deepens, however, when they find both murders have a common denominator in a Silicon Valley wunderkind.</p>"
     }
 }

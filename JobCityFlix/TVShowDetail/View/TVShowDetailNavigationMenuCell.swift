@@ -1,7 +1,26 @@
 import UIKit
 
+public enum NavigationMenu: Int {
+    case episodes
+    case about
+    case empty
+    
+    var sections: [Section] {
+
+        switch self {
+        case .episodes: return [Section.detail, Section.menu, Section.season, Section.episodes]
+        case .about: return [Section.detail, Section.menu, Section.about]
+        case .empty: return []
+        }
+    }
+}
+
 final class TVShowDetailNavigationMenuCell: UICollectionViewCell {
 
+    
+    var didSelectMenu: ((NavigationMenu) -> ())?
+    var menus: [(UIButton, NavigationMenu)] = []
+    
     private lazy var stackView: UIStackView = {
         let stack = UIStackView()
         stack.axis = .horizontal
@@ -22,12 +41,13 @@ final class TVShowDetailNavigationMenuCell: UICollectionViewCell {
     private func setupButtons() {
         contentView.constrainSubView(view: stackView, top: 0, bottom: 0, left: 0, right: 0)
         
-        let buttons = [makeButton("Episódios", true),
-                       makeButton("Detalhes", false),
-                       makeButton("", false),
-                       makeButton("", false)]
+        let menus = [  (makeButton("Episódios", true), NavigationMenu.episodes),
+                       (makeButton("Detalhes", false), NavigationMenu.about),
+                       (makeButton("", false), NavigationMenu.empty),
+                       (makeButton("", false), NavigationMenu.empty)]
         
-        buttons.forEach({ button in
+        self.menus = menus
+        menus.forEach({ button, type in
             stackView.addArrangedSubview(button)
         })
         
@@ -83,6 +103,9 @@ final class TVShowDetailNavigationMenuCell: UICollectionViewCell {
             self.layoutForButton(uiButton, isSelected: button == sender)
         })
     
+        if let menu = menus.first(where: { $0.0 == sender }) {
+            didSelectMenu?(menu.1)
+        }
     }
     
     private func layoutForButton(_ button: UIButton, isSelected: Bool) {
