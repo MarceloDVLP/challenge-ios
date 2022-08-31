@@ -3,6 +3,7 @@ import UIKit
 final class TVShowListView: UIView {
     
     var didSelectTVShow: ((TVShowCodable) ->())?
+    var didFinishPage: (() -> ())?
     
     public lazy var collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
@@ -79,6 +80,12 @@ extension TVShowListView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if indexPath.item == items.count-1 {
+            didFinishPage?()
+        }
     }
 }
 

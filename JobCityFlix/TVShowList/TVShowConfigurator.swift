@@ -29,6 +29,7 @@ protocol TVShowPresenterProtocol: AnyObject {
 
 protocol TVShowInteractorProtocol {
     func viewDidLoad()
+    func didFinishPage() 
 }
 
 protocol TVShowListViewControllerProtocol: AnyObject {

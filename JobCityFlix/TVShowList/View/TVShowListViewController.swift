@@ -34,7 +34,7 @@ extension TVShowListViewController: TVShowListViewControllerProtocol {
     func showLoadig() {
         let loadingView = makeActivityIndicatorView()
         view.addSubview(loadingView)
-        loadingView.startAnimating()
+//        loadingView.startAnimating()
     }
 
     func showEpisodes(_ tvShows: [TVShowCodable]) {
@@ -42,9 +42,7 @@ extension TVShowListViewController: TVShowListViewControllerProtocol {
         tvShowView.collectionView.reloadData()
     }
 
-    func showError(_ error: Error) {
-        
-    }
+    func showError(_ error: Error) {}
     
     func removeLoading() {
         let loadingView = view.subviews.first(where: { type(of: $0.self) == UIActivityIndicatorView.self })
@@ -65,6 +63,10 @@ extension TVShowListViewController {
 
             let viewController = TVShowDetailConfigurator.make(tvShow)
             self.present(viewController, animated: true)
+        }
+        
+        tvShowView.didFinishPage = { [weak self] in
+            self?.interactor.didFinishPage()
         }
     }
     

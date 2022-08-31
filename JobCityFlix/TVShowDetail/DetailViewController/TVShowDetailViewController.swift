@@ -41,7 +41,7 @@ extension TVShowDetailViewController: TVShowDetailViewControllerProtocol {
     func showLoadig() {
         let loadingView = makeActivityIndicatorView()
         view.addSubview(loadingView)
-        loadingView.startAnimating()
+//        loadingView.startAnimating()
     }
 
     func show(_ tvShow: TVShowCodable) {
