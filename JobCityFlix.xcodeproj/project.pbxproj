@@ -40,6 +40,7 @@
 		C7D2F82928BF928D00EEC146 /* String+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D2F82828BF928D00EEC146 /* String+Helpers.swift */; };
 		C7D2F82B28BFAD5000EEC146 /* TVShowAboutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D2F82A28BFAD5000EEC146 /* TVShowAboutCell.swift */; };
 		C7D2F83228BFE2A400EEC146 /* TVShowLoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D2F83128BFE2A400EEC146 /* TVShowLoadingCell.swift */; };
+		C7D2F83528BFF6B100EEC146 /* TVShowEPisodeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D2F83428BFF6B100EEC146 /* TVShowEPisodeDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +80,7 @@
 		C7D2F82828BF928D00EEC146 /* String+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Helpers.swift"; sourceTree = "<group>"; };
 		C7D2F82A28BFAD5000EEC146 /* TVShowAboutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowAboutCell.swift; sourceTree = "<group>"; };
 		C7D2F83128BFE2A400EEC146 /* TVShowLoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowLoadingCell.swift; sourceTree = "<group>"; };
+		C7D2F83428BFF6B100EEC146 /* TVShowEPisodeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowEPisodeDetailViewController.swift; sourceTree = "<group>"; };
 		FAC9E4BE89C48DD2B326686E /* Pods-JobCityFlix.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JobCityFlix.debug.xcconfig"; path = "Target Support Files/Pods-JobCityFlix/Pods-JobCityFlix.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -135,6 +137,7 @@
 				C74B386428BBB7D7000E728D /* Application */,
 				C7D2F7FE28BC016200EEC146 /* MenuBar */,
 				C74B385A28BBACC5000E728D /* ServiceAPI */,
+				C7D2F83328BFF69E00EEC146 /* EpisodeDetail */,
 				C7D2F80128BD60FC00EEC146 /* TVShowDetail */,
 				C74B385728BBAC76000E728D /* TVShowList */,
 			);
@@ -321,6 +324,14 @@
 			path = Configurator;
 			sourceTree = "<group>";
 		};
+		C7D2F83328BFF69E00EEC146 /* EpisodeDetail */ = {
+			isa = PBXGroup;
+			children = (
+				C7D2F83428BFF6B100EEC146 /* TVShowEPisodeDetailViewController.swift */,
+			);
+			path = EpisodeDetail;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -454,6 +465,7 @@
 				C7D2F81728BD60FC00EEC146 /* TVShowDetailInteractor.swift in Sources */,
 				C7D2F81428BD60FC00EEC146 /* TVShowDetailView.swift in Sources */,
 				C7D2F82B28BFAD5000EEC146 /* TVShowAboutCell.swift in Sources */,
+				C7D2F83528BFF6B100EEC146 /* TVShowEPisodeDetailViewController.swift in Sources */,
 				C7D2F82228BE465400EEC146 /* SeasonViewController.swift in Sources */,
 				C74B386E28BBCB5F000E728D /* TVShowPresenter.swift in Sources */,
 				C7D2F7FB28BBFDBF00EEC146 /* UIView+Helpers.swift in Sources */,

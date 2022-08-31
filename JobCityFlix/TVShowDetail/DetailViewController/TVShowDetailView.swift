@@ -2,6 +2,7 @@ import UIKit
 
 protocol TVShowDetailViewDelegate: AnyObject {
     func didTapSeasonButton()
+    func didTapEpisode(_ episode: Episode)
 }
 
 enum Section: Int, CaseIterable {
@@ -168,7 +169,11 @@ extension TVShowDetailView: UICollectionViewDataSource {
 }
 
 extension TVShowDetailView: UICollectionViewDelegate {
-    
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let episode = episodes[selectedSeason][indexPath.item]
+        delegate?.didTapEpisode(episode)        
+    }
 }
 
 extension TVShowDetailView: UICollectionViewDelegateFlowLayout {

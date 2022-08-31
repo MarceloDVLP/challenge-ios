@@ -61,8 +61,7 @@ extension TVShowListViewController {
         tvShowView.didSelectTVShow = { [weak self] tvShow in
             guard let self = self else { return }
 
-            let viewController = TVShowDetailConfigurator.make(tvShow)
-            self.present(viewController, animated: true)
+            self.navigationController?.pushViewController(TVShowDetailConfigurator.make(tvShow), animated: true)
         }
         
         tvShowView.didFinishPage = { [weak self] in

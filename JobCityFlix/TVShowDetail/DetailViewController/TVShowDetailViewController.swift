@@ -92,6 +92,13 @@ extension TVShowDetailViewController {
 }
 
 extension TVShowDetailViewController: TVShowDetailViewDelegate {
+
+    func didTapEpisode(_ episode: Episode) {
+        let viewController = TVShowEPisodeDetailViewController(episode: episode)
+        viewController.modalPresentationStyle = .overFullScreen
+        present(viewController, animated: true)
+    }
+    
     
     func didTapSeasonButton() {
         let seasonViewController = SeasonListViewController(seasons: seasons, selectedIndex: selectedSeasonIndex)
