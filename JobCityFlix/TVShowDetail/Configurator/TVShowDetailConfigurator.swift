@@ -14,7 +14,6 @@ final class TVShowDetailConfigurator {
         presenter.viewController = viewController
         viewController.interactor = interactor
         
-//        let navigation = UINavigationController(rootViewController: viewController)
         return viewController
     }
 }

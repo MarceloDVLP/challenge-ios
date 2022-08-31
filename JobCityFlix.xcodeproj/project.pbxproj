@@ -37,6 +37,8 @@
 		C7D2F82228BE465400EEC146 /* SeasonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D2F82128BE465400EEC146 /* SeasonViewController.swift */; };
 		C7D2F82528BE46BA00EEC146 /* SeasonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D2F82428BE46BA00EEC146 /* SeasonCell.swift */; };
 		C7D2F82728BE6B2D00EEC146 /* UIButton+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D2F82628BE6B2D00EEC146 /* UIButton+Helpers.swift */; };
+		C7D2F82928BF928D00EEC146 /* String+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D2F82828BF928D00EEC146 /* String+Helpers.swift */; };
+		C7D2F82B28BFAD5000EEC146 /* TVShowAboutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D2F82A28BFAD5000EEC146 /* TVShowAboutCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +75,8 @@
 		C7D2F82128BE465400EEC146 /* SeasonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonViewController.swift; sourceTree = "<group>"; };
 		C7D2F82428BE46BA00EEC146 /* SeasonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonCell.swift; sourceTree = "<group>"; };
 		C7D2F82628BE6B2D00EEC146 /* UIButton+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Helpers.swift"; sourceTree = "<group>"; };
+		C7D2F82828BF928D00EEC146 /* String+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Helpers.swift"; sourceTree = "<group>"; };
+		C7D2F82A28BFAD5000EEC146 /* TVShowAboutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowAboutCell.swift; sourceTree = "<group>"; };
 		F1625695AE93BD1C6F2BF30B /* Pods-JobCityFlix.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JobCityFlix.debug.xcconfig"; path = "Target Support Files/Pods-JobCityFlix/Pods-JobCityFlix.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -224,11 +228,12 @@
 		C7D2F80128BD60FC00EEC146 /* TVShowDetail */ = {
 			isa = PBXGroup;
 			children = (
-				C7D2F80228BD60FC00EEC146 /* Presenter */,
-				C7D2F80428BD60FC00EEC146 /* View */,
-				C7D2F80A28BD60FC00EEC146 /* API */,
-				C7D2F80C28BD60FC00EEC146 /* TVShowDetailConfigurator.swift */,
+				C7D2F83028BFAE5E00EEC146 /* Configurator */,
+				C7D2F80428BD60FC00EEC146 /* DetailViewController */,
 				C7D2F80D28BD60FC00EEC146 /* Interactor */,
+				C7D2F80228BD60FC00EEC146 /* Presenter */,
+				C7D2F82328BE46A500EEC146 /* SeasonViewController */,
+				C7D2F80A28BD60FC00EEC146 /* ServiceAPI */,
 			);
 			path = TVShowDetail;
 			sourceTree = "<group>";
@@ -241,25 +246,22 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
-		C7D2F80428BD60FC00EEC146 /* View */ = {
+		C7D2F80428BD60FC00EEC146 /* DetailViewController */ = {
 			isa = PBXGroup;
 			children = (
-				C7D2F82328BE46A500EEC146 /* SeasonView */,
+				C7D2F82E28BFADA700EEC146 /* CollectionViewCell */,
 				C7D2F80728BD60FC00EEC146 /* TVShowDetailViewController.swift */,
-				C7D2F81F28BD856E00EEC146 /* TVShowEpisodeCell.swift */,
-				C7D2F80828BD60FC00EEC146 /* TVShowDetailCell.swift */,
 				C7D2F80928BD60FC00EEC146 /* TVShowDetailView.swift */,
-				C7D2F81A28BD7B2900EEC146 /* TVShowDetailNavigationMenuCell.swift */,
 			);
-			path = View;
+			path = DetailViewController;
 			sourceTree = "<group>";
 		};
-		C7D2F80A28BD60FC00EEC146 /* API */ = {
+		C7D2F80A28BD60FC00EEC146 /* ServiceAPI */ = {
 			isa = PBXGroup;
 			children = (
 				C7D2F80B28BD60FC00EEC146 /* ServiceAPI+TVShowDetail.swift */,
 			);
-			path = API;
+			path = ServiceAPI;
 			sourceTree = "<group>";
 		};
 		C7D2F80D28BD60FC00EEC146 /* Interactor */ = {
@@ -283,17 +285,37 @@
 			children = (
 				C7D2F7FA28BBFDBF00EEC146 /* UIView+Helpers.swift */,
 				C7D2F82628BE6B2D00EEC146 /* UIButton+Helpers.swift */,
+				C7D2F82828BF928D00EEC146 /* String+Helpers.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		C7D2F82328BE46A500EEC146 /* SeasonView */ = {
+		C7D2F82328BE46A500EEC146 /* SeasonViewController */ = {
 			isa = PBXGroup;
 			children = (
 				C7D2F82128BE465400EEC146 /* SeasonViewController.swift */,
 				C7D2F82428BE46BA00EEC146 /* SeasonCell.swift */,
 			);
-			path = SeasonView;
+			path = SeasonViewController;
+			sourceTree = "<group>";
+		};
+		C7D2F82E28BFADA700EEC146 /* CollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				C7D2F81F28BD856E00EEC146 /* TVShowEpisodeCell.swift */,
+				C7D2F82A28BFAD5000EEC146 /* TVShowAboutCell.swift */,
+				C7D2F80828BD60FC00EEC146 /* TVShowDetailCell.swift */,
+				C7D2F81A28BD7B2900EEC146 /* TVShowDetailNavigationMenuCell.swift */,
+			);
+			path = CollectionViewCell;
+			sourceTree = "<group>";
+		};
+		C7D2F83028BFAE5E00EEC146 /* Configurator */ = {
+			isa = PBXGroup;
+			children = (
+				C7D2F80C28BD60FC00EEC146 /* TVShowDetailConfigurator.swift */,
+			);
+			path = Configurator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -427,9 +449,11 @@
 				C7D2F81328BD60FC00EEC146 /* TVShowDetailCell.swift in Sources */,
 				C7D2F81728BD60FC00EEC146 /* TVShowDetailInteractor.swift in Sources */,
 				C7D2F81428BD60FC00EEC146 /* TVShowDetailView.swift in Sources */,
+				C7D2F82B28BFAD5000EEC146 /* TVShowAboutCell.swift in Sources */,
 				C7D2F82228BE465400EEC146 /* SeasonViewController.swift in Sources */,
 				C74B386E28BBCB5F000E728D /* TVShowPresenter.swift in Sources */,
 				C7D2F7FB28BBFDBF00EEC146 /* UIView+Helpers.swift in Sources */,
+				C7D2F82928BF928D00EEC146 /* String+Helpers.swift in Sources */,
 				C7D2F81B28BD7B2900EEC146 /* TVShowDetailNavigationMenuCell.swift in Sources */,
 				C74B387028BBCB6E000E728D /* TVShowConfigurator.swift in Sources */,
 				C7D2F81528BD60FC00EEC146 /* ServiceAPI+TVShowDetail.swift in Sources */,

@@ -43,7 +43,7 @@ struct TVShowCodable: Decodable {
     let rating:Rating?
     let network:Network?
     let image:Media?
-    let summary:String?
+    var summary:String?
     let updated:Int?
     var premierDate: Date? {
         let dateFormatter = DateFormatter()
@@ -65,7 +65,6 @@ struct TVShowCodable: Decodable {
         case rating
         case network
         case image
-        case summary
         case updated
     }
     
@@ -84,7 +83,6 @@ struct TVShowCodable: Decodable {
         rating = nil
         network = nil
         image = nil
-        summary = nil
         updated = nil
     }
     

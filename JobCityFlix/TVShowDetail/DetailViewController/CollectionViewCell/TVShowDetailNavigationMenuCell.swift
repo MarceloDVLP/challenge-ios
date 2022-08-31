@@ -16,7 +16,6 @@ public enum NavigationMenu: Int {
 }
 
 final class TVShowDetailNavigationMenuCell: UICollectionViewCell {
-
     
     var didSelectMenu: ((NavigationMenu) -> ())?
     var menus: [(UIButton, NavigationMenu)] = []

@@ -65,7 +65,7 @@ final class TVShowEpisodeCell: UICollectionViewCell {
     func configure(_ episode: Episode) {
         titleLabel.text = "\(episode.number ?? 0). \(episode.name ?? "")"
         durationLabel.text = "\(episode.runtime ?? 0) min"
-        descLabel.text = episode.summary
+        descLabel.text = episode.summary?.htmlToString
         let url = URL(string: episode.image!.medium!)
         imageView.sd_setImage(with: url)
     }

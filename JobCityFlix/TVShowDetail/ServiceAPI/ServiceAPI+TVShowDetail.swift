@@ -55,7 +55,7 @@ extension ServiceAPI {
 
 
 
-struct Episode:Decodable {
+struct Episode: Decodable {
     
     let id:Int?
     let url:String?
@@ -67,8 +67,7 @@ struct Episode:Decodable {
     let airstamp:String?
     let runtime:Int?
     let image:Media?
-    let summary:String?
-    
+    var summary:String?
     enum CodingKeys: String, CodingKey {
         case id
         case url
