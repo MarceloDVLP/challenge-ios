@@ -1,7 +1,13 @@
 import UIKit
 
 final class TVShowEpisodeCell: UICollectionViewCell {
-    
+
+    private lazy var contentImageView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .black
+        return view
+    }()
+
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = .black
@@ -58,16 +64,19 @@ final class TVShowEpisodeCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        imageView.layer.cornerRadius = 10
-        imageView.circularShadow()
+        imageView.layer.cornerRadius = 8
+        contentImageView.circularShadow()
     }
     
     func configure(_ episode: Episode) {
         titleLabel.text = "\(episode.number ?? 0). \(episode.name ?? "")"
         durationLabel.text = "\(episode.runtime ?? 0) min"
         descLabel.text = episode.summary?.htmlToString
-        let url = URL(string: episode.image!.medium!)
-        imageView.sd_setImage(with: url)
+        
+        if let image = episode.image?.medium {
+            let url = URL(string: image)
+            imageView.sd_setImage(with: url)
+        }        
     }
     
     private func constrainTitleLabel() {
@@ -84,7 +93,9 @@ final class TVShowEpisodeCell: UICollectionViewCell {
     }
     
     private func constrainImageView() {
-        constrainSubView(view: imageView, top: 0, left: 0, width: 150)
+        contentImageView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(contentImageView)
+        contentView.constrainSubView(view: imageView, top: 0, left: 0, width: 150)
         
         imageView.addConstraint(NSLayoutConstraint(item: imageView,
                                                   attribute: .height,
@@ -93,6 +104,14 @@ final class TVShowEpisodeCell: UICollectionViewCell {
                                                   attribute: .width,
                                                   multiplier: 9.0 / 16.0,
                                                   constant: 0))
+        
+
+        NSLayoutConstraint.activate([
+            contentImageView.topAnchor.constraint(equalTo: imageView.topAnchor),
+            contentImageView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor),
+            contentImageView.leftAnchor.constraint(equalTo: imageView.leftAnchor),
+            contentImageView.rightAnchor.constraint(equalTo: imageView.rightAnchor)
+        ])
     }
     
     private func constraintDescriptionLabel() {

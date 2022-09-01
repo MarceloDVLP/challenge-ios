@@ -27,8 +27,6 @@ final class TVShowDetailViewController: UIViewController {
         super.viewDidLoad()
         interactor.viewDidLoad()
         setupNavigationImage("logo-home")
-        
-        self.title = "JobCityFlix"
     }
     
     required init?(coder: NSCoder) {
@@ -93,6 +91,10 @@ extension TVShowDetailViewController {
 
 extension TVShowDetailViewController: TVShowDetailViewDelegate {
 
+    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
+        showNavigationFor(scrollView)
+    }
+    
     func didTapEpisode(_ episode: Episode) {
         let viewController = TVShowEPisodeDetailViewController(episode: episode)
         viewController.modalPresentationStyle = .overFullScreen

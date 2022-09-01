@@ -158,16 +158,19 @@ final class TVShowAboutCell: UICollectionViewCell {
         value.textColor = Colors.titleInactiveColor
         value.font = UIFont.systemFont(ofSize: 14, weight: .heavy)
         value.text = valueString
+        value.lineBreakMode = .byTruncatingTail
         value.textAlignment = .left
         
         let stackView = UIStackView(arrangedSubviews: [label, value])
+        stackView.alignment = .leading
         stackView.distribution = .fillEqually
+        
         return (stackView, value)
     }
     
     func setupSumaryLabel() {
         sumaryValueLabel.textColor = Colors.titleInactiveColor
-        sumaryValueLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-        sumaryValueLabel.numberOfLines = 4
+        sumaryValueLabel.font = UIFont.systemFont(ofSize: 15, weight: .regular)
+        sumaryValueLabel.numberOfLines = 0
     }
 }

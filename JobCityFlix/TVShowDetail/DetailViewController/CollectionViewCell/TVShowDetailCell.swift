@@ -52,7 +52,7 @@ final class TVShowDetailCell: UICollectionViewCell {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = Colors.mediumTitleColor
-        label.font = UIFont.systemFont(ofSize: 26, weight: .heavy)
+        label.font = UIFont.systemFont(ofSize: 28, weight: .heavy)
         label.numberOfLines = 2
         return label
     }()
@@ -67,10 +67,9 @@ final class TVShowDetailCell: UICollectionViewCell {
     
     private lazy var subtitleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 14, weight: .bold)
+        label.font = UIFont.systemFont(ofSize: 15, weight: .bold)
         label.textColor = Colors.titleColor
-        label.numberOfLines = 1
-        label.text = "Comedy - 2014 - 60min"
+        label.numberOfLines = 2
         
         return label
     }()
@@ -79,8 +78,7 @@ final class TVShowDetailCell: UICollectionViewCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         label.textColor = Colors.titleColor
-        label.numberOfLines = 4
-        label.text = "Murder in the First follows homicide detectives Terry English and Hildy Mulligan as they investigate two seemingly unrelated murders. The mystery deepens, however, when they find both murders have a common denominator in a Silicon Valley wunderkind."
+        label.numberOfLines = 6
         
         return label
     }()
@@ -143,7 +141,8 @@ final class TVShowDetailCell: UICollectionViewCell {
     func configure(_ tvShow: TVShowCodable?) {
         guard let tvShow = tvShow else { return }
         titleLabel.text = tvShow.name
-        descLabel.text = tvShow.summary
+        let genres = tvShow.genres?.joined(separator: ",") ?? ""
+        descLabel.text = genres
         
         if let average = tvShow.rating?.average {
             ratingLabel.text = String(average)
@@ -153,10 +152,15 @@ final class TVShowDetailCell: UICollectionViewCell {
             ratingView.backgroundColor = .lightGray
         }
                 
-        subtitleLabel.text = "\(tvShow.genres?.joined(separator: ",") ?? "") - \(tvShow.premiered ?? "") - \(tvShow.runtime ?? 0)min"
+        let days = tvShow.schedule?.days?.joined(separator: ",") ?? ""
+        let time = tvShow.schedule?.time ?? ""
+        subtitleLabel.text = "\(genres) \n Every \(days) at \(time)"
+        sumaryLabel.text = tvShow.summary?.htmlToString
         
-        let url = URL(string: tvShow.image!.original!)
-        imageView.sd_setImage(with: url)
+        if let image = tvShow.image?.original {
+            let url = URL(string: image)
+            imageView.sd_setImage(with: url)
+        }        
     }
     
     private func constrainTitleLabel() {
@@ -164,9 +168,9 @@ final class TVShowDetailCell: UICollectionViewCell {
         addSubview(titleLabel)
         
         NSLayoutConstraint.activate([
-            titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 10),
-            titleLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -10),
-            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -130)
+            titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 12),
+            titleLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -12),
+            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -160)
         ])
     }
     
@@ -202,10 +206,11 @@ final class TVShowDetailCell: UICollectionViewCell {
     
     private func constraintSubtitleLabel() {
         subtitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(subtitleLabel)
+        contentView.addSubview(subtitleLabel)
         
         NSLayoutConstraint.activate([
             subtitleLabel.leftAnchor.constraint(equalTo: ratingView.rightAnchor, constant: 12),
+            subtitleLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -12),
             subtitleLabel.centerYAnchor.constraint(equalTo: ratingView.centerYAnchor)
         ])
     }
@@ -227,8 +232,8 @@ final class TVShowDetailCell: UICollectionViewCell {
         
         NSLayoutConstraint.activate([
             descLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 16),
-            descLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 8),
-            descLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -8)
+            descLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 12),
+            descLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -12)
         ])
     }
 
@@ -237,18 +242,15 @@ final class TVShowDetailCell: UICollectionViewCell {
         addSubview(sumaryLabel)
         
         NSLayoutConstraint.activate([
-            sumaryLabel.topAnchor.constraint(equalTo: ratingView.bottomAnchor, constant: 16),
-            sumaryLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 8),
-            sumaryLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -8)
+            sumaryLabel.topAnchor.constraint(equalTo: ratingView.bottomAnchor, constant: 22),
+            sumaryLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 12),
+            sumaryLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -12)
         ])
     }
 
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    func configure(_ tvShow: TVShowCodable?, delegate: TVShowDetailCellDelegate?) {
     }
 }
 

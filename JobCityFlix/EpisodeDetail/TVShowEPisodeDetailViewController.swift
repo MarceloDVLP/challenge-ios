@@ -116,7 +116,7 @@ final class TVShowEPisodeDetailViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        UIView.animate(withDuration: 0.3, animations: {
+        UIView.animate(withDuration: 0.1, animations: {
             self.setupTranslucentBackground()
         })
 
@@ -136,7 +136,7 @@ final class TVShowEPisodeDetailViewController: UIViewController {
     }
     
     func setupTranslucentBackground() {
-        view.backgroundColor = UIColor.black.withAlphaComponent(0.7)
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
     }
     
     func setupContainverViewGradient() {
@@ -166,9 +166,11 @@ final class TVShowEPisodeDetailViewController: UIViewController {
     func configure(_ episode: Episode) {
         titleLabel.text = "\(episode.name ?? "") - S0\(episode.season ?? 0) - E0\(episode.number ?? 0)"
         subtitleLabel.text = "\(episode.airtime ?? "")  -  \(episode.runtime ?? 0)min"
-        let url = URL(string: episode.image!.original!)
-        imageView.sd_setImage(with: url)
         
+        if let image = episode.image?.original {
+            let url = URL(string: image)
+            imageView.sd_setImage(with: url)
+        }        
 
         sumaryLabel.text = episode.summary!.htmlToString
         setupScrollViewHeight(episode.summary!.htmlToString)
@@ -176,7 +178,7 @@ final class TVShowEPisodeDetailViewController: UIViewController {
     
     func setupScrollViewHeight(_ summary: String) {
         let height = summary.height(constraintedWidth: containerView.frame.width,
-                                    font: UIFont.systemFont(ofSize: 15, weight: .regular))
+                                    font: UIFont.systemFont(ofSize: 15, weight: .regular)) + 30
         view.layoutIfNeeded()
         NSLayoutConstraint.activate([
             contentSumaryView.heightAnchor.constraint(equalToConstant: height)
@@ -253,16 +255,7 @@ final class TVShowEPisodeDetailViewController: UIViewController {
     }
 
     private func constraintSumaryLabel() {
-//        sumaryLabel.translatesAutoresizingMaskIntoConstraints = false
-//        contentSumaryView.addSubview(sumaryLabel)
-
         contentSumaryView.constrainSubView(view: sumaryLabel, top: 0, left: 27, right: -27)
-
-//        NSLayoutConstraint.activate([
-//            sumaryLabel.topAnchor.constraint(equalTo: contentSumaryView.bottomAnchor, constant: 16),
-//            sumaryLabel.widthAnchor.constraint(equalToConstant: 300),
-//            sumaryLabel.heightAnchor.constraint(equalToConstant: 1000)
-//        ])
     }
 
     private func constrainCloseButton() {

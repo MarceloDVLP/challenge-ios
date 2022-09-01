@@ -41,6 +41,12 @@
 		C7D2F82B28BFAD5000EEC146 /* TVShowAboutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D2F82A28BFAD5000EEC146 /* TVShowAboutCell.swift */; };
 		C7D2F83228BFE2A400EEC146 /* TVShowLoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D2F83128BFE2A400EEC146 /* TVShowLoadingCell.swift */; };
 		C7D2F83528BFF6B100EEC146 /* TVShowEPisodeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D2F83428BFF6B100EEC146 /* TVShowEPisodeDetailViewController.swift */; };
+		C7D2F83828C13EE300EEC146 /* SearchShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D2F83728C13EE300EEC146 /* SearchShowViewController.swift */; };
+		C7D2F83B28C152DB00EEC146 /* SearchTVShowInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D2F83A28C152DB00EEC146 /* SearchTVShowInteractor.swift */; };
+		C7D2F83E28C1530D00EEC146 /* SearchTVShowPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D2F83D28C1530D00EEC146 /* SearchTVShowPresenter.swift */; };
+		C7D2F84228C1533400EEC146 /* Thread+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D2F84128C1533400EEC146 /* Thread+Helpers.swift */; };
+		C7D2F84428C1535800EEC146 /* SearchTVShowConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D2F84328C1535800EEC146 /* SearchTVShowConfigurator.swift */; };
+		C7D2F84728C1538200EEC146 /* SearchTVShowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D2F84628C1538200EEC146 /* SearchTVShowView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,6 +87,12 @@
 		C7D2F82A28BFAD5000EEC146 /* TVShowAboutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowAboutCell.swift; sourceTree = "<group>"; };
 		C7D2F83128BFE2A400EEC146 /* TVShowLoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowLoadingCell.swift; sourceTree = "<group>"; };
 		C7D2F83428BFF6B100EEC146 /* TVShowEPisodeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowEPisodeDetailViewController.swift; sourceTree = "<group>"; };
+		C7D2F83728C13EE300EEC146 /* SearchShowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchShowViewController.swift; sourceTree = "<group>"; };
+		C7D2F83A28C152DB00EEC146 /* SearchTVShowInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTVShowInteractor.swift; sourceTree = "<group>"; };
+		C7D2F83D28C1530D00EEC146 /* SearchTVShowPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTVShowPresenter.swift; sourceTree = "<group>"; };
+		C7D2F84128C1533400EEC146 /* Thread+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Thread+Helpers.swift"; sourceTree = "<group>"; };
+		C7D2F84328C1535800EEC146 /* SearchTVShowConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTVShowConfigurator.swift; sourceTree = "<group>"; };
+		C7D2F84628C1538200EEC146 /* SearchTVShowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTVShowView.swift; sourceTree = "<group>"; };
 		FAC9E4BE89C48DD2B326686E /* Pods-JobCityFlix.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JobCityFlix.debug.xcconfig"; path = "Target Support Files/Pods-JobCityFlix/Pods-JobCityFlix.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -135,11 +147,12 @@
 			isa = PBXGroup;
 			children = (
 				C74B386428BBB7D7000E728D /* Application */,
-				C7D2F7FE28BC016200EEC146 /* MenuBar */,
+				C7D2F7FE28BC016200EEC146 /* TabBar */,
 				C74B385A28BBACC5000E728D /* ServiceAPI */,
 				C7D2F83328BFF69E00EEC146 /* EpisodeDetail */,
 				C7D2F80128BD60FC00EEC146 /* TVShowDetail */,
 				C74B385728BBAC76000E728D /* TVShowList */,
+				C7D2F83628C13EC800EEC146 /* SearchTVShow */,
 			);
 			path = JobCityFlix;
 			sourceTree = "<group>";
@@ -223,12 +236,12 @@
 			path = API;
 			sourceTree = "<group>";
 		};
-		C7D2F7FE28BC016200EEC146 /* MenuBar */ = {
+		C7D2F7FE28BC016200EEC146 /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
 				C7D2F7FF28BC01D000EEC146 /* TabViewController.swift */,
 			);
-			path = MenuBar;
+			path = TabBar;
 			sourceTree = "<group>";
 		};
 		C7D2F80128BD60FC00EEC146 /* TVShowDetail */ = {
@@ -289,6 +302,8 @@
 		C7D2F81928BD64B600EEC146 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				C7D2F84028C1532700EEC146 /* Foundation */,
+				C7D2F83F28C1532200EEC146 /* UIKit */,
 				C7D2F7FA28BBFDBF00EEC146 /* UIView+Helpers.swift */,
 				C7D2F82628BE6B2D00EEC146 /* UIButton+Helpers.swift */,
 				C7D2F82828BF928D00EEC146 /* String+Helpers.swift */,
@@ -330,6 +345,57 @@
 				C7D2F83428BFF6B100EEC146 /* TVShowEPisodeDetailViewController.swift */,
 			);
 			path = EpisodeDetail;
+			sourceTree = "<group>";
+		};
+		C7D2F83628C13EC800EEC146 /* SearchTVShow */ = {
+			isa = PBXGroup;
+			children = (
+				C7D2F84528C1536E00EEC146 /* View */,
+				C7D2F83C28C152FD00EEC146 /* Presenter */,
+				C7D2F83928C152C600EEC146 /* Interactor */,
+				C7D2F83728C13EE300EEC146 /* SearchShowViewController.swift */,
+				C7D2F84328C1535800EEC146 /* SearchTVShowConfigurator.swift */,
+			);
+			path = SearchTVShow;
+			sourceTree = "<group>";
+		};
+		C7D2F83928C152C600EEC146 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				C7D2F83A28C152DB00EEC146 /* SearchTVShowInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		C7D2F83C28C152FD00EEC146 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				C7D2F83D28C1530D00EEC146 /* SearchTVShowPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		C7D2F83F28C1532200EEC146 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		C7D2F84028C1532700EEC146 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				C7D2F84128C1533400EEC146 /* Thread+Helpers.swift */,
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
+		C7D2F84528C1536E00EEC146 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C7D2F84628C1538200EEC146 /* SearchTVShowView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -451,6 +517,7 @@
 				C74B384228BAC068000E728D /* AppDelegate.swift in Sources */,
 				C7D2F80F28BD60FC00EEC146 /* TVShowDetailPresenter.swift in Sources */,
 				C7D2F82728BE6B2D00EEC146 /* UIButton+Helpers.swift in Sources */,
+				C7D2F84728C1538200EEC146 /* SearchTVShowView.swift in Sources */,
 				C7D2F80028BC01D000EEC146 /* TabViewController.swift in Sources */,
 				C74B385928BBACA7000E728D /* ServiceAPI.swift in Sources */,
 				C74B386028BBB32E000E728D /* HTTPClient.swift in Sources */,
@@ -458,15 +525,20 @@
 				C7D2F82528BE46BA00EEC146 /* SeasonCell.swift in Sources */,
 				C74B385E28BBAD13000E728D /* EndPoints.swift in Sources */,
 				C74B386628BBB8A6000E728D /* SceneDelegate.swift in Sources */,
+				C7D2F84228C1533400EEC146 /* Thread+Helpers.swift in Sources */,
 				C74B386C28BBCB4E000E728D /* TVShowInteractor.swift in Sources */,
 				C7D2F83228BFE2A400EEC146 /* TVShowLoadingCell.swift in Sources */,
 				C7D2F7FD28BBFE6F00EEC146 /* TVShowMainHeader.swift in Sources */,
+				C7D2F83828C13EE300EEC146 /* SearchShowViewController.swift in Sources */,
 				C7D2F81328BD60FC00EEC146 /* TVShowDetailCell.swift in Sources */,
+				C7D2F83E28C1530D00EEC146 /* SearchTVShowPresenter.swift in Sources */,
+				C7D2F83B28C152DB00EEC146 /* SearchTVShowInteractor.swift in Sources */,
 				C7D2F81728BD60FC00EEC146 /* TVShowDetailInteractor.swift in Sources */,
 				C7D2F81428BD60FC00EEC146 /* TVShowDetailView.swift in Sources */,
 				C7D2F82B28BFAD5000EEC146 /* TVShowAboutCell.swift in Sources */,
 				C7D2F83528BFF6B100EEC146 /* TVShowEPisodeDetailViewController.swift in Sources */,
 				C7D2F82228BE465400EEC146 /* SeasonViewController.swift in Sources */,
+				C7D2F84428C1535800EEC146 /* SearchTVShowConfigurator.swift in Sources */,
 				C74B386E28BBCB5F000E728D /* TVShowPresenter.swift in Sources */,
 				C7D2F7FB28BBFDBF00EEC146 /* UIView+Helpers.swift in Sources */,
 				C7D2F82928BF928D00EEC146 /* String+Helpers.swift in Sources */,

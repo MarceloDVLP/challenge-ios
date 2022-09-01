@@ -10,6 +10,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         if let windowScene = scene as? UIWindowScene {
             
+            let navigationBarAppearance = UINavigationBarAppearance()
+              navigationBarAppearance.configureWithTransparentBackground()
+              UINavigationBar.appearance().standardAppearance = navigationBarAppearance
+              UINavigationBar.appearance().compactAppearance = navigationBarAppearance
+              UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
+        
+
             self.window = UIWindow(windowScene: windowScene)
             let mainNavigationController = TabViewController()
             self.window?.rootViewController = mainNavigationController

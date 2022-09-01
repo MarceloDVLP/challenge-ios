@@ -3,6 +3,8 @@ import UIKit
 protocol TVShowDetailViewDelegate: AnyObject {
     func didTapSeasonButton()
     func didTapEpisode(_ episode: Episode)
+    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView)
+
 }
 
 enum Section: Int, CaseIterable {
@@ -32,6 +34,7 @@ final class TVShowDetailView: UIView {
     var selectedSeason = 0
     var tvShow: TVShowCodable?
     var selectedMenu = NavigationMenu.episodes
+    
     
     init() {
         super.init(frame: .zero)
@@ -72,6 +75,23 @@ final class TVShowDetailView: UIView {
         self.tvShow = detail
         collectionView.reloadData()//reloadSections([Section.detail.rawValue])
     }
+    
+    
+    func numberOfSeasons(for section: Int) -> Int {
+        return selectedMenu == .episodes ? 1 : 0
+    }
+    
+    func numberOfepisodes(for section: Int) -> Int {
+        if episodes.isEmpty {
+            return 0
+        }
+        
+        if selectedMenu == .episodes {
+            return episodes[selectedSeason].count
+        }
+        
+        return 0
+    }
 }
 
 extension TVShowDetailView: UICollectionViewDataSource {
@@ -85,8 +105,8 @@ extension TVShowDetailView: UICollectionViewDataSource {
             switch Section(rawValue: section)! {
             case .detail: return 1
             case .menu: return 1
-            case .season: return selectedMenu == .episodes ? 1 : 0
-            case .episodes: return selectedMenu == .episodes ? episodes[selectedSeason].count : 0
+            case .season: return numberOfSeasons(for: section)
+            case .episodes: return numberOfepisodes(for: section)
             case .about: return 1
             }
     }
@@ -174,18 +194,27 @@ extension TVShowDetailView: UICollectionViewDelegate {
         let episode = episodes[selectedSeason][indexPath.item]
         delegate?.didTapEpisode(episode)        
     }
+    
+    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
+        delegate?.scrollViewWillBeginDecelerating(scrollView)
+    }
 }
 
 extension TVShowDetailView: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
                 
+        
         switch Section(rawValue: indexPath.section)! {
         case .detail: return CGSize(width: collectionView.frame.width, height: 550)
         case .menu: return CGSize(width: collectionView.frame.width-32, height: 30)
         case .season: return CGSize(width: collectionView.frame.width-32, height: 30)
         case .episodes: return CGSize(width: collectionView.frame.width-32, height: 150)
-        case .about: return CGSize(width: collectionView.frame.width-32, height: 700)
+        case .about:
+            
+            let height = (tvShow?.summary?.htmlToString.height(constraintedWidth: collectionView.frame.width-32, font: UIFont.systemFont(ofSize: 15, weight: .regular)) ?? 0) + 300
+
+            return CGSize(width: collectionView.frame.width-32, height: height)
             
         }
     }

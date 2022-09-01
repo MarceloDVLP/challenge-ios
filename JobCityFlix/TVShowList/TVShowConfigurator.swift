@@ -24,11 +24,24 @@ protocol TVShowPresenterProtocol: AnyObject {
     func willStartFetch()
     func showEpisodes(_ tvShows: [TVShowCodable])
     func showError(_ error: Error)
-    
+}
+
+protocol SearchShowPresenterProtocol: AnyObject {
+    func willStartFetch()
+    func show(_ tvShows: [TVShowCodable])
+    func show(_ error: Error)
+}
+
+protocol SearchShowViewControllerProtocol: AnyObject {
+    func showLoadig()
+    func show(_ tvShows: [TVShowCodable])
+    func showError(_ error: Error)
+    func removeLoading()
 }
 
 protocol TVShowInteractorProtocol {
     func viewDidLoad()
+    func didSearch(_ query: String)
     func didFinishPage() 
 }
 

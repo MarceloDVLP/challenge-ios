@@ -40,6 +40,8 @@ final class TVShowDetailPresenter: TVShowDetailPresenterProtocol {
     func formatedSeasons(_ count: Int) -> [String] {
         var result: [String] = []
         
+        guard count > 0 else { return [] }
+        
         for season in 1...count {
             result.append("\(season)ª Temporada")
         }

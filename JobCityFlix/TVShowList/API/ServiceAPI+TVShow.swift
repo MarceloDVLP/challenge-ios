@@ -15,6 +15,20 @@ extension ServiceAPI {
             }
         })
     }
+
+    func searchTVShow(query: String, completion: @escaping(Result<[SearchCodable], Error>) -> Void) {
+        let url = Endpoints.searchTvShow(query).url
+        client.request(url: url, completion: { [weak self] result in
+            guard let self = self else { return }
+            
+            switch result {
+            case .success(let data):
+                completion(self.decode(data))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        })
+    }
     
     func decode (_ data: Data) -> Result<[TVShowCodable], Error> {
         let decoder = JSONDecoder()
@@ -25,8 +39,28 @@ extension ServiceAPI {
             return Result.failure(ServiceAPIError.clientError)
         }
     }
+    
+    func decode (_ data: Data) -> Result<[SearchCodable], Error> {
+        let decoder = JSONDecoder()
+        do {
+            let showList = try decoder.decode([SearchCodable].self, from: data)
+            return Result.success(showList)
+        } catch {
+            return Result.failure(ServiceAPIError.clientError)
+        }
+    }
+
 }
 
+struct SearchCodable: Decodable {
+    let show: TVShowCodable
+    let score: Double
+    
+    enum CodingKeys: String, CodingKey {
+        case show
+        case score
+    }
+}
 
 struct TVShowCodable: Decodable {
     
@@ -43,7 +77,7 @@ struct TVShowCodable: Decodable {
     let rating:Rating?
     let network:Network?
     let image:Media?
-    var summary:String?
+    let summary:String?
     let updated:Int?
     var premierDate: Date? {
         let dateFormatter = DateFormatter()
@@ -66,6 +100,7 @@ struct TVShowCodable: Decodable {
         case network
         case image
         case updated
+        case summary
     }
     
     public init(_ id: Int) {
@@ -84,6 +119,7 @@ struct TVShowCodable: Decodable {
         network = nil
         image = nil
         updated = nil
+        summary = nil
     }
     
 }

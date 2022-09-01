@@ -1,13 +1,8 @@
 import UIKit
 
-final class TVShowListView: UIView {
-    
-    var didSelectTVShow: ((TVShowCodable) ->())?
-    var didFinishPage: (() -> ())?
-    var scrollViewWillBeginDecelerating: ((UIScrollView) -> ())?
+final class SearchTVShowView: UIView {
 
-    //MARK: REMOVER ISSO!!
-    var navigationController: UINavigationController?
+    var didSelectTVShow: ((TVShowCodable) ->())?
     
     public lazy var collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
@@ -18,9 +13,9 @@ final class TVShowListView: UIView {
         collection.dataSource = self
         return collection
     }()
-    
+
     var items: [TVShowCodable] = []
-    
+
     init() {
         super.init(frame: .zero)
         constrainCollectionView()
@@ -48,12 +43,10 @@ final class TVShowListView: UIView {
     private func registerCell() {
         collectionView.register(TVShowListCell.self,
                                 forCellWithReuseIdentifier: "TVShowListCell")
-        collectionView.register(TVShowMainHeader.self,
-                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "TVShowMainHeader")
     }
 }
 
-extension TVShowListView: UICollectionViewDataSource {
+extension SearchTVShowView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         items.count
@@ -61,24 +54,12 @@ extension TVShowListView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TVShowListCell", for: indexPath) as? TVShowListCell {            
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TVShowListCell", for: indexPath) as? TVShowListCell {
             cell.configure(items[indexPath.item])
             return cell
         } else {
             return UICollectionViewCell()
         }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        
-        let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "TVShowMainHeader", for: indexPath) as! TVShowMainHeader
-        
-        if  items.count > 0 {
-            let random = Int.random(in: 0..<items.count-1)
-            cell.configure(items[random])
-        }
-        
-        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -90,39 +71,22 @@ extension TVShowListView: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if indexPath.item == items.count-1 {
-            didFinishPage?()
-        }
+        return UIEdgeInsets(top: 100, left: 20, bottom: 0, right: 20)
     }
 }
 
-extension TVShowListView: UICollectionViewDelegate {
+extension SearchTVShowView: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let item = items[indexPath.item]
         didSelectTVShow?(item)
     }
-    
-    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
-        scrollViewWillBeginDecelerating?(scrollView)
-    }
 }
 
-extension TVShowListView: UICollectionViewDelegateFlowLayout {
+extension SearchTVShowView: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
                 
         return CGSize(width: 85, height: 150)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        
-        let height = collectionView.frame.height*0.6
-
-        return CGSize(width: collectionView.frame.width, height: height)
     }
 }

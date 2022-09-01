@@ -42,7 +42,9 @@ final class TVShowListCell: UICollectionViewCell {
         
     func configure(_ tvShow: TVShowCodable) {
         titleLabel.text = tvShow.name
-        loadImageWith(tvShow.image!.medium!)
+        if let image = tvShow.image?.medium {
+            loadImageWith(image)
+        }        
     }
     
     private func loadImageWith(_ stringURL: String) {
@@ -60,8 +62,10 @@ final class TVShowListCell: UICollectionViewCell {
     
     private func constrainImageView() {
         contentView.constrainSubView(view: imageView,
-                                     bottom: 0, left: 0,
-                                     width: 85, height: 120)
+                                     top: 0,
+                                     bottom: 0,
+                                     left: 0,
+                                     right: 0)
     }
 
     private func constrainTitleLabel() {

@@ -59,6 +59,7 @@ extension UIView {
         layer.shadowRadius = 3.0
         layer.shadowOpacity = 0.8
         layer.cornerRadius = 8
+        layer.frame = frame
     }
     
     
@@ -137,5 +138,14 @@ extension UIViewController {
         imageView.image = image
         logoContainer.addSubview(imageView)
         navigationItem.titleView = logoContainer
+    }
+    
+    func showNavigationFor(_ scrollView: UIScrollView) {
+        if scrollView.panGestureRecognizer.translation(in: scrollView).y < 0 {
+            navigationController?.setNavigationBarHidden(true, animated: true)
+
+        } else {
+            navigationController?.setNavigationBarHidden(false, animated: true)
+        }
     }
 }

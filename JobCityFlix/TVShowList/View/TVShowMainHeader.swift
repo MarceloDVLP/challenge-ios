@@ -72,8 +72,11 @@ final class TVShowMainHeader: UICollectionReusableView {
             return
         }
 
-        let url = URL(string: tvShow.image!.original!)
-        imageView.sd_setImage(with: url)
+        if let image = tvShow.image?.original {
+            let url = URL(string: image)
+            imageView.sd_setImage(with: url)
+        }
+        
         let text = "Não perca HOJE a série \(tvShow.name ?? "")!"
         titleLabel.text = text
     }

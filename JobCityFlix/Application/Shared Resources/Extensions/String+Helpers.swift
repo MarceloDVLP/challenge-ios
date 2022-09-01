@@ -14,9 +14,9 @@ extension String {
     var htmlToString: String {
         return htmlToAttributedString?.string ?? ""
     }
-    
-    func stringDateToPattern() -> String {
-        let dateArray = self.split(separator: "-")
-        return "\(dateArray[1])/\(dateArray[2])/\(dateArray[0])"
-    }
+
+    var stripped: String {
+        let okayChars = Set("abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLKMNOPQRSTUVWXYZ1234567890+-=().!_")
+        return self.filter {okayChars.contains($0) }
+    }    
 }
