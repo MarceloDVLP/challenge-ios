@@ -4,13 +4,6 @@ import UIKit
 final class TVShowListViewController: UIViewController {
 
     var interactor: TVShowInteractorProtocol
-
-    private var searchBar: UISearchController = {
-           let sb = UISearchController()
-           sb.searchBar.placeholder = "Enter the tv show name"
-           sb.searchBar.searchBarStyle = .minimal
-           return sb
-    }()
     
     private lazy var tvShowView: TVShowListView = {
         return TVShowListView()
@@ -19,16 +12,13 @@ final class TVShowListViewController: UIViewController {
     init(interactor: TVShowInteractor) {
         self.interactor = interactor        
         super.init(nibName: nil, bundle: nil)
-        tabBarItem = makeTabBarItem()
         setupTVShowView()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupTabBarItem(title: "Home", imageName: "tab-home")
         interactor.viewDidLoad()
-        
-        searchBar.searchResultsUpdater = self
-        navigationItem.searchController = searchBar
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -36,26 +26,21 @@ final class TVShowListViewController: UIViewController {
         setupNavigationBar()
         tvShowView.navigationController = navigationController
     }
+        
+    func setupNavigationBar() {
+        setupNavigationImage("logo-home")
+        setupBackButton()
+    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    func setupNavigationBar() {
-        setupNavigationImage("logo-home")
-        navigationController?.navigationBar.topItem?.title = " "
-        navigationController?.navigationBar.tintColor = UIColor.white
-    }
-    
-
 }
 
 extension TVShowListViewController: TVShowListViewControllerProtocol {
     
     func showLoadig() {
-        let loadingView = makeActivityIndicatorView()
-        view.addSubview(loadingView)
-//        loadingView.startAnimating()
+        view.addActivityIndicatorView()
     }
 
     func showEpisodes(_ tvShows: [TVShowCodable]) {
@@ -66,9 +51,7 @@ extension TVShowListViewController: TVShowListViewControllerProtocol {
     func showError(_ error: Error) {}
     
     func removeLoading() {
-        let loadingView = view.subviews.first(where: { type(of: $0.self) == UIActivityIndicatorView.self })
-        
-        loadingView?.removeFromSuperview()
+        view.removeActivityIndicatorView()
     }
 }
 
@@ -93,38 +76,4 @@ extension TVShowListViewController {
             self?.showNavigationFor(scrollView)
         }
     }
-    
-    private func makeActivityIndicatorView() -> UIActivityIndicatorView {
-        let indicator = UIActivityIndicatorView()
-        indicator.center = view.center
-        indicator.color = .white
-        indicator.style = .large
-        return indicator
-    }
-    
-    private func makeTabBarItem() -> UITabBarItem {
-
-        tabBarItem = UITabBarItem(title: "Home",
-                                  image: UIImage(named: "tab-home"),
-                                  tag: 0)
-
-        tabBarItem.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
-        tabBarItem.setTitleTextAttributes([.foregroundColor: UIColor.lightGray], for: .normal)
-        return tabBarItem
-    }
 }
-
-extension TVShowListViewController: UISearchResultsUpdating{
-    
-    func updateSearchResults(for searchController: UISearchController) {
-        guard let query = searchController.searchBar.text, query.count >= 3 else {
-            return
-            
-        }
-        
-        
-        
-        interactor.didSearch(query)
-    }
-}
-

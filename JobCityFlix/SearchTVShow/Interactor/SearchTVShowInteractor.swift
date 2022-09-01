@@ -9,16 +9,24 @@ final class SearchShowInteractor: SearchShowInteractorProtocol {
     private var service: ServiceAPI
     private var presenter: SearchShowPresenterProtocol
     private var isSearching: Bool
+    private var query: String
 
     init (service: ServiceAPI, presenter: SearchShowPresenterProtocol) {
         self.service = service
         self.presenter = presenter
         self.isSearching = false
+        self.query = ""
     }
  
     func didSearch(_ query: String) {
+        guard isSearching || query != self.query else {
+            return
+        }
+        
+        self.query = query.lowercased().stripped
         isSearching = true
-        service.searchTVShow(query: query.lowercased().stripped, completion: { [weak self] result in
+        
+        service.searchTVShow(query: self.query, completion: { [weak self] result in
         
             guard let self = self else { return }
             

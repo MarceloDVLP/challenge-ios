@@ -41,7 +41,6 @@ protocol SearchShowViewControllerProtocol: AnyObject {
 
 protocol TVShowInteractorProtocol {
     func viewDidLoad()
-    func didSearch(_ query: String)
     func didFinishPage() 
 }
 

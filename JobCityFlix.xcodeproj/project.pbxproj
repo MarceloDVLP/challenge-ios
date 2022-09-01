@@ -47,6 +47,8 @@
 		C7D2F84228C1533400EEC146 /* Thread+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D2F84128C1533400EEC146 /* Thread+Helpers.swift */; };
 		C7D2F84428C1535800EEC146 /* SearchTVShowConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D2F84328C1535800EEC146 /* SearchTVShowConfigurator.swift */; };
 		C7D2F84728C1538200EEC146 /* SearchTVShowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D2F84628C1538200EEC146 /* SearchTVShowView.swift */; };
+		C7D2F84B28C159E200EEC146 /* ServiceAPI+SearchTVShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D2F84A28C159E200EEC146 /* ServiceAPI+SearchTVShow.swift */; };
+		C7D2F84D28C15A6A00EEC146 /* UIViewController+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D2F84C28C15A6A00EEC146 /* UIViewController+Helpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -93,6 +95,8 @@
 		C7D2F84128C1533400EEC146 /* Thread+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Thread+Helpers.swift"; sourceTree = "<group>"; };
 		C7D2F84328C1535800EEC146 /* SearchTVShowConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTVShowConfigurator.swift; sourceTree = "<group>"; };
 		C7D2F84628C1538200EEC146 /* SearchTVShowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTVShowView.swift; sourceTree = "<group>"; };
+		C7D2F84A28C159E200EEC146 /* ServiceAPI+SearchTVShow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ServiceAPI+SearchTVShow.swift"; sourceTree = "<group>"; };
+		C7D2F84C28C15A6A00EEC146 /* UIViewController+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Helpers.swift"; sourceTree = "<group>"; };
 		FAC9E4BE89C48DD2B326686E /* Pods-JobCityFlix.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JobCityFlix.debug.xcconfig"; path = "Target Support Files/Pods-JobCityFlix/Pods-JobCityFlix.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -304,9 +308,6 @@
 			children = (
 				C7D2F84028C1532700EEC146 /* Foundation */,
 				C7D2F83F28C1532200EEC146 /* UIKit */,
-				C7D2F7FA28BBFDBF00EEC146 /* UIView+Helpers.swift */,
-				C7D2F82628BE6B2D00EEC146 /* UIButton+Helpers.swift */,
-				C7D2F82828BF928D00EEC146 /* String+Helpers.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -350,11 +351,11 @@
 		C7D2F83628C13EC800EEC146 /* SearchTVShow */ = {
 			isa = PBXGroup;
 			children = (
+				C7D2F84928C159C400EEC146 /* ServiceAPI */,
+				C7D2F84828C159BB00EEC146 /* Cofigurator */,
 				C7D2F84528C1536E00EEC146 /* View */,
 				C7D2F83C28C152FD00EEC146 /* Presenter */,
 				C7D2F83928C152C600EEC146 /* Interactor */,
-				C7D2F83728C13EE300EEC146 /* SearchShowViewController.swift */,
-				C7D2F84328C1535800EEC146 /* SearchTVShowConfigurator.swift */,
 			);
 			path = SearchTVShow;
 			sourceTree = "<group>";
@@ -378,6 +379,10 @@
 		C7D2F83F28C1532200EEC146 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				C7D2F7FA28BBFDBF00EEC146 /* UIView+Helpers.swift */,
+				C7D2F82628BE6B2D00EEC146 /* UIButton+Helpers.swift */,
+				C7D2F82828BF928D00EEC146 /* String+Helpers.swift */,
+				C7D2F84C28C15A6A00EEC146 /* UIViewController+Helpers.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -393,9 +398,26 @@
 		C7D2F84528C1536E00EEC146 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C7D2F83728C13EE300EEC146 /* SearchShowViewController.swift */,
 				C7D2F84628C1538200EEC146 /* SearchTVShowView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		C7D2F84828C159BB00EEC146 /* Cofigurator */ = {
+			isa = PBXGroup;
+			children = (
+				C7D2F84328C1535800EEC146 /* SearchTVShowConfigurator.swift */,
+			);
+			path = Cofigurator;
+			sourceTree = "<group>";
+		};
+		C7D2F84928C159C400EEC146 /* ServiceAPI */ = {
+			isa = PBXGroup;
+			children = (
+				C7D2F84A28C159E200EEC146 /* ServiceAPI+SearchTVShow.swift */,
+			);
+			path = ServiceAPI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -523,6 +545,7 @@
 				C74B386028BBB32E000E728D /* HTTPClient.swift in Sources */,
 				C7D2F81228BD60FC00EEC146 /* TVShowDetailViewController.swift in Sources */,
 				C7D2F82528BE46BA00EEC146 /* SeasonCell.swift in Sources */,
+				C7D2F84B28C159E200EEC146 /* ServiceAPI+SearchTVShow.swift in Sources */,
 				C74B385E28BBAD13000E728D /* EndPoints.swift in Sources */,
 				C74B386628BBB8A6000E728D /* SceneDelegate.swift in Sources */,
 				C7D2F84228C1533400EEC146 /* Thread+Helpers.swift in Sources */,
@@ -536,6 +559,7 @@
 				C7D2F81728BD60FC00EEC146 /* TVShowDetailInteractor.swift in Sources */,
 				C7D2F81428BD60FC00EEC146 /* TVShowDetailView.swift in Sources */,
 				C7D2F82B28BFAD5000EEC146 /* TVShowAboutCell.swift in Sources */,
+				C7D2F84D28C15A6A00EEC146 /* UIViewController+Helpers.swift in Sources */,
 				C7D2F83528BFF6B100EEC146 /* TVShowEPisodeDetailViewController.swift in Sources */,
 				C7D2F82228BE465400EEC146 /* SeasonViewController.swift in Sources */,
 				C7D2F84428C1535800EEC146 /* SearchTVShowConfigurator.swift in Sources */,

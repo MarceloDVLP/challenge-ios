@@ -29,29 +29,6 @@ final class TVShowInteractor: TVShowInteractorProtocol {
         fetchEpisodes()
     }
     
-    func didSearch(_ query: String) {
-        isSearching = true
-        service.searchTVShow(query: query, completion: { [weak self] result in
-        
-            guard let self = self else { return }
-            
-            switch result {
-            case .success(let result):
-                                
-                self.shows = result.compactMap({ return  $0.show })
-
-                DispatchQueue.main.async {
-                    self.presenter.showEpisodes(self.shows)
-                    self.isSearching = false
-                }
-                
-            case .failure(let error):
-                self.presenter.showError(error)
-                self.isSearching = false
-            }
-        })
-    }
-    
     private func fetchEpisodes() {
         service.fetchTVShowList(page: page, completion: { [weak self] result in
             

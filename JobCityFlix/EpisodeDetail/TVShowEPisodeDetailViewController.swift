@@ -172,7 +172,7 @@ final class TVShowEPisodeDetailViewController: UIViewController {
             imageView.sd_setImage(with: url)
         }        
 
-        sumaryLabel.text = episode.summary!.htmlToString
+        sumaryLabel.text = episode.summary?.htmlToString
         setupScrollViewHeight(episode.summary!.htmlToString)
     }
     
