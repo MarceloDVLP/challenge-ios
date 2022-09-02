@@ -23,7 +23,7 @@ final class SearchShowInteractor: SearchShowInteractorProtocol {
             return
         }
         
-        self.query = query.lowercased().stripped
+        self.query = query.lowercased().stripped.trimmingCharacters(in: .whitespacesAndNewlines)
         isSearching = true
         
         service.searchTVShow(query: self.query, completion: { [weak self] result in

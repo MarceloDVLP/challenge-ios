@@ -9,13 +9,13 @@ final class SearchShowViewController: UIViewController {
     }()
     
     private var searchController: UISearchController = {
-        let sb = UISearchController()
-        sb.searchBar.placeholder = "Enter the tv show name"
-        sb.searchBar.searchBarStyle = .minimal
-        sb.searchBar.image(for: UISearchBar.Icon.search, state: .normal)
-        sb.searchBar.autocapitalizationType = .none
-        sb.searchBar.setImage(UIImage(named: "tab-search"), for: .search, state: .normal)
-           return sb
+        let searchController = UISearchController()
+        searchController.searchBar.placeholder = "Enter the tv show name"
+        searchController.searchBar.searchBarStyle = .minimal
+        searchController.searchBar.image(for: UISearchBar.Icon.search, state: .normal)
+        searchController.searchBar.autocapitalizationType = .none
+        searchController.searchBar.setImage(UIImage(named: "tab-search"), for: .search, state: .normal)
+        return searchController
     }()
 
     init(interactor: SearchShowInteractorProtocol) {
