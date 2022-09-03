@@ -13,6 +13,9 @@
 		C70D4E1D28C2669000991B3C /* UserAuthenticationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70D4E1C28C2669000991B3C /* UserAuthenticationPresenter.swift */; };
 		C70D4E1F28C266B300991B3C /* LocalAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70D4E1E28C266B300991B3C /* LocalAuthentication.swift */; };
 		C70D4E2128C266D800991B3C /* UserAuthenticationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70D4E2028C266D800991B3C /* UserAuthenticationInteractor.swift */; };
+		C70D4E2328C391BB00991B3C /* UserAuthenticationRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70D4E2228C391BB00991B3C /* UserAuthenticationRegisterView.swift */; };
+		C70D4E2528C391EF00991B3C /* UserAuthenticationLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70D4E2428C391EF00991B3C /* UserAuthenticationLoginView.swift */; };
+		C70D4E2728C3938C00991B3C /* UserAuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70D4E2628C3938C00991B3C /* UserAuthenticationView.swift */; };
 		C74B384228BAC068000E728D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74B384128BAC068000E728D /* AppDelegate.swift */; };
 		C74B384628BAC068000E728D /* TVShowListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74B384528BAC068000E728D /* TVShowListViewController.swift */; };
 		C74B384B28BAC069000E728D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C74B384A28BAC069000E728D /* Assets.xcassets */; };
@@ -65,6 +68,9 @@
 		C70D4E1C28C2669000991B3C /* UserAuthenticationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthenticationPresenter.swift; sourceTree = "<group>"; };
 		C70D4E1E28C266B300991B3C /* LocalAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAuthentication.swift; sourceTree = "<group>"; };
 		C70D4E2028C266D800991B3C /* UserAuthenticationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthenticationInteractor.swift; sourceTree = "<group>"; };
+		C70D4E2228C391BB00991B3C /* UserAuthenticationRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthenticationRegisterView.swift; sourceTree = "<group>"; };
+		C70D4E2428C391EF00991B3C /* UserAuthenticationLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthenticationLoginView.swift; sourceTree = "<group>"; };
+		C70D4E2628C3938C00991B3C /* UserAuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthenticationView.swift; sourceTree = "<group>"; };
 		C74B383E28BAC068000E728D /* JobCityFlix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JobCityFlix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C74B384128BAC068000E728D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C74B384528BAC068000E728D /* TVShowListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowListViewController.swift; sourceTree = "<group>"; };
@@ -490,6 +496,9 @@
 			isa = PBXGroup;
 			children = (
 				C7D2F85028C1666300EEC146 /* UserAuthenticationViewController.swift */,
+				C70D4E2228C391BB00991B3C /* UserAuthenticationRegisterView.swift */,
+				C70D4E2428C391EF00991B3C /* UserAuthenticationLoginView.swift */,
+				C70D4E2628C3938C00991B3C /* UserAuthenticationView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -618,12 +627,14 @@
 				C7D2F80028BC01D000EEC146 /* TabViewController.swift in Sources */,
 				C74B385928BBACA7000E728D /* ServiceAPI.swift in Sources */,
 				C70D4E1528C2319900991B3C /* TextFieldWithPadding.swift in Sources */,
+				C70D4E2328C391BB00991B3C /* UserAuthenticationRegisterView.swift in Sources */,
 				C74B386028BBB32E000E728D /* HTTPClient.swift in Sources */,
 				C7D2F81228BD60FC00EEC146 /* TVShowDetailViewController.swift in Sources */,
 				C7D2F82528BE46BA00EEC146 /* SeasonCell.swift in Sources */,
 				C7D2F84B28C159E200EEC146 /* ServiceAPI+SearchTVShow.swift in Sources */,
 				C74B385E28BBAD13000E728D /* EndPoints.swift in Sources */,
 				C74B386628BBB8A6000E728D /* SceneDelegate.swift in Sources */,
+				C70D4E2728C3938C00991B3C /* UserAuthenticationView.swift in Sources */,
 				C7D2F84228C1533400EEC146 /* Thread+Helpers.swift in Sources */,
 				C74B386C28BBCB4E000E728D /* TVShowInteractor.swift in Sources */,
 				C7D2F83228BFE2A400EEC146 /* TVShowLoadingCell.swift in Sources */,
@@ -648,6 +659,7 @@
 				C7D2F81B28BD7B2900EEC146 /* TVShowDetailNavigationMenuCell.swift in Sources */,
 				C74B387028BBCB6E000E728D /* TVShowConfigurator.swift in Sources */,
 				C7D2F81528BD60FC00EEC146 /* ServiceAPI+TVShowDetail.swift in Sources */,
+				C70D4E2528C391EF00991B3C /* UserAuthenticationLoginView.swift in Sources */,
 				C70D4E2128C266D800991B3C /* UserAuthenticationInteractor.swift in Sources */,
 				C7D2F7F928BBFD7E00EEC146 /* TVShowListCell.swift in Sources */,
 				C7D2F81628BD60FC00EEC146 /* TVShowDetailConfigurator.swift in Sources */,
