@@ -1,7 +1,15 @@
 import UIKit
 
 
+protocol UserAuthenticationLoginViewDelegate: AnyObject {
+    func didTapRegister()
+    func didTapSignIn()
+    func didTapSignInFaceID()
+}
+
 final class UserAuthenticationLoginView: UIView {
+
+    weak var delegate: UserAuthenticationLoginViewDelegate?
 
     private lazy var userTextField: TextFieldWithPadding = {
         let userTextField = TextFieldWithPadding(frame: .zero, textPadding: UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 10), placeHolder: "E-mail:")
@@ -18,14 +26,22 @@ final class UserAuthenticationLoginView: UIView {
     
     private lazy var signInButton: UIButton = {
         let signInButton = UIButton()
-        signInButton.filledStyle(title: "SignIn")
+        signInButton.filledStyle(title: "Sign In")
         signInButton.addTarget(self, action: #selector(didTapSignIn), for: .touchUpInside)
         return signInButton
     }()
 
+    private lazy var signInFaceIDButton: UIButton = {
+        let registerButton = UIButton()
+        registerButton.transparentStyle(title: "Sign In FaceID")
+        registerButton.addTarget(self, action: #selector(didTapSignInFaceID), for: .touchUpInside)
+        return registerButton
+    }()
+    
     private lazy var registerButton: UIButton = {
         let registerButton = UIButton()
         registerButton.transparentStyle(title: "Register")
+        registerButton.layer.borderWidth = 0
         registerButton.addTarget(self, action: #selector(didTapSignInFaceID), for: .touchUpInside)
         return registerButton
     }()
@@ -40,7 +56,7 @@ final class UserAuthenticationLoginView: UIView {
     private lazy var buttonStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.spacing = 10
+        stackView.spacing = 30
         return stackView
     }()
     
@@ -77,7 +93,7 @@ final class UserAuthenticationLoginView: UIView {
     }
 
     func constrainButtons() {
-        let buttons = [signInButton, registerButton]
+        let buttons = [signInButton, signInFaceIDButton, registerButton]
         var constraints: [NSLayoutConstraint] = []
         for button in buttons {
             constraints.append(button.heightAnchor.constraint(equalToConstant: TextFieldWithPadding.size.height))
@@ -87,11 +103,15 @@ final class UserAuthenticationLoginView: UIView {
     }
     
     @objc func didTapSignIn() {
-//        interactor.didTapSignIn(userTextField.text, pin: passwordTextField.text)
+        delegate?.didTapSignIn()
     }
 
     @objc func didTapSignInFaceID() {
-//        interactor.didTapSignInFaceID()
+        delegate?.didTapSignInFaceID()
+    }
+    
+    @objc func didTapRegister() {
+        delegate?.didTapRegister()
     }
     
     func removeObservers() {

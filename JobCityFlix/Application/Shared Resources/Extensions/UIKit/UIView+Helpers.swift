@@ -75,6 +75,23 @@ extension UIView {
         let loadingView = subviews.first(where: { type(of: $0.self) == UIActivityIndicatorView.self })        
         loadingView?.removeFromSuperview()
     }
+    
+    func gradientLayer(colorTop: CGColor, colorBottom: CGColor) {
+        let name = "gradient_layer"
+        let layer = layer.sublayers?.contains(where: { $0.name == name })
+        
+        guard layer == nil else { return }
+        
+//        let colorTop =  UIColor.black.withAlphaComponent(0.3).cgColor
+//        let colorBottom = UIColor.black.cgColor
 
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.name = name
+        gradientLayer.colors = [colorTop, colorBottom]
+        gradientLayer.locations = [0.0, 1.0]
+        gradientLayer.frame = bounds
+
+        self.layer.insertSublayer(gradientLayer, at:0)
+    }
 }
 

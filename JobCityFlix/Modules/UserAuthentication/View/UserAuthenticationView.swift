@@ -29,7 +29,7 @@ final class UserAuthenticationView: UIView {
         return UIView()
     }()
     
-    private var centerYConstraint: NSLayoutConstraint?
+    private var containerViewBottomConstant: NSLayoutConstraint?
     
     init() {
         super.init(frame: .zero)
@@ -37,8 +37,13 @@ final class UserAuthenticationView: UIView {
         constraintContainerView()
         constraintLoginView()
         constraintLogoImageView()
-        backgroundColor = UIColor.black
         addKeyBoardObservers()
+        
+        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapView)))
+    }
+    
+    @objc private func didTapView() {
+        endEditing(true)
     }
     
     override func layoutSubviews() {
@@ -52,11 +57,13 @@ final class UserAuthenticationView: UIView {
     
     private func constraintContainerView() {
         constrainSubView(view: containerView, width: 300, height: 400)
-        
-        NSLayoutConstraint.activate([
-            containerView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -50),
-            containerView.centerXAnchor.constraint(equalTo: centerXAnchor),
 
+        let constraint = containerView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -50)
+        self.containerViewBottomConstant = constraint
+
+        NSLayoutConstraint.activate([
+            constraint,
+            containerView.centerXAnchor.constraint(equalTo: centerXAnchor),
         ])
     }
     
@@ -64,33 +71,24 @@ final class UserAuthenticationView: UIView {
         containerView.constrainSubView(view: loginView, top: 0, bottom: 0, left: 0, right: 0)
     }
     
+    private func constraintRegiterView() {
+        registerView.alpha = 0
+        containerView.constrainSubView(view: registerView, top: 0, bottom: 0, left: 0, right: 0)
+    }
+    
     private func setGradientBackground() {
-        let name = "gradient_layer"
-        let layer = backgroundImageView.layer.sublayers?.contains(where: { $0.name == name })
-        
-        guard layer == nil else { return }
-        
+        backgroundColor = UIColor.black
         let colorTop =  UIColor.black.withAlphaComponent(0.3).cgColor
         let colorBottom = UIColor.black.cgColor
-
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.name = name
-        gradientLayer.colors = [colorTop, colorBottom]
-        gradientLayer.locations = [0.0, 1.0]
-        gradientLayer.frame = backgroundImageView.bounds
-
-        backgroundImageView.layer.insertSublayer(gradientLayer, at:0)
+        backgroundImageView.gradientLayer(colorTop: colorTop, colorBottom: colorBottom)
     }
     
     private func constraintLogoImageView() {
         constrainSubView(view: logoImageView, width: 300, height: 200)
-        
-        let centerYConstraint = logoImageView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -100)
-        self.centerYConstraint = centerYConstraint
-        
+                
         NSLayoutConstraint.activate([
             logoImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            centerYConstraint
+            logoImageView.bottomAnchor.constraint(equalTo: containerView.topAnchor, constant: 30)
         ])
     }
     
@@ -121,24 +119,23 @@ extension UserAuthenticationView {
         )
     }
     
-    @objc func keyboardWillShow(_ notification: Notification) {
-        
+    @objc private func keyboardWillShow(_ notification: Notification) {
         if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardRectangle = keyboardFrame.cgRectValue
             let keyboardHeight = keyboardRectangle.height
             
-            centerYConstraint?.constant = -keyboardHeight
+            containerViewBottomConstant?.constant = -keyboardHeight
 
-            UIView.animate(withDuration: 0.2, animations: {
+            UIView.animate(withDuration: 0.1, animations: {
 
                 self.layoutIfNeeded()
             }, completion: nil)
         }
     }
     
-    @objc func keyboardWillHide(_ notification: Notification) {
-        centerYConstraint?.constant = -100
-        UIView.animate(withDuration: 0.2, animations: {
+    @objc private func keyboardWillHide(_ notification: Notification) {
+        containerViewBottomConstant?.constant = -100
+        UIView.animate(withDuration: 0.1, animations: {
 
             self.layoutIfNeeded()
         }, completion: nil)
