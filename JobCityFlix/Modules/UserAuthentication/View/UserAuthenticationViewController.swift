@@ -4,13 +4,19 @@ final class UserAuthenticationViewController: UIViewController {
         
     var interactor: UserAuthenticationInteractor!
 
+    private lazy var authenticationView: UserAuthenticationView = {
+        let authenticationView = UserAuthenticationView()
+        authenticationView.delegate = self
+        return authenticationView
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let authenticationView = UserAuthenticationView()
+        constraintAuthenticationView()
+    }
+    
+    private func constraintAuthenticationView() {
         view.constrainSubView(view: authenticationView, top: 0, bottom: 0, left: 0, right: 0)
-                
-        interactor.viewDidLoad()
     }
     
     func show(_ error: LoginError) {
@@ -35,6 +41,37 @@ final class UserAuthenticationViewController: UIViewController {
         
         window.rootViewController = TabViewController()
         window.makeKeyAndVisible()
+    }
+    
+    public func showLogin() {
+        authenticationView.showLogin()
+    }
+    
+    public func showRegister() {
+        authenticationView.showRegister()
+    }
+}
+
+extension UserAuthenticationViewController: UserAuthenticationViewDelegate {
+
+    func didTapCancel() {
+        interactor.didTapCancel()
+    }
+    
+    func didTapConfirm(_ user: User) {
+        interactor.didTapConfirm(user)
+    }
+    
+    func didTapRegister() {
+        interactor.didTapRegister()
+    }
+    
+    func didTapSignIn(_ userName: String?, _ pin: String?) {
+        interactor.didTapSignIn(userName, pin)
+    }
+    
+    func didTapSignInFaceID() {
+        interactor.didTapSignInFaceID()
     }
 }
 

@@ -20,9 +20,19 @@ extension UIButton {
         backgroundColor = .darkGray
         layer.borderColor = UIColor.white.cgColor
         layer.cornerRadius = radius
-        setTitle(title, for: .normal)
-        setTitleColor(.white, for: .normal)
-        setTitleColor(.lightGray, for: .highlighted)
+
+        let attributedString = NSAttributedString(string: title, attributes:
+                                                    [.underlineStyle: NSUnderlineStyle.single.rawValue,
+                                                     .foregroundColor: UIColor.white,
+                                                     .font: UIFont.titleFont()])
+
+        let highlightedString = NSAttributedString(string: title, attributes:
+                                                    [.underlineStyle: NSUnderlineStyle.single.rawValue,
+                                                    .foregroundColor: UIColor.lightGray,
+                                                    .font: UIFont.titleFont()])
+
+        setAttributedTitle(attributedString, for: .normal)
+        setAttributedTitle(highlightedString, for: .highlighted)
     }
 
     func transparentStyle(title: String, with radius: CGFloat = 20) {
@@ -33,11 +43,13 @@ extension UIButton {
 
         let attributedString = NSAttributedString(string: title, attributes:
                                                     [.underlineStyle: NSUnderlineStyle.single.rawValue,
-                                                    .foregroundColor: UIColor.white])
+                                                     .foregroundColor: UIColor.white,
+                                                     .font: UIFont.titleFont()])
 
         let highlightedString = NSAttributedString(string: title, attributes:
                                                     [.underlineStyle: NSUnderlineStyle.single.rawValue,
-                                                    .foregroundColor: UIColor.lightGray])
+                                                    .foregroundColor: UIColor.lightGray,
+                                                    .font: UIFont.titleFont()])
 
         setAttributedTitle(attributedString, for: .normal)
         setAttributedTitle(highlightedString, for: .highlighted)

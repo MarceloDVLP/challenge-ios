@@ -3,7 +3,7 @@ import UIKit
 
 protocol UserAuthenticationLoginViewDelegate: AnyObject {
     func didTapRegister()
-    func didTapSignIn()
+    func didTapSignIn(_ userName: String?, _ pin: String?)
     func didTapSignInFaceID()
 }
 
@@ -13,7 +13,9 @@ final class UserAuthenticationLoginView: UIView {
 
     private lazy var userTextField: TextFieldWithPadding = {
         let userTextField = TextFieldWithPadding(frame: .zero, textPadding: UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 10), placeHolder: "E-mail:")
-        userTextField.keyboardType = .emailAddress
+        userTextField.autocorrectionType = .no
+        userTextField.autocapitalizationType = .none
+
         return userTextField
     }()
     
@@ -42,7 +44,7 @@ final class UserAuthenticationLoginView: UIView {
         let registerButton = UIButton()
         registerButton.transparentStyle(title: "Register")
         registerButton.layer.borderWidth = 0
-        registerButton.addTarget(self, action: #selector(didTapSignInFaceID), for: .touchUpInside)
+        registerButton.addTarget(self, action: #selector(didTapRegister), for: .touchUpInside)
         return registerButton
     }()
     
@@ -103,7 +105,7 @@ final class UserAuthenticationLoginView: UIView {
     }
     
     @objc func didTapSignIn() {
-        delegate?.didTapSignIn()
+        delegate?.didTapSignIn(userTextField.text, pinTextField.text)
     }
 
     @objc func didTapSignInFaceID() {

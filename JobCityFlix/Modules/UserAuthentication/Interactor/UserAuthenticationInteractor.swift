@@ -1,18 +1,35 @@
 import Foundation
 
-final class UserAuthenticationInteractor {
+protocol UserAuthenticationInteractorProtocol {
+    func didTapConfirm(_ user: User)
+    func didTapCancel()
+    func didTapSignIn(_ userName: String?, _ pin: String?)
+    func didTapSignInFaceID()
+    func didTapRegister()
+}
 
+final class UserAuthenticationInteractor: UserAuthenticationInteractorProtocol {
+    
     private let auth = LocalAuthentication()
     var presenter: UserAuthenticationPresenter!
     private let userNameKey = "username"
     private let pinKey = "pin"
-
-    func viewDidLoad() {}
     
-    func didTapSignIn(_ userName: String?, pin: String?) {
+    func didTapConfirm(_ user: User) {
+        didTapSignIn(user.name, user.pin)
+    }
+    
+    func didTapCancel() {
+        presenter.showLogin()
+    }
+    
+    func didTapRegister() {
+        presenter.showRegister()
+    }
+    
+    func didTapSignIn(_ userName: String?, _ pin: String?) {
         if isValid(userName, pin) {
             saveCredentials(userName, pin)
-            auth.tryLocalAuthentication({ _ in })
             presenter.showLoginSuccess()
         } else {
             presenter.showLoginFailure(LoginError.invalidUserOrPassword)

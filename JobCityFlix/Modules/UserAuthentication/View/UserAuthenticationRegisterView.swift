@@ -16,34 +16,46 @@ final class UserAuthenticationRegisterView: UIView {
     weak var delegate: UserAuthenticationRegisterViewDelegate?
     
     private lazy var userTextField: TextFieldWithPadding = {
-        let userTextField = TextFieldWithPadding(frame: .zero, textPadding: UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 10), placeHolder: "Name:")
+        let userTextField = TextFieldWithPadding(frame: .zero,
+                                                 textPadding: UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 10),
+                                                 placeHolder: "Name:")
+        userTextField.autocapitalizationType = .none
+        userTextField.autocorrectionType = .no
+        userTextField.tag = 1
         return userTextField
     }()
     
     private lazy var emailTextField: TextFieldWithPadding = {
-        let userTextField = TextFieldWithPadding(frame: .zero, textPadding: UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 10), placeHolder: "E-mail:")
-        userTextField.keyboardType = .emailAddress
-        return userTextField
+        let emailTextField = TextFieldWithPadding(frame: .zero,
+                                                  textPadding: UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 10),
+                                                  placeHolder: "E-mail:")
+        emailTextField.autocorrectionType = .no
+        emailTextField.keyboardType = .emailAddress
+        emailTextField.autocapitalizationType = .none
+        userTextField.tag = 2
+        return emailTextField
     }()
     
     private lazy var pinTextField: TextFieldWithPadding = {
-        let pinTextField = TextFieldWithPadding(frame: .zero, textPadding: UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 10), placeHolder: "Pin:")
+        let pinTextField = TextFieldWithPadding(frame: .zero,
+                                                textPadding: UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 10),
+                                                placeHolder: "Pin:")
         pinTextField.keyboardType = .numberPad
         pinTextField.isSecureTextEntry = true
-        pinTextField.keyboardType = .emailAddress
+        userTextField.tag = 3
         return pinTextField
     }()
     
     private lazy var signInButton: UIButton = {
         let signInButton = UIButton()
-        signInButton.filledStyle(title: "CONFIRM")
+        signInButton.filledStyle(title: "Confirm")
         signInButton.addTarget(self, action: #selector(didTapConfirm), for: .touchUpInside)
         return signInButton
     }()
     
     private lazy var cancelButton: UIButton = {
         let signInButton = UIButton()
-        signInButton.transparentStyle(title: "CANCEL")
+        signInButton.transparentStyle(title: "Cancel")
         signInButton.addTarget(self, action: #selector(didTapCancel), for: .touchUpInside)
         return signInButton
     }()
@@ -58,10 +70,9 @@ final class UserAuthenticationRegisterView: UIView {
     private lazy var buttonStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.spacing = 10
+        stackView.spacing = 20
         return stackView
     }()
-    
     
     init() {
         super.init(frame: .zero)
@@ -81,7 +92,7 @@ final class UserAuthenticationRegisterView: UIView {
         addSubview(buttonStackView)
         
         NSLayoutConstraint.activate([
-            buttonStackView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 30),
+            buttonStackView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 20),
             buttonStackView.widthAnchor.constraint(equalToConstant: 200),
             buttonStackView.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
@@ -114,25 +125,6 @@ final class UserAuthenticationRegisterView: UIView {
         }
         
         NSLayoutConstraint.activate(constraints)
-    }
-    
-    func constraintSignInButton() {
-        constrainSubView(view: signInButton, width: 200, height: 40)
-        
-        NSLayoutConstraint.activate([
-            signInButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 30),
-            signInButton.centerXAnchor.constraint(equalTo: stackView.centerXAnchor)
-        ])
-    }
-    
-    func constraintCancelButton() {
-        constrainSubView(view: cancelButton, width: 200, height: 40)
-        
-        NSLayoutConstraint.activate([
-            signInButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 30),
-            signInButton.centerXAnchor.constraint(equalTo: stackView.centerXAnchor)
-        ])
-
     }
     
     @objc func didTapConfirm() {

@@ -12,8 +12,6 @@ class TextFieldWithPadding: UITextField {
         textColor = UIColor.white
         tintColor = UIColor.white
         backgroundColor = Colors.backGroundColor
-        keyboardType = .numberPad
-        isSecureTextEntry = true
         attributedPlaceholder = whitePlaceHolder(placeHolder)
         borderStyle = .roundedRect
     }

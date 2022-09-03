@@ -60,6 +60,16 @@
 		C7D2F85128C1666300EEC146 /* UserAuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D2F85028C1666300EEC146 /* UserAuthenticationViewController.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		C70D4E3428C3DB2900991B3C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C74B383628BAC068000E728D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C74B383D28BAC068000E728D;
+			remoteInfo = JobCityFlix;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		1776F33703C4A976428A0579 /* Pods-JobCityFlix.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JobCityFlix.release.xcconfig"; path = "Target Support Files/Pods-JobCityFlix/Pods-JobCityFlix.release.xcconfig"; sourceTree = "<group>"; };
 		925F6920E9DE9A3E7E3F41FC /* Pods_JobCityFlix.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JobCityFlix.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,6 +81,7 @@
 		C70D4E2228C391BB00991B3C /* UserAuthenticationRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthenticationRegisterView.swift; sourceTree = "<group>"; };
 		C70D4E2428C391EF00991B3C /* UserAuthenticationLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthenticationLoginView.swift; sourceTree = "<group>"; };
 		C70D4E2628C3938C00991B3C /* UserAuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthenticationView.swift; sourceTree = "<group>"; };
+		C70D4E3028C3DB2900991B3C /* JobCityFlixUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JobCityFlixUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C74B383E28BAC068000E728D /* JobCityFlix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JobCityFlix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C74B384128BAC068000E728D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C74B384528BAC068000E728D /* TVShowListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowListViewController.swift; sourceTree = "<group>"; };
@@ -119,6 +130,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		C70D4E2D28C3DB2900991B3C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C74B383B28BAC068000E728D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -193,10 +211,18 @@
 			path = Configurator;
 			sourceTree = "<group>";
 		};
+		C70D4E3128C3DB2900991B3C /* JobCityFlixUITests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = JobCityFlixUITests;
+			sourceTree = "<group>";
+		};
 		C74B383528BAC068000E728D = {
 			isa = PBXGroup;
 			children = (
 				C74B384028BAC068000E728D /* JobCityFlix */,
+				C70D4E3128C3DB2900991B3C /* JobCityFlixUITests */,
 				C74B383F28BAC068000E728D /* Products */,
 				6966C37EE359664E8216E85E /* Pods */,
 				8F30F8F0EACFF1153982E4EB /* Frameworks */,
@@ -207,6 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				C74B383E28BAC068000E728D /* JobCityFlix.app */,
+				C70D4E3028C3DB2900991B3C /* JobCityFlixUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -506,6 +533,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		C70D4E2F28C3DB2900991B3C /* JobCityFlixUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C70D4E3628C3DB2900991B3C /* Build configuration list for PBXNativeTarget "JobCityFlixUITests" */;
+			buildPhases = (
+				C70D4E2C28C3DB2900991B3C /* Sources */,
+				C70D4E2D28C3DB2900991B3C /* Frameworks */,
+				C70D4E2E28C3DB2900991B3C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C70D4E3528C3DB2900991B3C /* PBXTargetDependency */,
+			);
+			name = JobCityFlixUITests;
+			productName = JobCityFlixUITests;
+			productReference = C70D4E3028C3DB2900991B3C /* JobCityFlixUITests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		C74B383D28BAC068000E728D /* JobCityFlix */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C74B385228BAC069000E728D /* Build configuration list for PBXNativeTarget "JobCityFlix" */;
@@ -535,6 +580,10 @@
 				LastSwiftUpdateCheck = 1330;
 				LastUpgradeCheck = 1330;
 				TargetAttributes = {
+					C70D4E2F28C3DB2900991B3C = {
+						CreatedOnToolsVersion = 13.3;
+						TestTargetID = C74B383D28BAC068000E728D;
+					};
 					C74B383D28BAC068000E728D = {
 						CreatedOnToolsVersion = 13.3;
 					};
@@ -554,11 +603,19 @@
 			projectRoot = "";
 			targets = (
 				C74B383D28BAC068000E728D /* JobCityFlix */,
+				C70D4E2F28C3DB2900991B3C /* JobCityFlixUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		C70D4E2E28C3DB2900991B3C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C74B383C28BAC068000E728D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -613,6 +670,13 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		C70D4E2C28C3DB2900991B3C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C74B383A28BAC068000E728D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -670,6 +734,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		C70D4E3528C3DB2900991B3C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C74B383D28BAC068000E728D /* JobCityFlix */;
+			targetProxy = C70D4E3428C3DB2900991B3C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		C74B384C28BAC069000E728D /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -682,6 +754,42 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		C70D4E3728C3DB2900991B3C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UYXMKT4M49;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = projetoTeste.JobCityFlixUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JobCityFlix.app/JobCityFlix";
+			};
+			name = Debug;
+		};
+		C70D4E3828C3DB2900991B3C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UYXMKT4M49;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = projetoTeste.JobCityFlixUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JobCityFlix.app/JobCityFlix";
+			};
+			name = Release;
+		};
 		C74B385028BAC069000E728D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -855,6 +963,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		C70D4E3628C3DB2900991B3C /* Build configuration list for PBXNativeTarget "JobCityFlixUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C70D4E3728C3DB2900991B3C /* Debug */,
+				C70D4E3828C3DB2900991B3C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C74B383928BAC068000E728D /* Build configuration list for PBXProject "JobCityFlix" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

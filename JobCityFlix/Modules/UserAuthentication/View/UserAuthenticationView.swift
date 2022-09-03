@@ -1,6 +1,18 @@
 import UIKit
 
+
+protocol UserAuthenticationViewDelegate: AnyObject {
+    func didTapCancel()
+    func didTapConfirm(_ user: User)
+    
+    func didTapRegister()
+    func didTapSignIn(_ userName: String?, _ pin: String?)
+    func didTapSignInFaceID()
+}
+
 final class UserAuthenticationView: UIView {
+    
+    weak var delegate: UserAuthenticationViewDelegate?
     
     private lazy var backgroundImageView: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "bg")!)
@@ -17,11 +29,13 @@ final class UserAuthenticationView: UIView {
     
     private lazy var registerView: UserAuthenticationRegisterView = {
         let registerView = UserAuthenticationRegisterView()
+        registerView.delegate = self
         return registerView
     }()
 
     private lazy var loginView: UserAuthenticationLoginView = {
         let loginView = UserAuthenticationLoginView()
+        loginView.delegate = self
         return loginView
     }()
     
@@ -36,6 +50,7 @@ final class UserAuthenticationView: UIView {
         constraintBackgroundImageView()
         constraintContainerView()
         constraintLoginView()
+        constraintRegisterView()
         constraintLogoImageView()
         addKeyBoardObservers()
         
@@ -71,7 +86,7 @@ final class UserAuthenticationView: UIView {
         containerView.constrainSubView(view: loginView, top: 0, bottom: 0, left: 0, right: 0)
     }
     
-    private func constraintRegiterView() {
+    private func constraintRegisterView() {
         registerView.alpha = 0
         containerView.constrainSubView(view: registerView, top: 0, bottom: 0, left: 0, right: 0)
     }
@@ -91,11 +106,7 @@ final class UserAuthenticationView: UIView {
             logoImageView.bottomAnchor.constraint(equalTo: containerView.topAnchor, constant: 30)
         ])
     }
-    
-    private func showLoginView() {
         
-    }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -141,3 +152,44 @@ extension UserAuthenticationView {
         }, completion: nil)
     }
 }
+
+//MARK: Public Inputs
+extension UserAuthenticationView {
+
+    public func showLogin() {
+        registerView.alpha = 0
+        loginView.alpha = 1
+    }
+    
+    public func showRegister() {
+        registerView.alpha = 1
+        loginView.alpha = 0
+    }
+}
+
+extension UserAuthenticationView: UserAuthenticationLoginViewDelegate {
+
+    func didTapRegister() {
+        delegate?.didTapRegister()
+    }
+    
+    func didTapSignIn(_ userName: String?, _ pin: String?) {
+        delegate?.didTapSignIn(userName, pin)
+    }
+    
+    func didTapSignInFaceID() {
+        delegate?.didTapSignInFaceID()
+    }
+}
+
+extension UserAuthenticationView: UserAuthenticationRegisterViewDelegate {
+
+    func didTapCancel() {
+        delegate?.didTapCancel()
+    }
+    
+    func didTapConfirm(_ user: User) {
+        delegate?.didTapConfirm(user)
+    }
+}
+
