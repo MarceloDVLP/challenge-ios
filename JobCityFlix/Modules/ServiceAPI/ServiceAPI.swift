@@ -25,13 +25,13 @@ final class ServiceAPI {
         })
     }
     
-    func decode<T: Decodable> (_ data: Data) -> Result<T, Error> {
+    private func decode<T: Decodable> (_ data: Data) -> Result<T, Error> {
         let decoder = JSONDecoder()
         do {
             let object = try decoder.decode(T.self, from: data)
             return Result.success(object)
-        } catch {
-            return Result.failure(ServiceAPIError.clientError)
+        } catch let error {
+            return Result.failure(error)
         }
     }
 }

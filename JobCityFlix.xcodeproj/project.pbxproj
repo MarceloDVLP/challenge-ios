@@ -50,6 +50,11 @@
 		C7668E4228C4D52D0029FD9B /* MyFavoriteListConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7668E4128C4D52D0029FD9B /* MyFavoriteListConfigurator.swift */; };
 		C7668E4828C4D6640029FD9B /* MyFavoriteListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7668E4728C4D6640029FD9B /* MyFavoriteListPresenter.swift */; };
 		C7668E4A28C4D6710029FD9B /* MyFavoriteListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7668E4928C4D6710029FD9B /* MyFavoriteListInteractor.swift */; };
+		C7668E5228C509960029FD9B /* JobCityFlixTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7668E5128C509960029FD9B /* JobCityFlixTests.swift */; };
+		C7668E5D28C50A220029FD9B /* ServiceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7668E5C28C50A220029FD9B /* ServiceAPI.swift */; };
+		C7668E5F28C50E0D0029FD9B /* TVShowListJSON.json in Sources */ = {isa = PBXBuildFile; fileRef = C7668E5E28C50E0D0029FD9B /* TVShowListJSON.json */; };
+		C7668E6028C50F850029FD9B /* TVShowListJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = C7668E5E28C50E0D0029FD9B /* TVShowListJSON.json */; };
+		C7668E6128C510B20029FD9B /* TVShowListJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = C7668E5E28C50E0D0029FD9B /* TVShowListJSON.json */; };
 		C7D2F7F728BBFD5000EEC146 /* TVShowListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D2F7F628BBFD5000EEC146 /* TVShowListView.swift */; };
 		C7D2F7F928BBFD7E00EEC146 /* TVShowListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D2F7F828BBFD7E00EEC146 /* TVShowListCell.swift */; };
 		C7D2F7FB28BBFDBF00EEC146 /* UIView+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D2F7FA28BBFDBF00EEC146 /* UIView+Helpers.swift */; };
@@ -84,6 +89,13 @@
 
 /* Begin PBXContainerItemProxy section */
 		C70D4E3428C3DB2900991B3C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C74B383628BAC068000E728D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C74B383D28BAC068000E728D;
+			remoteInfo = JobCityFlix;
+		};
+		C7668E5328C509960029FD9B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C74B383628BAC068000E728D /* Project object */;
 			proxyType = 1;
@@ -140,6 +152,10 @@
 		C7668E4128C4D52D0029FD9B /* MyFavoriteListConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFavoriteListConfigurator.swift; sourceTree = "<group>"; };
 		C7668E4728C4D6640029FD9B /* MyFavoriteListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFavoriteListPresenter.swift; sourceTree = "<group>"; };
 		C7668E4928C4D6710029FD9B /* MyFavoriteListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFavoriteListInteractor.swift; sourceTree = "<group>"; };
+		C7668E4F28C509960029FD9B /* JobCityFlixTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JobCityFlixTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C7668E5128C509960029FD9B /* JobCityFlixTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobCityFlixTests.swift; sourceTree = "<group>"; };
+		C7668E5C28C50A220029FD9B /* ServiceAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceAPI.swift; sourceTree = "<group>"; };
+		C7668E5E28C50E0D0029FD9B /* TVShowListJSON.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TVShowListJSON.json; sourceTree = "<group>"; };
 		C7D2F7F628BBFD5000EEC146 /* TVShowListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowListView.swift; sourceTree = "<group>"; };
 		C7D2F7F828BBFD7E00EEC146 /* TVShowListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowListCell.swift; sourceTree = "<group>"; };
 		C7D2F7FA28BBFDBF00EEC146 /* UIView+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Helpers.swift"; sourceTree = "<group>"; };
@@ -186,6 +202,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				6724437603C19F1434E2F6AC /* Pods_JobCityFlix.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C7668E4C28C509960029FD9B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,6 +358,7 @@
 			children = (
 				C74B384028BAC068000E728D /* JobCityFlix */,
 				C70D4E3128C3DB2900991B3C /* JobCityFlixUITests */,
+				C7668E5028C509960029FD9B /* JobCityFlixTests */,
 				C74B383F28BAC068000E728D /* Products */,
 				6966C37EE359664E8216E85E /* Pods */,
 				8F30F8F0EACFF1153982E4EB /* Frameworks */,
@@ -346,6 +370,7 @@
 			children = (
 				C74B383E28BAC068000E728D /* JobCityFlix.app */,
 				C70D4E3028C3DB2900991B3C /* JobCityFlixUITests.xctest */,
+				C7668E4F28C509960029FD9B /* JobCityFlixTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -362,7 +387,7 @@
 		C74B385728BBAC76000E728D /* TVShowList */ = {
 			isa = PBXGroup;
 			children = (
-				C74B386A28BBCB36000E728D /* API */,
+				C74B386A28BBCB36000E728D /* ServiceAPI */,
 				C74B386928BBCB2A000E728D /* Interactor */,
 				C74B386828BBCB24000E728D /* Presenter */,
 				C74B386728BBCB18000E728D /* View */,
@@ -432,12 +457,12 @@
 			path = Interactor;
 			sourceTree = "<group>";
 		};
-		C74B386A28BBCB36000E728D /* API */ = {
+		C74B386A28BBCB36000E728D /* ServiceAPI */ = {
 			isa = PBXGroup;
 			children = (
 				C74B386228BBB72C000E728D /* ServiceAPI+TVShow.swift */,
 			);
-			path = API;
+			path = ServiceAPI;
 			sourceTree = "<group>";
 		};
 		C7668E4328C4D6250029FD9B /* View */ = {
@@ -473,6 +498,48 @@
 				C70D4E6628C4C51100991B3C /* FavoriteEntity+CoreDataProperties.swift */,
 			);
 			path = "CoreData Manager";
+			sourceTree = "<group>";
+		};
+		C7668E5028C509960029FD9B /* JobCityFlixTests */ = {
+			isa = PBXGroup;
+			children = (
+				C7668E5828C5099F0029FD9B /* Modules */,
+				C7668E5128C509960029FD9B /* JobCityFlixTests.swift */,
+			);
+			path = JobCityFlixTests;
+			sourceTree = "<group>";
+		};
+		C7668E5828C5099F0029FD9B /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				C7668E5A28C509BA0029FD9B /* Application */,
+				C7668E5928C509A80029FD9B /* TVShowList */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		C7668E5928C509A80029FD9B /* TVShowList */ = {
+			isa = PBXGroup;
+			children = (
+				C7668E5B28C509DE0029FD9B /* ServiceAPI */,
+			);
+			path = TVShowList;
+			sourceTree = "<group>";
+		};
+		C7668E5A28C509BA0029FD9B /* Application */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		C7668E5B28C509DE0029FD9B /* ServiceAPI */ = {
+			isa = PBXGroup;
+			children = (
+				C7668E5C28C50A220029FD9B /* ServiceAPI.swift */,
+				C7668E5E28C50E0D0029FD9B /* TVShowListJSON.json */,
+			);
+			path = ServiceAPI;
 			sourceTree = "<group>";
 		};
 		C7D2F7FE28BC016200EEC146 /* TabBar */ = {
@@ -724,6 +791,24 @@
 			productReference = C74B383E28BAC068000E728D /* JobCityFlix.app */;
 			productType = "com.apple.product-type.application";
 		};
+		C7668E4E28C509960029FD9B /* JobCityFlixTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C7668E5528C509960029FD9B /* Build configuration list for PBXNativeTarget "JobCityFlixTests" */;
+			buildPhases = (
+				C7668E4B28C509960029FD9B /* Sources */,
+				C7668E4C28C509960029FD9B /* Frameworks */,
+				C7668E4D28C509960029FD9B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C7668E5428C509960029FD9B /* PBXTargetDependency */,
+			);
+			name = JobCityFlixTests;
+			productName = JobCityFlixTests;
+			productReference = C7668E4F28C509960029FD9B /* JobCityFlixTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -740,6 +825,10 @@
 					};
 					C74B383D28BAC068000E728D = {
 						CreatedOnToolsVersion = 13.3;
+					};
+					C7668E4E28C509960029FD9B = {
+						CreatedOnToolsVersion = 13.3;
+						TestTargetID = C74B383D28BAC068000E728D;
 					};
 				};
 			};
@@ -758,6 +847,7 @@
 			targets = (
 				C74B383D28BAC068000E728D /* JobCityFlix */,
 				C70D4E2F28C3DB2900991B3C /* JobCityFlixUITests */,
+				C7668E4E28C509960029FD9B /* JobCityFlixTests */,
 			);
 		};
 /* End PBXProject section */
@@ -776,6 +866,15 @@
 			files = (
 				C74B384E28BAC069000E728D /* LaunchScreen.storyboard in Resources */,
 				C74B384B28BAC069000E728D /* Assets.xcassets in Resources */,
+				C7668E6128C510B20029FD9B /* TVShowListJSON.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C7668E4D28C509960029FD9B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C7668E6028C50F850029FD9B /* TVShowListJSON.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -908,6 +1007,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C7668E4B28C509960029FD9B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C7668E5D28C50A220029FD9B /* ServiceAPI.swift in Sources */,
+				C7668E5228C509960029FD9B /* JobCityFlixTests.swift in Sources */,
+				C7668E5F28C50E0D0029FD9B /* TVShowListJSON.json in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -915,6 +1024,11 @@
 			isa = PBXTargetDependency;
 			target = C74B383D28BAC068000E728D /* JobCityFlix */;
 			targetProxy = C70D4E3428C3DB2900991B3C /* PBXContainerItemProxy */;
+		};
+		C7668E5428C509960029FD9B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C74B383D28BAC068000E728D /* JobCityFlix */;
+			targetProxy = C7668E5328C509960029FD9B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1136,6 +1250,42 @@
 			};
 			name = Release;
 		};
+		C7668E5628C509960029FD9B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UYXMKT4M49;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = projetoTeste.JobCityFlixTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JobCityFlix.app/JobCityFlix";
+			};
+			name = Debug;
+		};
+		C7668E5728C509960029FD9B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UYXMKT4M49;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = projetoTeste.JobCityFlixTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JobCityFlix.app/JobCityFlix";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1162,6 +1312,15 @@
 			buildConfigurations = (
 				C74B385328BAC069000E728D /* Debug */,
 				C74B385428BAC069000E728D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C7668E5528C509960029FD9B /* Build configuration list for PBXNativeTarget "JobCityFlixTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C7668E5628C509960029FD9B /* Debug */,
+				C7668E5728C509960029FD9B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
