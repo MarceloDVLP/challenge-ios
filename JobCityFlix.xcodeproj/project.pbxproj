@@ -55,6 +55,7 @@
 		C7668E5F28C50E0D0029FD9B /* TVShowListJSON.json in Sources */ = {isa = PBXBuildFile; fileRef = C7668E5E28C50E0D0029FD9B /* TVShowListJSON.json */; };
 		C7668E6028C50F850029FD9B /* TVShowListJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = C7668E5E28C50E0D0029FD9B /* TVShowListJSON.json */; };
 		C7668E6128C510B20029FD9B /* TVShowListJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = C7668E5E28C50E0D0029FD9B /* TVShowListJSON.json */; };
+		C7668E6428C518DF0029FD9B /* HTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7668E6328C518DF0029FD9B /* HTTPClientTests.swift */; };
 		C7D2F7F728BBFD5000EEC146 /* TVShowListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D2F7F628BBFD5000EEC146 /* TVShowListView.swift */; };
 		C7D2F7F928BBFD7E00EEC146 /* TVShowListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D2F7F828BBFD7E00EEC146 /* TVShowListCell.swift */; };
 		C7D2F7FB28BBFDBF00EEC146 /* UIView+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D2F7FA28BBFDBF00EEC146 /* UIView+Helpers.swift */; };
@@ -156,6 +157,7 @@
 		C7668E5128C509960029FD9B /* JobCityFlixTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobCityFlixTests.swift; sourceTree = "<group>"; };
 		C7668E5C28C50A220029FD9B /* ServiceAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceAPI.swift; sourceTree = "<group>"; };
 		C7668E5E28C50E0D0029FD9B /* TVShowListJSON.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TVShowListJSON.json; sourceTree = "<group>"; };
+		C7668E6328C518DF0029FD9B /* HTTPClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClientTests.swift; sourceTree = "<group>"; };
 		C7D2F7F628BBFD5000EEC146 /* TVShowListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowListView.swift; sourceTree = "<group>"; };
 		C7D2F7F828BBFD7E00EEC146 /* TVShowListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowListCell.swift; sourceTree = "<group>"; };
 		C7D2F7FA28BBFDBF00EEC146 /* UIView+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Helpers.swift"; sourceTree = "<group>"; };
@@ -235,9 +237,9 @@
 		C70D4E1228C22E7500991B3C /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				C7D2F83328BFF69E00EEC146 /* EpisodeDetail */,
 				C70D4E6028C4C19B00991B3C /* MyFavoriteList */,
 				C70D4E4A28C4994B00991B3C /* PersonDetail */,
-				C7D2F83328BFF69E00EEC146 /* EpisodeDetail */,
 				C7D2F83628C13EC800EEC146 /* Search */,
 				C74B385A28BBACC5000E728D /* ServiceAPI */,
 				C7D2F80128BD60FC00EEC146 /* TVShowDetail */,
@@ -513,6 +515,7 @@
 			isa = PBXGroup;
 			children = (
 				C7668E5A28C509BA0029FD9B /* Application */,
+				C7668E6228C518C60029FD9B /* ServiceAPI */,
 				C7668E5928C509A80029FD9B /* TVShowList */,
 			);
 			path = Modules;
@@ -538,6 +541,14 @@
 			children = (
 				C7668E5C28C50A220029FD9B /* ServiceAPI.swift */,
 				C7668E5E28C50E0D0029FD9B /* TVShowListJSON.json */,
+			);
+			path = ServiceAPI;
+			sourceTree = "<group>";
+		};
+		C7668E6228C518C60029FD9B /* ServiceAPI */ = {
+			isa = PBXGroup;
+			children = (
+				C7668E6328C518DF0029FD9B /* HTTPClientTests.swift */,
 			);
 			path = ServiceAPI;
 			sourceTree = "<group>";
@@ -1013,6 +1024,7 @@
 			files = (
 				C7668E5D28C50A220029FD9B /* ServiceAPI.swift in Sources */,
 				C7668E5228C509960029FD9B /* JobCityFlixTests.swift in Sources */,
+				C7668E6428C518DF0029FD9B /* HTTPClientTests.swift in Sources */,
 				C7668E5F28C50E0D0029FD9B /* TVShowListJSON.json in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
