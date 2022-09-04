@@ -181,16 +181,23 @@ extension SearchTVShowView: UICollectionViewDelegate {
 extension SearchTVShowView: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let size: CGSize
         switch SearchSection(rawValue: indexPath.section)! {
-        case .filters: return CGSize(width: collectionView.frame.width, height: 40)
-        case .results: return size(collectionView, sizeForItemAt: indexPath )
+        case .filters: size = CGSize(width: collectionView.frame.width, height: 40)
+        case .results: size = self.size(collectionView, sizeForItemAt: indexPath)
         }
+
+        let insets = self.collectionView(collectionView, layout: collectionViewLayout, insetForSectionAt: indexPath.section)
+        let width = size.width-insets.left-insets.right
+
+        return CGSize(width: width, height: size.height)
     }
     
     func size(_ collectionView: UICollectionView, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch selectedFilter {
         case .tvShows: return CGSize(width: 85, height: 150)
-        case .actors: return CGSize(width: 100, height: 170)
+        case .actors: return CGSize(width: 132, height: 170)
         }
     }
 }
