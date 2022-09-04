@@ -6,7 +6,6 @@ final class PersonDetailInteractor: PersonDetailInteractorProtocol {
     private var service: ServiceAPI
     private var presenter: PersonDetailPresenterProtocol
     private var person: Person
-
     
     init (service: ServiceAPI, presenter: PersonDetailPresenterProtocol, person: Person) {
         self.service = service
@@ -33,5 +32,4 @@ final class PersonDetailInteractor: PersonDetailInteractorProtocol {
             }
         })
     }
-
 }

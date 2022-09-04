@@ -9,12 +9,28 @@ protocol FavoriteManagerProtocol {
 }
 
 
+final class PersistentContainer {
+    static var shared = PersistentContainer()
+    private init() {}
+    var persistentContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "CoredataModel")
+        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+            if let error = error as NSError? {
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }
+        })
+        return container
+    }()
+}
+
 final class FavoriteManager: FavoriteManagerProtocol {
     
-    static let shared: FavoriteManager = FavoriteManager()
+    var persistentContainer: NSPersistentContainer
     
-    private init() {}
-                                
+    init(persistentContainer: NSPersistentContainer) {
+        self.persistentContainer = persistentContainer
+    }
+                                    
     func save(showName: String, showId: Int, imageURL: String?) {
         let desc = NSEntityDescription.entity(forEntityName: "FavoriteEntity", in: persistentContainer.viewContext)!
         let entity = FavoriteEntity(entity: desc, insertInto: persistentContainer.viewContext)
@@ -25,7 +41,6 @@ final class FavoriteManager: FavoriteManagerProtocol {
     }
     
     func fetch() -> [FavoriteEntity] {
-
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "FavoriteEntity")
         request.returnsObjectsAsFaults = false
         
@@ -39,17 +54,6 @@ final class FavoriteManager: FavoriteManagerProtocol {
         }
         
     }
-    
-    lazy var persistentContainer: NSPersistentContainer = {
-
-        let container = NSPersistentContainer(name: "CoredataModel")
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-            if let error = error as NSError? {
-                fatalError("Unresolved error \(error), \(error.userInfo)")
-            }
-        })
-        return container
-    }()
     
     func removeFavorite(with id: Int) {
         let managedObjectContext = persistentContainer.viewContext
@@ -89,5 +93,4 @@ final class FavoriteManager: FavoriteManagerProtocol {
             }
         }
     }
-    
 }

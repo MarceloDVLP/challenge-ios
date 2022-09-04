@@ -5,7 +5,8 @@ final class TVShowListConfigurator {
     static func make() -> UIViewController {
         let session = URLSession.shared
         let service = ServiceAPI(client: HTTPClient(session: session))
-        let manager = FavoriteManager.shared
+        let container = PersistentContainer.shared.persistentContainer
+        let manager = FavoriteManager(persistentContainer: container)
         let presenter = TVShowPresenter()
         
         let interactor = TVShowInteractor(manager: manager, service: service, presenter: presenter)

@@ -5,7 +5,8 @@ final class MyFavoriteListConfigurator {
     static func make() -> UIViewController {
 
         let presenter = MyFavoriteListPresenter()
-        let manager = FavoriteManager.shared
+        let container = PersistentContainer.shared.persistentContainer
+        let manager = FavoriteManager(persistentContainer: container)
         let interactor = MyFavoriteListInteractor(manager: manager)
         let viewController = MyFavoriteListViewController(interactor: interactor)
         interactor.delegate = presenter
