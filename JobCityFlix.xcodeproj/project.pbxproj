@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B1A138FFEA0F4C7418C4AE8 /* libPods-JobCityFlixTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 10F95DA7DFF00211F1BB1287 /* libPods-JobCityFlixTests.a */; };
 		6724437603C19F1434E2F6AC /* Pods_JobCityFlix.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 925F6920E9DE9A3E7E3F41FC /* Pods_JobCityFlix.framework */; };
 		C70D4E1528C2319900991B3C /* TextFieldWithPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70D4E1428C2319900991B3C /* TextFieldWithPadding.swift */; };
 		C70D4E1B28C2667C00991B3C /* UserAutheticationConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70D4E1A28C2667C00991B3C /* UserAutheticationConfigurator.swift */; };
@@ -35,7 +36,11 @@
 		C70D4E6728C4C51100991B3C /* FavoriteEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70D4E6628C4C51100991B3C /* FavoriteEntity+CoreDataProperties.swift */; };
 		C70D4E6928C4C51400991B3C /* FavoriteEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70D4E6828C4C51400991B3C /* FavoriteEntity+CoreDataClass.swift */; };
 		C70D4E6B28C4C54D00991B3C /* FavoriteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70D4E6A28C4C54D00991B3C /* FavoriteManager.swift */; };
-		C728D1F328C52ACC00CC6FAF /* TvShowListInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C728D1F228C52ACC00CC6FAF /* TvShowListInteractorTests.swift */; };
+		C728D1F328C52ACC00CC6FAF /* TVShowListInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C728D1F228C52ACC00CC6FAF /* TVShowListInteractorTests.swift */; };
+		C728D1F628C53E4800CC6FAF /* TVShowListPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C728D1F528C53E4800CC6FAF /* TVShowListPresenterTests.swift */; };
+		C728D1F828C5430900CC6FAF /* TVShowListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C728D1F728C5430900CC6FAF /* TVShowListViewControllerTests.swift */; };
+		C728D1FB28C54B6600CC6FAF /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C728D1FA28C54B6600CC6FAF /* Media.xcassets */; };
+		C728D1FE28C550FB00CC6FAF /* TVShowEpisodeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C728D1FD28C550FB00CC6FAF /* TVShowEpisodeDetailViewController.swift */; };
 		C74B384228BAC068000E728D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74B384128BAC068000E728D /* AppDelegate.swift */; };
 		C74B384628BAC068000E728D /* TVShowListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74B384528BAC068000E728D /* TVShowListViewController.swift */; };
 		C74B384B28BAC069000E728D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C74B384A28BAC069000E728D /* Assets.xcassets */; };
@@ -108,8 +113,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		10F95DA7DFF00211F1BB1287 /* libPods-JobCityFlixTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JobCityFlixTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1776F33703C4A976428A0579 /* Pods-JobCityFlix.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JobCityFlix.release.xcconfig"; path = "Target Support Files/Pods-JobCityFlix/Pods-JobCityFlix.release.xcconfig"; sourceTree = "<group>"; };
 		925F6920E9DE9A3E7E3F41FC /* Pods_JobCityFlix.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JobCityFlix.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9FC7F7A8D54B39D249685378 /* Pods-JobCityFlixTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JobCityFlixTests.release.xcconfig"; path = "Target Support Files/Pods-JobCityFlixTests/Pods-JobCityFlixTests.release.xcconfig"; sourceTree = "<group>"; };
 		C70D4E1428C2319900991B3C /* TextFieldWithPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithPadding.swift; sourceTree = "<group>"; };
 		C70D4E1A28C2667C00991B3C /* UserAutheticationConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAutheticationConfigurator.swift; sourceTree = "<group>"; };
 		C70D4E1C28C2669000991B3C /* UserAuthenticationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthenticationPresenter.swift; sourceTree = "<group>"; };
@@ -138,7 +145,11 @@
 		C70D4E6628C4C51100991B3C /* FavoriteEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "FavoriteEntity+CoreDataProperties.swift"; path = "/Users/marcelocarvalho/Documents/JobCityFlix/JobCityFlix/Modules/MyFavoriteList/FavoriteEntity+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		C70D4E6828C4C51400991B3C /* FavoriteEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "FavoriteEntity+CoreDataClass.swift"; path = "/Users/marcelocarvalho/Documents/JobCityFlix/JobCityFlix/Modules/MyFavoriteList/FavoriteEntity+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		C70D4E6A28C4C54D00991B3C /* FavoriteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteManager.swift; sourceTree = "<group>"; };
-		C728D1F228C52ACC00CC6FAF /* TvShowListInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvShowListInteractorTests.swift; sourceTree = "<group>"; };
+		C728D1F228C52ACC00CC6FAF /* TVShowListInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowListInteractorTests.swift; sourceTree = "<group>"; };
+		C728D1F528C53E4800CC6FAF /* TVShowListPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowListPresenterTests.swift; sourceTree = "<group>"; };
+		C728D1F728C5430900CC6FAF /* TVShowListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowListViewControllerTests.swift; sourceTree = "<group>"; };
+		C728D1FA28C54B6600CC6FAF /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		C728D1FD28C550FB00CC6FAF /* TVShowEpisodeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowEpisodeDetailViewController.swift; sourceTree = "<group>"; };
 		C74B383E28BAC068000E728D /* JobCityFlix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JobCityFlix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C74B384128BAC068000E728D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C74B384528BAC068000E728D /* TVShowListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowListViewController.swift; sourceTree = "<group>"; };
@@ -192,6 +203,7 @@
 		C7D2F84A28C159E200EEC146 /* ServiceAPI+SearchTVShow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ServiceAPI+SearchTVShow.swift"; sourceTree = "<group>"; };
 		C7D2F84C28C15A6A00EEC146 /* UIViewController+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Helpers.swift"; sourceTree = "<group>"; };
 		C7D2F85028C1666300EEC146 /* UserAuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthenticationViewController.swift; sourceTree = "<group>"; };
+		EA2480B1D6BD3EA992F52851 /* Pods-JobCityFlixTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JobCityFlixTests.debug.xcconfig"; path = "Target Support Files/Pods-JobCityFlixTests/Pods-JobCityFlixTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FAC9E4BE89C48DD2B326686E /* Pods-JobCityFlix.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JobCityFlix.debug.xcconfig"; path = "Target Support Files/Pods-JobCityFlix/Pods-JobCityFlix.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -215,6 +227,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B1A138FFEA0F4C7418C4AE8 /* libPods-JobCityFlixTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,6 +239,8 @@
 			children = (
 				FAC9E4BE89C48DD2B326686E /* Pods-JobCityFlix.debug.xcconfig */,
 				1776F33703C4A976428A0579 /* Pods-JobCityFlix.release.xcconfig */,
+				EA2480B1D6BD3EA992F52851 /* Pods-JobCityFlixTests.debug.xcconfig */,
+				9FC7F7A8D54B39D249685378 /* Pods-JobCityFlixTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -234,6 +249,7 @@
 			isa = PBXGroup;
 			children = (
 				925F6920E9DE9A3E7E3F41FC /* Pods_JobCityFlix.framework */,
+				10F95DA7DFF00211F1BB1287 /* libPods-JobCityFlixTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -362,9 +378,33 @@
 		C728D1F128C52AB500CC6FAF /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
-				C728D1F228C52ACC00CC6FAF /* TvShowListInteractorTests.swift */,
+				C728D1F228C52ACC00CC6FAF /* TVShowListInteractorTests.swift */,
 			);
 			path = Interactor;
+			sourceTree = "<group>";
+		};
+		C728D1F428C53E3A00CC6FAF /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				C728D1F528C53E4800CC6FAF /* TVShowListPresenterTests.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		C728D1F928C5446C00CC6FAF /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C728D1F728C5430900CC6FAF /* TVShowListViewControllerTests.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		C728D1FC28C550DF00CC6FAF /* EpisodeDetail */ = {
+			isa = PBXGroup;
+			children = (
+				C728D1FD28C550FB00CC6FAF /* TVShowEpisodeDetailViewController.swift */,
+			);
+			path = EpisodeDetail;
 			sourceTree = "<group>";
 		};
 		C74B383528BAC068000E728D = {
@@ -511,6 +551,7 @@
 			children = (
 				C7668E5828C5099F0029FD9B /* Modules */,
 				C7668E5128C509960029FD9B /* JobCityFlixTests.swift */,
+				C728D1FA28C54B6600CC6FAF /* Media.xcassets */,
 			);
 			path = JobCityFlixTests;
 			sourceTree = "<group>";
@@ -518,6 +559,7 @@
 		C7668E5828C5099F0029FD9B /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				C728D1FC28C550DF00CC6FAF /* EpisodeDetail */,
 				C7668E5A28C509BA0029FD9B /* Application */,
 				C7668E6228C518C60029FD9B /* ServiceAPI */,
 				C7668E5928C509A80029FD9B /* TVShowList */,
@@ -528,6 +570,8 @@
 		C7668E5928C509A80029FD9B /* TVShowList */ = {
 			isa = PBXGroup;
 			children = (
+				C728D1F928C5446C00CC6FAF /* ViewController */,
+				C728D1F428C53E3A00CC6FAF /* Presenter */,
 				C728D1F128C52AB500CC6FAF /* Interactor */,
 				C7668E5B28C509DE0029FD9B /* ServiceAPI */,
 			);
@@ -820,6 +864,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C7668E5528C509960029FD9B /* Build configuration list for PBXNativeTarget "JobCityFlixTests" */;
 			buildPhases = (
+				A98ED23A5D8F53DC286540B0 /* [CP] Check Pods Manifest.lock */,
 				C7668E4B28C509960029FD9B /* Sources */,
 				C7668E4C28C509960029FD9B /* Frameworks */,
 				C7668E4D28C509960029FD9B /* Resources */,
@@ -899,6 +944,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C728D1FB28C54B6600CC6FAF /* Media.xcassets in Resources */,
 				C7668E6028C50F850029FD9B /* TVShowListJSON.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -922,6 +968,28 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-JobCityFlix-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A98ED23A5D8F53DC286540B0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-JobCityFlixTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1036,12 +1104,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C728D1FE28C550FB00CC6FAF /* TVShowEpisodeDetailViewController.swift in Sources */,
 				C7668E5D28C50A220029FD9B /* ServiceAPI.swift in Sources */,
-				C728D1F328C52ACC00CC6FAF /* TvShowListInteractorTests.swift in Sources */,
+				C728D1F328C52ACC00CC6FAF /* TVShowListInteractorTests.swift in Sources */,
 				C7668E5228C509960029FD9B /* JobCityFlixTests.swift in Sources */,
 				C7668E6728C5257E0029FD9B /* ServiceAPI+TVShowTests.swift in Sources */,
 				C7668E6428C518DF0029FD9B /* HTTPClientTests.swift in Sources */,
+				C728D1F628C53E4800CC6FAF /* TVShowListPresenterTests.swift in Sources */,
 				C7668E5F28C50E0D0029FD9B /* TVShowListJSON.json in Sources */,
+				C728D1F828C5430900CC6FAF /* TVShowListViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1280,6 +1351,7 @@
 		};
 		C7668E5628C509960029FD9B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EA2480B1D6BD3EA992F52851 /* Pods-JobCityFlixTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -1298,6 +1370,7 @@
 		};
 		C7668E5728C509960029FD9B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9FC7F7A8D54B39D249685378 /* Pods-JobCityFlixTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;

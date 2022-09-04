@@ -124,7 +124,6 @@ extension TVShowListView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         
         let height = collectionView.frame.height*0.6
-
         return CGSize(width: collectionView.frame.width, height: height)
     }
 }

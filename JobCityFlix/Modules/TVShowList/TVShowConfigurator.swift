@@ -22,7 +22,7 @@ final class TVShowListConfigurator {
 
 protocol TVShowPresenterProtocol: AnyObject {
     func willStartFetch()
-    func showEpisodes(_ tvShows: [TVShowCodable])
+    func show(_ tvShows: [TVShowCodable])
     func showError(_ error: Error)
 }
 

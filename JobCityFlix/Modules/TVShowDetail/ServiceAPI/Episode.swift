@@ -27,4 +27,18 @@ struct Episode: Decodable {
         case image
         case summary
     }
+    
+    init(name: String?, number: Int?, season: Int?, airtime: String?, runtime: Int?, summary: String?) {
+        self.name = name
+        self.number = number
+        self.season = season
+        self.airtime = airtime
+        self.runtime = runtime
+        self.summary = summary
+        self.id = nil
+        self.url = nil
+        self.airdate = nil
+        self.airstamp = nil
+        self.image = nil
+    }
 }

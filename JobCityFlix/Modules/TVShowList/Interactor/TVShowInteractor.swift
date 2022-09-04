@@ -43,7 +43,7 @@ final class TVShowInteractor: TVShowInteractorProtocol {
             case .success(let tvShows):
                 self.shows = tvShows
                 self.page = self.page + 1
-                self.presenter.showEpisodes(tvShows)
+                self.presenter.show(tvShows)
                 
             case .failure(let error):
                 self.presenter.showError(error)

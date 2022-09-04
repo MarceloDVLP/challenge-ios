@@ -3,7 +3,9 @@ import SDWebImage
 
 final class TVShowListCell: UICollectionViewCell {
     
-    private lazy var imageView: UIImageView = {
+    static let size = CGSize(width: 85, height: 130)
+    
+    lazy var imageView: UIImageView = {
         let view = UIImageView()
         view.backgroundColor = .black
         view.contentMode = .scaleAspectFill

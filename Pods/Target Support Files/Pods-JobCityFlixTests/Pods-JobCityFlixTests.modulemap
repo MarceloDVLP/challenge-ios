@@ -1,0 +1,6 @@
+module Pods_JobCityFlixTests {
+  umbrella header "Pods-JobCityFlixTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

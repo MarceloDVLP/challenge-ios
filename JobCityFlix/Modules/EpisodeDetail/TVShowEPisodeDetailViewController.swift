@@ -9,7 +9,7 @@ final class TVShowEPisodeDetailViewController: UIViewController {
         return view
     }()
     
-    private lazy var imageView: UIImageView = {
+    lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.sd_imageTransition = .fade(duration: 0.2)
         imageView.clipsToBounds = true

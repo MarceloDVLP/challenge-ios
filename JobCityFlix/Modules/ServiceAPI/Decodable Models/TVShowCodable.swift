@@ -49,12 +49,11 @@ struct TVShowCodable: Decodable, Equatable {
         case summary
     }
     
-    public init(_ id: Int) {
+    public init(_ id: Int, name: String? = nil) {
         self.id = id
-        
+        self.name = name
         url = nil
         type = nil
-        name = nil
         language = nil
         genres = nil
         status = nil

@@ -12,7 +12,7 @@ final class TVShowMainHeader: UICollectionReusableView {
     
     var show: TVShowCodable?
     
-    private lazy var imageView: UIImageView = {
+    lazy var imageView: UIImageView = {
         let view = UIImageView()
         view.contentMode = .scaleAspectFill
         view.sd_imageTransition = .fade

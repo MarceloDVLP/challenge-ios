@@ -8,7 +8,7 @@
 import XCTest
 @testable import JobCityFlix
 
-class TvShowListInteractorTests: XCTestCase {
+final class TVShowListInteractorTests: XCTestCase {
 
     
     func testShouldStartToFetchWhenViewDidLoad() {
@@ -26,6 +26,7 @@ class TvShowListInteractorTests: XCTestCase {
         //GIVEN
         let (sut, presenterMock, serviceMock) = makeSUT()
         let showsMock = makeJSONMockArray()
+        serviceMock.expectedResult = .success(showsMock)
         serviceMock.shows = showsMock
         //WHEN
         sut.viewDidLoad()
@@ -107,7 +108,7 @@ class TvShowListInteractorTests: XCTestCase {
             didCallWillStartFetch = true
         }
         
-        func showEpisodes(_ tvShows: [TVShowCodable]) {
+        func show(_ tvShows: [TVShowCodable]) {
             self.tvShows = tvShows
         }
         
