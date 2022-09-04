@@ -56,6 +56,7 @@
 		C7668E6028C50F850029FD9B /* TVShowListJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = C7668E5E28C50E0D0029FD9B /* TVShowListJSON.json */; };
 		C7668E6128C510B20029FD9B /* TVShowListJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = C7668E5E28C50E0D0029FD9B /* TVShowListJSON.json */; };
 		C7668E6428C518DF0029FD9B /* HTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7668E6328C518DF0029FD9B /* HTTPClientTests.swift */; };
+		C7668E6728C5257E0029FD9B /* ServiceAPI+TVShowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7668E6628C5257E0029FD9B /* ServiceAPI+TVShowTests.swift */; };
 		C7D2F7F728BBFD5000EEC146 /* TVShowListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D2F7F628BBFD5000EEC146 /* TVShowListView.swift */; };
 		C7D2F7F928BBFD7E00EEC146 /* TVShowListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D2F7F828BBFD7E00EEC146 /* TVShowListCell.swift */; };
 		C7D2F7FB28BBFDBF00EEC146 /* UIView+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D2F7FA28BBFDBF00EEC146 /* UIView+Helpers.swift */; };
@@ -158,6 +159,7 @@
 		C7668E5C28C50A220029FD9B /* ServiceAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceAPI.swift; sourceTree = "<group>"; };
 		C7668E5E28C50E0D0029FD9B /* TVShowListJSON.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TVShowListJSON.json; sourceTree = "<group>"; };
 		C7668E6328C518DF0029FD9B /* HTTPClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClientTests.swift; sourceTree = "<group>"; };
+		C7668E6628C5257E0029FD9B /* ServiceAPI+TVShowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ServiceAPI+TVShowTests.swift"; sourceTree = "<group>"; };
 		C7D2F7F628BBFD5000EEC146 /* TVShowListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowListView.swift; sourceTree = "<group>"; };
 		C7D2F7F828BBFD7E00EEC146 /* TVShowListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowListCell.swift; sourceTree = "<group>"; };
 		C7D2F7FA28BBFDBF00EEC146 /* UIView+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Helpers.swift"; sourceTree = "<group>"; };
@@ -401,20 +403,12 @@
 		C74B385A28BBACC5000E728D /* ServiceAPI */ = {
 			isa = PBXGroup;
 			children = (
-				C74B386128BBB454000E728D /* RemoteService */,
+				C7668E6528C525420029FD9B /* Decodable Models */,
+				C74B385F28BBB32E000E728D /* HTTPClient.swift */,
 				C74B385828BBACA7000E728D /* ServiceAPI.swift */,
 				C74B385D28BBAD13000E728D /* EndPoints.swift */,
-				C70D4E3F28C41A7700991B3C /* TVShowCodable.swift */,
 			);
 			path = ServiceAPI;
-			sourceTree = "<group>";
-		};
-		C74B386128BBB454000E728D /* RemoteService */ = {
-			isa = PBXGroup;
-			children = (
-				C74B385F28BBB32E000E728D /* HTTPClient.swift */,
-			);
-			path = RemoteService;
 			sourceTree = "<group>";
 		};
 		C74B386428BBB7D7000E728D /* Application */ = {
@@ -539,8 +533,8 @@
 		C7668E5B28C509DE0029FD9B /* ServiceAPI */ = {
 			isa = PBXGroup;
 			children = (
-				C7668E5C28C50A220029FD9B /* ServiceAPI.swift */,
 				C7668E5E28C50E0D0029FD9B /* TVShowListJSON.json */,
+				C7668E6628C5257E0029FD9B /* ServiceAPI+TVShowTests.swift */,
 			);
 			path = ServiceAPI;
 			sourceTree = "<group>";
@@ -548,9 +542,18 @@
 		C7668E6228C518C60029FD9B /* ServiceAPI */ = {
 			isa = PBXGroup;
 			children = (
+				C7668E5C28C50A220029FD9B /* ServiceAPI.swift */,
 				C7668E6328C518DF0029FD9B /* HTTPClientTests.swift */,
 			);
 			path = ServiceAPI;
+			sourceTree = "<group>";
+		};
+		C7668E6528C525420029FD9B /* Decodable Models */ = {
+			isa = PBXGroup;
+			children = (
+				C70D4E3F28C41A7700991B3C /* TVShowCodable.swift */,
+			);
+			path = "Decodable Models";
 			sourceTree = "<group>";
 		};
 		C7D2F7FE28BC016200EEC146 /* TabBar */ = {
@@ -1024,6 +1027,7 @@
 			files = (
 				C7668E5D28C50A220029FD9B /* ServiceAPI.swift in Sources */,
 				C7668E5228C509960029FD9B /* JobCityFlixTests.swift in Sources */,
+				C7668E6728C5257E0029FD9B /* ServiceAPI+TVShowTests.swift in Sources */,
 				C7668E6428C518DF0029FD9B /* HTTPClientTests.swift in Sources */,
 				C7668E5F28C50E0D0029FD9B /* TVShowListJSON.json in Sources */,
 			);

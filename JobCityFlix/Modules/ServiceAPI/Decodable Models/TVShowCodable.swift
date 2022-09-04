@@ -1,6 +1,11 @@
 import Foundation
 
-struct TVShowCodable: Decodable {
+struct TVShowCodable: Decodable, Equatable {
+
+    static func == (lhs: TVShowCodable, rhs: TVShowCodable) -> Bool {
+        return lhs.name == rhs.name &&
+        lhs.id == rhs.id
+    }
     
     let id:Int?
     let url:String?

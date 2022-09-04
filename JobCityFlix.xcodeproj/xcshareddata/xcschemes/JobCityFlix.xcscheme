@@ -46,16 +46,6 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C70D4E2F28C3DB2900991B3C"
-               BuildableName = "JobCityFlixUITests.xctest"
-               BlueprintName = "JobCityFlixUITests"
-               ReferencedContainer = "container:JobCityFlix.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "C7668E4E28C509960029FD9B"
                BuildableName = "JobCityFlixTests.xctest"
                BlueprintName = "JobCityFlixTests"

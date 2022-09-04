@@ -75,26 +75,26 @@ final class ServiceAPITests: XCTestCase {
     
     //MARK: Helpers methods to make our tests more readable
 
-    private func makeValidJSONData() -> Data {
+    func makeValidJSONData() -> Data {
         let url = Bundle.main.url(forResource: "TVShowListJSON", withExtension: "json")!
         let jsonData = try! Data(contentsOf: url)
         return jsonData
     }
     
-    private func makeInvalidJSONData() -> Data {
+    func makeInvalidJSONData() -> Data {
         let string = ""
         return string.data(using: .utf8)!
     }
     
-    private func makeSUT(completeWith result: HTTPClient.RequestResult) -> (ServiceAPI, URL, ClientHTPPSpy) {
+    func makeSUT(completeWith result: HTTPClient.RequestResult) -> (ServiceAPI, URL, ClientHTPPSpy) {
         let clientSPY = ClientHTPPSpy(result: result)
         let sut = ServiceAPI(client: clientSPY)
         let url = URL(string: "http://any-url.com")!
         return (sut, url, clientSPY)
     }
     
-    private class ClientHTPPSpy: HTTPClientProtocol {
-        
+    class ClientHTPPSpy: HTTPClientProtocol {
+
         let result: HTTPClient.RequestResult!
         var urls: [URL] = []
         init(result: HTTPClient.RequestResult) {
