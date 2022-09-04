@@ -73,18 +73,7 @@ final class ServiceAPITests: XCTestCase {
         XCTAssertNotNil(errorResult, "error should be not nil")
     }
     
-    //MARK: Helpers methods to make our tests more readable
-
-    func makeValidJSONData() -> Data {
-        let url = Bundle.main.url(forResource: "TVShowListJSON", withExtension: "json")!
-        let jsonData = try! Data(contentsOf: url)
-        return jsonData
-    }
-    
-    func makeInvalidJSONData() -> Data {
-        let string = ""
-        return string.data(using: .utf8)!
-    }
+    //MARK: Helpers methods and Mocks 
     
     func makeSUT(completeWith result: HTTPClient.RequestResult) -> (ServiceAPI, URL, ClientHTPPSpy) {
         let clientSPY = ClientHTPPSpy(result: result)
@@ -107,3 +96,5 @@ final class ServiceAPITests: XCTestCase {
         }
     }
 }
+
+

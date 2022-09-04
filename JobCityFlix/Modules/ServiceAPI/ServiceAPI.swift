@@ -1,6 +1,9 @@
 import Foundation
 
-final class ServiceAPI {
+protocol ServiceAPIProtocol {func fetchTVShowList(page:Int?, completion: @escaping(Result<[TVShowCodable], Error>) -> Void)
+}
+
+final class ServiceAPI: ServiceAPIProtocol {
 
     public enum ServiceAPIError: Error {
         case clientError

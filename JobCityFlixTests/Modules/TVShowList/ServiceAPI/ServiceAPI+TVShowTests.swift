@@ -59,9 +59,5 @@ extension ServiceAPITests {
         XCTAssertNotNil(errorResult)
     }
     
-    func makeJSONMockArray() -> [TVShowCodable] {
-        let jsonData = makeValidJSONData()
-        let shows = try! JSONDecoder().decode([TVShowCodable].self, from: jsonData)
-        return shows
-    }
+
 }

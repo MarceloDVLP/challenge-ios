@@ -35,6 +35,7 @@
 		C70D4E6728C4C51100991B3C /* FavoriteEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70D4E6628C4C51100991B3C /* FavoriteEntity+CoreDataProperties.swift */; };
 		C70D4E6928C4C51400991B3C /* FavoriteEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70D4E6828C4C51400991B3C /* FavoriteEntity+CoreDataClass.swift */; };
 		C70D4E6B28C4C54D00991B3C /* FavoriteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70D4E6A28C4C54D00991B3C /* FavoriteManager.swift */; };
+		C728D1F328C52ACC00CC6FAF /* TvShowListInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C728D1F228C52ACC00CC6FAF /* TvShowListInteractorTests.swift */; };
 		C74B384228BAC068000E728D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74B384128BAC068000E728D /* AppDelegate.swift */; };
 		C74B384628BAC068000E728D /* TVShowListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74B384528BAC068000E728D /* TVShowListViewController.swift */; };
 		C74B384B28BAC069000E728D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C74B384A28BAC069000E728D /* Assets.xcassets */; };
@@ -137,6 +138,7 @@
 		C70D4E6628C4C51100991B3C /* FavoriteEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "FavoriteEntity+CoreDataProperties.swift"; path = "/Users/marcelocarvalho/Documents/JobCityFlix/JobCityFlix/Modules/MyFavoriteList/FavoriteEntity+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		C70D4E6828C4C51400991B3C /* FavoriteEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "FavoriteEntity+CoreDataClass.swift"; path = "/Users/marcelocarvalho/Documents/JobCityFlix/JobCityFlix/Modules/MyFavoriteList/FavoriteEntity+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		C70D4E6A28C4C54D00991B3C /* FavoriteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteManager.swift; sourceTree = "<group>"; };
+		C728D1F228C52ACC00CC6FAF /* TvShowListInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvShowListInteractorTests.swift; sourceTree = "<group>"; };
 		C74B383E28BAC068000E728D /* JobCityFlix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JobCityFlix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C74B384128BAC068000E728D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C74B384528BAC068000E728D /* TVShowListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowListViewController.swift; sourceTree = "<group>"; };
@@ -357,6 +359,14 @@
 			path = MyFavoriteList;
 			sourceTree = "<group>";
 		};
+		C728D1F128C52AB500CC6FAF /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				C728D1F228C52ACC00CC6FAF /* TvShowListInteractorTests.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
 		C74B383528BAC068000E728D = {
 			isa = PBXGroup;
 			children = (
@@ -518,6 +528,7 @@
 		C7668E5928C509A80029FD9B /* TVShowList */ = {
 			isa = PBXGroup;
 			children = (
+				C728D1F128C52AB500CC6FAF /* Interactor */,
 				C7668E5B28C509DE0029FD9B /* ServiceAPI */,
 			);
 			path = TVShowList;
@@ -1026,6 +1037,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7668E5D28C50A220029FD9B /* ServiceAPI.swift in Sources */,
+				C728D1F328C52ACC00CC6FAF /* TvShowListInteractorTests.swift in Sources */,
 				C7668E5228C509960029FD9B /* JobCityFlixTests.swift in Sources */,
 				C7668E6728C5257E0029FD9B /* ServiceAPI+TVShowTests.swift in Sources */,
 				C7668E6428C518DF0029FD9B /* HTTPClientTests.swift in Sources */,
