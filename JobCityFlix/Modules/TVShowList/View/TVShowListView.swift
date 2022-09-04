@@ -1,8 +1,10 @@
 import UIKit
 
+
 final class TVShowListView: UIView {
     
     var didSelectTVShow: ((TVShowCodable) ->())?
+    var didFavoriteTVShow: ((TVShowCodable) ->())?
     var didFinishPage: (() -> ())?
     var scrollViewWillBeginDecelerating: ((UIScrollView) -> ())?
 
@@ -72,7 +74,7 @@ extension TVShowListView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "TVShowMainHeader", for: indexPath) as! TVShowMainHeader
-        
+        cell.delegate = self
         if  items.count > 0 {
             let random = Int.random(in: 0..<items.count-1)
             cell.configure(items[random])
@@ -125,4 +127,17 @@ extension TVShowListView: UICollectionViewDelegateFlowLayout {
 
         return CGSize(width: collectionView.frame.width, height: height)
     }
+}
+
+extension TVShowListView: TVShowMainHeaderDelegate {
+
+    func didTapMore(_ show: TVShowCodable) {
+        didSelectTVShow?(show )
+    }
+    
+    func didTapAddFavorite(_ show: TVShowCodable) {
+        didFavoriteTVShow?(show)
+    }
+    
+    
 }

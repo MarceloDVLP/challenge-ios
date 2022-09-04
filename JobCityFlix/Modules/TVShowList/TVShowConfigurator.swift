@@ -5,10 +5,10 @@ final class TVShowListConfigurator {
     static func make() -> UIViewController {
         let session = URLSession.shared
         let service = ServiceAPI(client: HTTPClient(session: session))
-
+        let manager = FavoriteManager.shared
         let presenter = TVShowPresenter()
-
-        let interactor = TVShowInteractor(service: service, presenter: presenter)
+        
+        let interactor = TVShowInteractor(manager: manager, service: service, presenter: presenter)
         let viewController = TVShowListViewController(interactor: interactor)
 
         presenter.viewController = viewController
@@ -43,7 +43,8 @@ protocol SearchShowViewControllerProtocol: AnyObject {
 
 protocol TVShowInteractorProtocol {
     func viewDidLoad()
-    func didFinishPage() 
+    func didFinishPage()
+    func didTapAddFavorite(_ show: TVShowCodable)
 }
 
 protocol TVShowListViewControllerProtocol: AnyObject {

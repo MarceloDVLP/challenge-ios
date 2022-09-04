@@ -1,8 +1,17 @@
 import UIKit
 import SDWebImage
 
+protocol TVShowMainHeaderDelegate: AnyObject {
+    func didTapMore(_ show: TVShowCodable)
+    func didTapAddFavorite(_ show: TVShowCodable)
+}
+
 final class TVShowMainHeader: UICollectionReusableView {
 
+    weak var delegate: TVShowMainHeaderDelegate?
+    
+    var show: TVShowCodable?
+    
     private lazy var imageView: UIImageView = {
         let view = UIImageView()
         view.contentMode = .scaleAspectFill
@@ -17,7 +26,7 @@ final class TVShowMainHeader: UICollectionReusableView {
         
         button.setTitleColor(UIColor.darkGray, for: .normal)
         button.setTitleColor(UIColor.lightGray, for: .highlighted)
-
+        button.addTarget(self, action: #selector(didTapMore), for: .touchUpInside)
         button.backgroundColor = .white
         return button
     }()
@@ -32,7 +41,7 @@ final class TVShowMainHeader: UICollectionReusableView {
         button.backgroundColor = .clear
         button.layer.borderColor = UIColor.white.cgColor
         button.layer.borderWidth = 2
-        
+        button.addTarget(self, action: #selector(didTapFavorite), for: .touchUpInside)
         return button
     }()
     
@@ -78,6 +87,7 @@ final class TVShowMainHeader: UICollectionReusableView {
         
         let text = "Não perca HOJE a série \(tvShow.name ?? "")!"
         titleLabel.text = text
+        self.show = tvShow
     }
    
     private func constrainDetailButton() {
@@ -125,5 +135,18 @@ final class TVShowMainHeader: UICollectionReusableView {
         gradientLayer.frame = self.bounds
                 
         imageView.layer.insertSublayer(gradientLayer, at:0)
+    }
+    
+    @objc func didTapFavorite() {
+        if let show = show {
+            delegate?.didTapAddFavorite(show)
+
+        }
+    }
+    
+    @objc func didTapMore() {
+        if let show = show {
+            delegate?.didTapMore(show)
+        }
     }
 }

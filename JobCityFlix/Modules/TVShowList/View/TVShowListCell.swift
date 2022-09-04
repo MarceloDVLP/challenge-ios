@@ -47,6 +47,14 @@ final class TVShowListCell: UICollectionViewCell {
         }        
     }
     
+    func configure(_ favorite: FavoriteEntity) {
+        titleLabel.text = favorite.showName
+
+        if let value = favorite.imageURL, let url = URL(string: value) {
+            loadImageWith(url)
+        }
+    }
+    
     private func loadImageWith(_ url: URL) {
         imageView.sd_imageTransition = .fade
         imageView.sd_setImage(with: url, completed: { [weak self] _, error, _, _  in

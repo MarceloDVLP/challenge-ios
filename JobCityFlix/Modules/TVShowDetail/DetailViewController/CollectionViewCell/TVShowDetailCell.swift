@@ -12,7 +12,7 @@ enum Colors {
 }
 
 protocol TVShowDetailCellDelegate: AnyObject {
-    func didTapSeasonButton()
+    func didTapFavorite()
 }
 
 final class TVShowDetailCell: UICollectionViewCell {
@@ -56,14 +56,6 @@ final class TVShowDetailCell: UICollectionViewCell {
         label.numberOfLines = 2
         return label
     }()
-
-    private lazy var descLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 12)
-        label.textColor = Colors.titleInactiveColor
-        label.numberOfLines = 3
-        return label
-    }()
     
     private lazy var subtitleLabel: UILabel = {
         let label = UILabel()
@@ -78,10 +70,18 @@ final class TVShowDetailCell: UICollectionViewCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         label.textColor = Colors.titleColor
-        label.numberOfLines = 6
+        label.numberOfLines = 3
         
         return label
     }()
+    
+    private lazy var favoriteButton: UIButton = {
+        let signInButton = UIButton()
+        signInButton.transparentStyle(title: "Add to My List")
+        signInButton.addTarget(self, action: #selector(didTapFavorite), for: .touchUpInside)
+        return signInButton
+    }()
+
     
     private lazy var containerView: UIView = {
         return UIView()
@@ -96,14 +96,13 @@ final class TVShowDetailCell: UICollectionViewCell {
         constrainTitleLabel()
         constraintQualityImage()
         constraintRatingView()
-        constraintDescriptionLabel()
         constraintSubtitleLabel()
         constraintSumaryLabel()
+        constraintFavoriteButton()
     }
     
     override func prepareForReuse() {
         titleLabel.text = nil
-        descLabel.text = nil
         imageView.sd_cancelCurrentImageLoad()
         imageView.image = nil
     }
@@ -136,11 +135,9 @@ final class TVShowDetailCell: UICollectionViewCell {
         }
     }
     
-    func configure(_ tvShow: TVShowCodable?) {
+    func configure(_ tvShow: TVShowCodable?, isFavorited: Bool) {
         guard let tvShow = tvShow else { return }
         titleLabel.text = tvShow.name
-        let genres = tvShow.genres?.joined(separator: ",") ?? ""
-        descLabel.text = genres
         
         if let average = tvShow.rating?.average {
             ratingLabel.text = String(average)
@@ -152,12 +149,19 @@ final class TVShowDetailCell: UICollectionViewCell {
                 
         let days = tvShow.schedule?.days?.joined(separator: ",") ?? ""
         let time = tvShow.schedule?.time ?? ""
+        let genres = tvShow.genres?.joined(separator: ",") ?? ""
         subtitleLabel.text = "\(genres) \n Every \(days) at \(time)"
         sumaryLabel.text = tvShow.summary?.htmlToString
         
         if let url = tvShow.image?.original {
             imageView.sd_setImage(with: url)
-        }        
+        }
+        
+        if isFavorited {
+            favoriteButton.transparentStyle(title: "Remove from My List")
+        } else {
+            favoriteButton.filledStyle(title: "Add To My List")
+        }
     }
     
     private func constrainTitleLabel() {
@@ -222,17 +226,6 @@ final class TVShowDetailCell: UICollectionViewCell {
                                                    multiplier: 1.4,
                                                   constant: 0))
     }
-    
-    private func constraintDescriptionLabel() {
-        descLabel.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(descLabel)
-        
-        NSLayoutConstraint.activate([
-            descLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 16),
-            descLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 12),
-            descLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -12)
-        ])
-    }
 
     private func constraintSumaryLabel() {
         sumaryLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -245,6 +238,21 @@ final class TVShowDetailCell: UICollectionViewCell {
         ])
     }
 
+    private func constraintFavoriteButton() {
+        favoriteButton.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(favoriteButton)
+        
+        NSLayoutConstraint.activate([
+            favoriteButton.topAnchor.constraint(equalTo: sumaryLabel.bottomAnchor, constant: 16),
+            favoriteButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 12),
+            favoriteButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -12),
+            favoriteButton.heightAnchor.constraint(equalToConstant: 40)
+        ])
+    }
+    
+    @objc func didTapFavorite() {
+        delegate?.didTapFavorite()
+    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

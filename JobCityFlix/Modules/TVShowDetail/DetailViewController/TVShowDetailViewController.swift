@@ -39,9 +39,9 @@ extension TVShowDetailViewController: TVShowDetailViewControllerProtocol {
         view.addSubview(loadingView)
     }
 
-    func show(_ tvShow: TVShowCodable) {
+    func show(_ tvShow: TVShowCodable, _ isFavorited: Bool) {
         tvShowView.tvShow = tvShow
-        tvShowView.show(tvShow)
+        tvShowView.show(tvShow, isFavorited)
     }
     
     func show(_ episodes: [[Episode]], _ seasons: [String]) {
@@ -98,7 +98,6 @@ extension TVShowDetailViewController: TVShowDetailViewDelegate {
         present(viewController, animated: true)
     }
     
-    
     func didTapSeasonButton() {
         let seasonViewController = SingleSelectorViewController(items: seasons, selectedIndex: selectedSeasonIndex)
         
@@ -108,6 +107,10 @@ extension TVShowDetailViewController: TVShowDetailViewDelegate {
         }
         
         present(seasonViewController, animated: true)
+    }
+    
+    func didTapFavorite() {
+        interactor.didTapFavorite() 
     }
 }
 

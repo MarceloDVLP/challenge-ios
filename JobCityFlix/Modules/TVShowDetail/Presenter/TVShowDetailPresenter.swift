@@ -8,9 +8,11 @@ final class TVShowDetailPresenter: TVShowDetailPresenterProtocol {
         viewController?.showLoadig()
     }
 
-    func show(_ tvShow: TVShowCodable) {
-        viewController?.removeLoading()
-        viewController?.show(tvShow)
+    func show(_ tvShow: TVShowCodable, _ isFavorited: Bool) {
+        Thread.executeOnMain { [weak self] in
+            self?.viewController?.removeLoading()
+            self?.viewController?.show(tvShow, isFavorited)
+        }
     }
 
     func showError(_ error: Error) {
@@ -18,10 +20,13 @@ final class TVShowDetailPresenter: TVShowDetailPresenterProtocol {
     }
     
     func show(_ episodes: [Episode]) {
-        let episodes = groupBySeason(episodes)
-        let seasons = formatedSeasons(episodes.count)
-        viewController?.removeLoading()
-        viewController?.show(episodes, seasons)
+        Thread.executeOnMain {  [weak self] in
+            guard let self = self else { return }
+            let episodes = self.groupBySeason(episodes)
+            let seasons = self.formatedSeasons(episodes.count)
+            self.viewController?.removeLoading()
+            self.viewController?.show(episodes, seasons)
+        }
     }
     
     func groupBySeason(_ episodes: [Episode]) -> [[Episode]] {

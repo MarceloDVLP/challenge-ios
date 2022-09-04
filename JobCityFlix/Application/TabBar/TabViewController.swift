@@ -19,6 +19,7 @@ class TabViewController: UITabBarController, UITabBarControllerDelegate {
         setViewControllers([
                             TVShowListConfigurator.make(),
                             SearchTVShowConfigurator.make(),
+                            MyFavoriteListConfigurator.make()
                           ],
                           animated: true)
     }

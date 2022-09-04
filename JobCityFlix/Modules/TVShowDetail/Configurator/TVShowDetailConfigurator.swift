@@ -5,10 +5,10 @@ final class TVShowDetailConfigurator {
     static func make(_ tvShow: TVShowCodable) -> UIViewController {
         let session = URLSession.shared
         let service = ServiceAPI(client: HTTPClient(session: session))
+        let manager = FavoriteManager.shared
 
         let presenter = TVShowDetailPresenter()
-
-        let interactor = TVShowDetailInteractor(service: service, presenter: presenter, tvShow: tvShow)
+        let interactor = TVShowDetailInteractor(service: service, manager: manager, presenter: presenter, tvShow: tvShow)
         let viewController = TVShowDetailViewController(interactor: interactor)
 
         presenter.viewController = viewController
@@ -20,7 +20,7 @@ final class TVShowDetailConfigurator {
 
 protocol TVShowDetailPresenterProtocol: AnyObject {
     func willStartFetch()
-    func show(_ tvShow: TVShowCodable)
+    func show(_ tvShow: TVShowCodable, _ isFavorited: Bool)
     func show(_ episodes: [Episode])
     func showError(_ error: Error)
     
@@ -28,12 +28,13 @@ protocol TVShowDetailPresenterProtocol: AnyObject {
 
 protocol TVShowDetailInteractorProtocol {
     func viewDidLoad()
+    func didTapFavorite()
 }
 
 protocol TVShowDetailViewControllerProtocol: AnyObject {
     func showLoadig()
     func show(_ episodes: [[Episode]], _ seasons: [String])
-    func show(_ tvShow: TVShowCodable)
+    func show(_ tvShow: TVShowCodable, _ isFavorited: Bool)
     func showError(_ error: Error)
     func removeLoading()
 }

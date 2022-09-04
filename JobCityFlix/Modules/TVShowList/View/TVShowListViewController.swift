@@ -75,5 +75,9 @@ extension TVShowListViewController {
         tvShowView.scrollViewWillBeginDecelerating = { [weak self] scrollView in
             self?.showNavigationFor(scrollView)
         }
+        
+        tvShowView.didFavoriteTVShow = { [weak self] show in
+            self?.interactor.didTapAddFavorite(show)
+        }
     }
 }

@@ -1,4 +1,5 @@
 import Foundation
+import UIKit
 
 
 final class TVShowDetailInteractor: TVShowDetailInteractorProtocol {
@@ -6,18 +7,37 @@ final class TVShowDetailInteractor: TVShowDetailInteractorProtocol {
     private var service: ServiceAPI
     private var presenter: TVShowDetailPresenterProtocol
     private var tvShow: TVShowCodable
-
+    private var manager: FavoriteManagerProtocol
     
-    init (service: ServiceAPI, presenter: TVShowDetailPresenterProtocol, tvShow: TVShowCodable) {
+    init (service: ServiceAPI, manager: FavoriteManagerProtocol, presenter: TVShowDetailPresenterProtocol, tvShow: TVShowCodable) {
         self.service = service
         self.presenter = presenter
         self.tvShow = tvShow
+        self.manager = manager
     }
     
     func viewDidLoad() {
         presenter.willStartFetch()
         fetchDetail()
         fetchEpisodes()
+    }
+    
+    func didTapFavorite() {
+        if let id = tvShow.id, isTVShowFavorited() {
+            manager.removeFavorite(with: id)
+            presenter.show(tvShow, false)
+        } else {
+            presenter.show(tvShow, true)
+            manager.save(showName: tvShow.name ?? "", showId: tvShow.id ?? 0, imageURL: tvShow.image?.medium?.absoluteString)
+        }
+    }
+    
+    func isTVShowFavorited() -> Bool {
+        if let id = tvShow.id {
+            return manager.isFavorited(id: id)
+        } else {
+            return false
+        }
     }
     
     private func fetchDetail() {
@@ -27,10 +47,8 @@ final class TVShowDetailInteractor: TVShowDetailInteractorProtocol {
             
             switch result {
             case .success(let tvShow):
-
-                DispatchQueue.main.async {
-                    self.presenter.show(tvShow)
-                }
+                
+                self.presenter.show(tvShow, self.isTVShowFavorited())
                 
             case .failure(let error):
                 self.presenter.showError(error)

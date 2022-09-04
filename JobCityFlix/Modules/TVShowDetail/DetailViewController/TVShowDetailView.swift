@@ -4,7 +4,7 @@ protocol TVShowDetailViewDelegate: AnyObject {
     func didTapSeasonButton()
     func didTapEpisode(_ episode: Episode)
     func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView)
-
+    func didTapFavorite()
 }
 
 enum TVShowDetailSection: Int, CaseIterable {
@@ -18,6 +18,7 @@ enum TVShowDetailSection: Int, CaseIterable {
 final class TVShowDetailView: UIView {
     
     weak var delegate: TVShowDetailViewDelegate?
+    var isFavorited: Bool = false
     
     public lazy var collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
@@ -63,17 +64,18 @@ final class TVShowDetailView: UIView {
     public func show(_ episodes: [[Episode]],  _ seasons: [String]) {
         self.episodes = episodes
         self.seasons = seasons
-        collectionView.reloadData()// reloadSections([Section.season.rawValue, Section.episodes.rawValue])
+        collectionView.reloadData()
     }
     
     public func show(_ seasonIndex: Int) {
         self.selectedSeason = seasonIndex
-        collectionView.reloadData()//reloadSections([Section.season.rawValue, Section.episodes.rawValue])
+        collectionView.reloadSections([TVShowDetailSection.season.rawValue, TVShowDetailSection.episodes.rawValue])
     }
     
-    public func show(_ detail: TVShowCodable) {
+    public func show(_ detail: TVShowCodable, _ isFavorited: Bool) {
         self.tvShow = detail
-        collectionView.reloadData()//reloadSections([Section.detail.rawValue])
+        self.isFavorited = isFavorited
+        collectionView.reloadData()// reloadSections([TVShowDetailSection.detail.rawValue])
     }
     
     
@@ -132,8 +134,8 @@ extension TVShowDetailView: UICollectionViewDataSource {
 
     private func dequeueDetailCell(_ collectionView: UICollectionView, _ indexPath: IndexPath) -> TVShowDetailCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TVShowDetailCell", for: indexPath) as! TVShowDetailCell
-        
-        cell.configure(tvShow)
+        cell.delegate = self
+        cell.configure(tvShow, isFavorited: isFavorited)
         return cell
     }
     
@@ -196,7 +198,7 @@ extension TVShowDetailView: UICollectionViewDelegateFlowLayout {
                 
         
         switch TVShowDetailSection(rawValue: indexPath.section)! {
-        case .detail: return CGSize(width: collectionView.frame.width, height: 550)
+        case .detail: return CGSize(width: collectionView.frame.width, height: 650)
         case .menu: return CGSize(width: collectionView.frame.width-32, height: 30)
         case .season: return CGSize(width: collectionView.frame.width-32, height: 30)
         case .episodes: return CGSize(width: collectionView.frame.width-32, height: 150)
@@ -211,6 +213,10 @@ extension TVShowDetailView: UICollectionViewDelegateFlowLayout {
 }
 
 extension TVShowDetailView: TVShowDetailCellDelegate {
+
+    func didTapFavorite() {
+        delegate?.didTapFavorite()
+    }
 
     func didTapSeasonButton() {
         delegate?.didTapSeasonButton()

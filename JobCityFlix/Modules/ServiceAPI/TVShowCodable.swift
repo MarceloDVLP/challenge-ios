@@ -17,11 +17,14 @@ struct TVShowCodable: Decodable {
     let image:Media?
     let summary:String?
     let updated:Int?
+    
     var premierDate: Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         return dateFormatter.date(from: premiered ?? "")
     }
+    
+    var isFavorited: Bool = false
     
     enum CodingKeys: String, CodingKey {
         case id

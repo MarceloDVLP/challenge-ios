@@ -3,18 +3,20 @@ import Foundation
 
 final class TVShowInteractor: TVShowInteractorProtocol {
     
+    private var manager: FavoriteManagerProtocol
     private var service: ServiceAPI
     private var presenter: TVShowPresenterProtocol
     private var page: Int
     private var shows: [TVShowCodable]
     private var isSearching: Bool
     
-    init (service: ServiceAPI, presenter: TVShowPresenterProtocol) {
+    init (manager: FavoriteManagerProtocol, service: ServiceAPI, presenter: TVShowPresenterProtocol) {
         self.service = service
         self.presenter = presenter
         self.page = 0
         self.shows = []
         self.isSearching = false
+        self.manager = manager
     }
     
     func viewDidLoad() {
@@ -27,6 +29,12 @@ final class TVShowInteractor: TVShowInteractorProtocol {
     
     func didFinishPage() {
         fetchEpisodes()
+    }
+    
+    func didTapAddFavorite(_ show: TVShowCodable) {        
+        manager.save(showName: show.name ?? "",
+                     showId: show.id ?? 0,
+                     imageURL: show.image?.medium?.absoluteString)
     }
     
     private func fetchEpisodes() {
