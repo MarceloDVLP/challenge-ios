@@ -167,8 +167,7 @@ final class TVShowEPisodeDetailViewController: UIViewController {
         titleLabel.text = "\(episode.name ?? "") - S0\(episode.season ?? 0) - E0\(episode.number ?? 0)"
         subtitleLabel.text = "\(episode.airtime ?? "")  -  \(episode.runtime ?? 0)min"
         
-        if let image = episode.image?.original {
-            let url = URL(string: image)
+        if let url = episode.image?.original {
             imageView.sd_setImage(with: url)
         }        
 

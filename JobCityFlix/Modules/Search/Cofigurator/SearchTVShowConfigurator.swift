@@ -19,3 +19,8 @@ final class SearchTVShowConfigurator {
         return navigation
     }
 }
+
+enum SearchSection: Int, CaseIterable {
+    case menu = 0
+    case result = 1
+}

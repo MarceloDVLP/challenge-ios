@@ -1,10 +1,10 @@
 import UIKit
 
-final class SeasonListViewController: UIViewController {
+final class SingleSelectorViewController: UIViewController {
     
-    var seasons: [String]
+    var items: [String]
     var selectedIndex: Int
-    var didSelectSeason: ((Int) -> ())?
+    var didSelectItem: ((Int) -> ())?
     
     public lazy var collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
@@ -19,8 +19,8 @@ final class SeasonListViewController: UIViewController {
     }()
 
     
-    init(seasons: [String], selectedIndex: Int) {
-        self.seasons = seasons
+    init(items: [String], selectedIndex: Int) {
+        self.items = items
         self.selectedIndex = selectedIndex
         super.init(nibName: nil, bundle: nil)
         setupBlurBackGround()
@@ -49,16 +49,16 @@ final class SeasonListViewController: UIViewController {
     }
 }
 
-extension SeasonListViewController: UICollectionViewDataSource {
+extension SingleSelectorViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        seasons.count
+        items.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SeasonCell", for: indexPath) as? SeasonCell {
-            cell.configure(season: seasons[indexPath.item], isSelected: indexPath.item == selectedIndex)
+            cell.configure(season: items[indexPath.item], isSelected: indexPath.item == selectedIndex)
             return cell
         } else {
             return UICollectionViewCell()
@@ -73,15 +73,15 @@ extension SeasonListViewController: UICollectionViewDataSource {
     }
 }
 
-extension SeasonListViewController: UICollectionViewDelegate {
+extension SingleSelectorViewController: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        didSelectSeason?(indexPath.item)
+        didSelectItem?(indexPath.item)
         dismiss(animated: true)
     }
 }
 
-extension SeasonListViewController: UICollectionViewDelegateFlowLayout {
+extension SingleSelectorViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
                 

@@ -1,13 +1,11 @@
 import UIKit
 
-
 final class TVShowDetailViewController: UIViewController {
 
-    var interactor: TVShowDetailInteractorProtocol
-    
-    var tvShowDetail: TVShowCodable!
-    var seasons: [String] = []
-    var selectedSeasonIndex: Int = 0
+    private var interactor: TVShowDetailInteractorProtocol
+    private var tvShowDetail: TVShowCodable!
+    private var seasons: [String] = []
+    private var selectedSeasonIndex: Int = 0
     
     private lazy var tvShowView: TVShowDetailView = {
         let view = TVShowDetailView()
@@ -39,7 +37,6 @@ extension TVShowDetailViewController: TVShowDetailViewControllerProtocol {
     func showLoadig() {
         let loadingView = makeActivityIndicatorView()
         view.addSubview(loadingView)
-//        loadingView.startAnimating()
     }
 
     func show(_ tvShow: TVShowCodable) {
@@ -103,9 +100,9 @@ extension TVShowDetailViewController: TVShowDetailViewDelegate {
     
     
     func didTapSeasonButton() {
-        let seasonViewController = SeasonListViewController(seasons: seasons, selectedIndex: selectedSeasonIndex)
+        let seasonViewController = SingleSelectorViewController(items: seasons, selectedIndex: selectedSeasonIndex)
         
-        seasonViewController.didSelectSeason = { [weak self] index in
+        seasonViewController.didSelectItem = { [weak self] index in
             self?.selectedSeasonIndex = index
             self?.tvShowView.show(index)
         }

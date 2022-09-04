@@ -16,11 +16,9 @@ class TabViewController: UITabBarController, UITabBarControllerDelegate {
         tabBar.tintColor = .white
         tabBar.barTintColor = .black
 
-        setViewControllers([TVShowListConfigurator.make(),
-                            SearchTVShowConfigurator.make(),
-                            TVShowListConfigurator.make(),
-                            TVShowListConfigurator.make(),
-                            TVShowListConfigurator.make()
+        setViewControllers([                            SearchTVShowConfigurator.make(),
+
+            TVShowListConfigurator.make(),
                            ],
                            animated: true)
     }

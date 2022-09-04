@@ -12,7 +12,7 @@ final class TVShowDetailConfigurator {
         let viewController = TVShowDetailViewController(interactor: interactor)
 
         presenter.viewController = viewController
-        viewController.interactor = interactor
+        
         
         return viewController
     }
@@ -36,4 +36,34 @@ protocol TVShowDetailViewControllerProtocol: AnyObject {
     func show(_ tvShow: TVShowCodable)
     func showError(_ error: Error)
     func removeLoading()
+}
+
+public enum TVShowDetailMenu: Int {
+    case episodes
+    case about
+    case empty
+    
+    var sections: [TVShowDetailSection] {
+
+        switch self {
+        case .episodes: return [.detail, .menu, .season, .episodes]
+        case .about: return [.detail, .menu, .about]
+        case .empty: return []
+        }
+    }
+}
+
+public enum SearchMenu: Int {
+    case tvShows
+    case actors
+    case empty
+    
+    var sections: [SearchSection] {
+
+        switch self {
+        case .tvShows: return [.menu, .result]
+        case .actors: return []
+        case .empty: return []
+        }
+    }
 }

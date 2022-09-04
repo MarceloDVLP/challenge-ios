@@ -73,8 +73,7 @@ final class TVShowEpisodeCell: UICollectionViewCell {
         durationLabel.text = "\(episode.runtime ?? 0) min"
         descLabel.text = episode.summary?.htmlToString
         
-        if let image = episode.image?.medium {
-            let url = URL(string: image)
+        if let url = episode.image?.medium {
             imageView.sd_setImage(with: url)
         }        
     }

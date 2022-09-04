@@ -42,13 +42,12 @@ final class TVShowListCell: UICollectionViewCell {
         
     func configure(_ tvShow: TVShowCodable) {
         titleLabel.text = tvShow.name
-        if let image = tvShow.image?.medium {
-            loadImageWith(image)
+        if let url = tvShow.image?.medium {
+            loadImageWith(url)
         }        
     }
     
-    private func loadImageWith(_ stringURL: String) {
-        let url = URL(string: stringURL)
+    private func loadImageWith(_ url: URL) {
         imageView.sd_imageTransition = .fade
         imageView.sd_setImage(with: url, completed: { [weak self] _, error, _, _  in
             

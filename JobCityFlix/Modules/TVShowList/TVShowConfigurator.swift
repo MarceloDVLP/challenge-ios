@@ -29,12 +29,14 @@ protocol TVShowPresenterProtocol: AnyObject {
 protocol SearchShowPresenterProtocol: AnyObject {
     func willStartFetch()
     func show(_ tvShows: [TVShowCodable])
+    func show(_ persons: [Person])
     func show(_ error: Error)
 }
 
 protocol SearchShowViewControllerProtocol: AnyObject {
     func showLoadig()
     func show(_ tvShows: [TVShowCodable])
+    func show(_ persons: [Person])
     func showError(_ error: Error)
     func removeLoading()
 }

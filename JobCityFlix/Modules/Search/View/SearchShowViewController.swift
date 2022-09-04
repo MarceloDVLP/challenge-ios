@@ -5,16 +5,18 @@ final class SearchShowViewController: UIViewController {
     var interactor: SearchShowInteractorProtocol
     
     private lazy var searchView: SearchTVShowView = {
-        return SearchTVShowView()
+        let searchTVShowView = SearchTVShowView()
+        searchTVShowView.delegate = self
+        return searchTVShowView
     }()
     
     private var searchController: UISearchController = {
         let searchController = UISearchController()
         searchController.searchBar.placeholder = "Enter the tv show name"
-        searchController.searchBar.searchBarStyle = .minimal
+        searchController.searchBar.showsSearchResultsButton = true
+        searchController.searchBar.tintColor = .white
         searchController.searchBar.image(for: UISearchBar.Icon.search, state: .normal)
         searchController.searchBar.autocapitalizationType = .none
-        searchController.searchBar.setImage(UIImage(named: "tab-search"), for: .search, state: .normal)
         return searchController
     }()
 
@@ -53,7 +55,7 @@ extension SearchShowViewController {
     }
             
     private func setupSearchTVShowView() {
-        view.constrainSubView(view: searchView, top: -90, bottom: 0, left: 0, right: 0)
+        view.constrainSubView(view: searchView, top: 0, bottom: 0, left: 0, right: 0)
         
         searchView.didSelectTVShow = { [weak self] tvShow in
             guard let self = self else { return }
@@ -71,8 +73,11 @@ extension SearchShowViewController: SearchShowViewControllerProtocol {
     }
     
     func show(_ tvShows: [TVShowCodable]) {
-        searchView.items = tvShows
-        searchView.collectionView.reloadData()
+        searchView.show(tvShows)
+    }
+    
+    func show(_ tvShows: [Person]) {
+        searchView.show(tvShows)
     }
     
     func showError(_ error: Error) {
@@ -95,3 +100,53 @@ extension SearchShowViewController: UISearchResultsUpdating {
         interactor.didSearch(query)
     }
 }
+
+extension SearchShowViewController: SearchTVShowViewDelegate {
+    
+    func didTapFilter(_ selectedFilter: SearchFilter) {
+        let items = SearchFilter.allCases.compactMap({ $0.title })
+        let viewController = SingleSelectorViewController(items: items, selectedIndex: selectedFilter.rawValue)
+        
+        viewController.didSelectItem = { [weak self] index in
+            let newFilter = SearchFilter.init(rawValue: index)!
+            self?.searchView.show(newFilter)
+            self?.interactor.didChangeFilter(newFilter)
+            self?.setupSearchBar(for: newFilter, clear: selectedFilter != newFilter)
+            self?.searchController.isActive = true
+        }
+        
+        present(viewController, animated: true)
+    }
+    
+    func setupSearchBar(for filter: SearchFilter, clear: Bool) {
+
+        if clear {
+            searchController.searchBar.text = nil
+        }
+        
+        switch filter {
+        case .actors:
+            searchController.searchBar.placeholder = "Enter the Actor name"
+        case .tvShows:
+            searchController.searchBar.placeholder = "Enter the Tv Show name"
+        }
+        
+    }
+}
+
+enum SearchFilter: Int, CaseIterable {
+
+    case tvShows
+    case actors
+    
+    var title: String {
+        switch self {
+        case .tvShows:
+            return "TV Show"
+        case .actors:
+            return "Cast"
+        }
+    }
+}
+
+

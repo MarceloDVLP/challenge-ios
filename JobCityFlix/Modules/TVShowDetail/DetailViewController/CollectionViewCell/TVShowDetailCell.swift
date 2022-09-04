@@ -157,8 +157,7 @@ final class TVShowDetailCell: UICollectionViewCell {
         subtitleLabel.text = "\(genres) \n Every \(days) at \(time)"
         sumaryLabel.text = tvShow.summary?.htmlToString
         
-        if let image = tvShow.image?.original {
-            let url = URL(string: image)
+        if let url = tvShow.image?.medium {
             imageView.sd_setImage(with: url)
         }        
     }

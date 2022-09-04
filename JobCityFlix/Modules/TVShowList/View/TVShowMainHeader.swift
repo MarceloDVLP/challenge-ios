@@ -72,8 +72,7 @@ final class TVShowMainHeader: UICollectionReusableView {
             return
         }
 
-        if let image = tvShow.image?.original {
-            let url = URL(string: image)
+        if let url = tvShow.image?.original {
             imageView.sd_setImage(with: url)
         }
         
