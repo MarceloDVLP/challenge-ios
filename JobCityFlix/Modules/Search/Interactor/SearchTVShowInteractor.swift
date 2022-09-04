@@ -18,7 +18,7 @@ final class SearchShowInteractor: SearchShowInteractorProtocol {
         self.presenter = presenter
         self.isSearching = false
         self.query = ""
-        self.selectedFilter = .actors
+        self.selectedFilter = .tvShows
     }
     
     func didChangeFilter(_ filter: SearchFilter) {

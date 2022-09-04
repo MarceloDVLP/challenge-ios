@@ -7,6 +7,7 @@ enum Endpoints {
     case tvShowEpisodeList(Int)
     case searchTvShow(String)
     case searchPeople(String)
+    case castCredits(Int)
     
     var baseURL: String {
         "http://api.tvmaze.com/"
@@ -30,6 +31,9 @@ enum Endpoints {
 
         case .searchPeople(let query):
             return URL(string: "\(baseURL)search/people?q=\(query)")!
+            
+        case .castCredits(let id):
+            return URL(string: "\(baseURL)people/\(id)/castcredits?embed=show")!
         }
     }
 }

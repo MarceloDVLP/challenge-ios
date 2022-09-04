@@ -3,6 +3,8 @@ import UIKit
 
 protocol SearchTVShowViewDelegate: AnyObject {
     func didTapFilter(_ selectedFilter: SearchFilter)
+    func didSelectCast(_ person: Person)
+    func didSelectShow(_ show: TVShowCodable)
 }
 
 final class SearchTVShowView: UIView {
@@ -15,9 +17,7 @@ final class SearchTVShowView: UIView {
         case results = 1
     }
     
-    var didSelectTVShow: ((TVShowCodable) ->())?
-    
-    public lazy var collectionView: UICollectionView = {
+    private lazy var collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .vertical
         
@@ -31,7 +31,7 @@ final class SearchTVShowView: UIView {
     var persons: [Person] = []
 
     init() {
-        self.selectedFilter = .actors
+        self.selectedFilter = .tvShows
         super.init(frame: .zero)
         constrainCollectionView()
         registerCell()
@@ -51,7 +51,7 @@ final class SearchTVShowView: UIView {
             collectionView.leftAnchor.constraint(equalTo: leftAnchor),
             collectionView.rightAnchor.constraint(equalTo: rightAnchor),
             collectionView.topAnchor.constraint(equalTo: topAnchor, constant: 0),
-            collectionView.heightAnchor.constraint(equalToConstant: 900)
+            collectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
     
@@ -173,31 +173,30 @@ extension SearchTVShowView: UICollectionViewDataSource {
 extension SearchTVShowView: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let item = items[indexPath.item]
-//        didSelectTVShow?(item)
+        switch selectedFilter {
+        case .tvShows: delegate?.didSelectShow(shows[indexPath.item])
+        case .actors: delegate?.didSelectCast(persons[indexPath.item])
+        }
     }
 }
 
 extension SearchTVShowView: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        let size: CGSize
-        switch SearchSection(rawValue: indexPath.section)! {
-        case .filters: size = CGSize(width: collectionView.frame.width, height: 40)
-        case .results: size = self.size(collectionView, sizeForItemAt: indexPath)
-        }
 
         let insets = self.collectionView(collectionView, layout: collectionViewLayout, insetForSectionAt: indexPath.section)
-        let width = size.width-insets.left-insets.right
-
-        return CGSize(width: width, height: size.height)
+        let width = collectionView.frame.width-insets.left-insets.right
+        
+        switch SearchSection(rawValue: indexPath.section)! {
+        case .filters: return CGSize(width: width, height: 40)
+        case .results: return self.size(collectionView, sizeForItemAt: indexPath)
+        }
     }
     
     func size(_ collectionView: UICollectionView, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch selectedFilter {
         case .tvShows: return CGSize(width: 85, height: 150)
-        case .actors: return CGSize(width: 132, height: 170)
+        case .actors: return CGSize(width: 100, height: 170)
         }
     }
 }

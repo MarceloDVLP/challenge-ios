@@ -99,8 +99,6 @@ final class TVShowDetailCell: UICollectionViewCell {
         constraintDescriptionLabel()
         constraintSubtitleLabel()
         constraintSumaryLabel()
-        SDImageCache.shared.clearMemory()
-        SDImageCache.shared.clearDisk()
     }
     
     override func prepareForReuse() {
@@ -157,7 +155,7 @@ final class TVShowDetailCell: UICollectionViewCell {
         subtitleLabel.text = "\(genres) \n Every \(days) at \(time)"
         sumaryLabel.text = tvShow.summary?.htmlToString
         
-        if let url = tvShow.image?.medium {
+        if let url = tvShow.image?.original {
             imageView.sd_setImage(with: url)
         }        
     }

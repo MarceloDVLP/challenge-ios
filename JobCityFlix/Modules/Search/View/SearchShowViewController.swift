@@ -31,6 +31,7 @@ final class SearchShowViewController: UIViewController {
         setupSearchTVShowView()
         setupSearchBar()
         setupBackButton()
+        view.backgroundColor = Colors.backGroundColor
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -55,13 +56,11 @@ extension SearchShowViewController {
     }
             
     private func setupSearchTVShowView() {
-        view.constrainSubView(view: searchView, top: 0, bottom: 0, left: 0, right: 0)
-        
-        searchView.didSelectTVShow = { [weak self] tvShow in
-            guard let self = self else { return }
-
-            self.navigationController?.pushViewController(TVShowDetailConfigurator.make(tvShow), animated: true)
-        }
+        view.constrainSubView(view: searchView, left: 0, right: 0)
+        NSLayoutConstraint.activate([
+            searchView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            searchView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ])
     }
 }
 
@@ -102,6 +101,16 @@ extension SearchShowViewController: UISearchResultsUpdating {
 }
 
 extension SearchShowViewController: SearchTVShowViewDelegate {
+
+    func didSelectCast(_ person: Person) {
+        let viewController = PersonDetailConfigurator.make(person)
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    func didSelectShow(_ show: TVShowCodable) {
+        let viewController = TVShowDetailConfigurator.make(show)
+        navigationController?.pushViewController(viewController, animated: true)
+    }
     
     func didTapFilter(_ selectedFilter: SearchFilter) {
         let items = SearchFilter.allCases.compactMap({ $0.title })
