@@ -4,18 +4,19 @@ extension ServiceAPI: ServiceAPISearch {
 
 
     func searchPerson(query: String, completion: @escaping(SearchPersonResult) -> Void) {
-        let url = Endpoints.searchPeople(query).url
-        request(url: url, completion: { (result: Result<[SearchPersonCodable], Error>) in
-            completion(result)
-        })
+        if let url = Endpoints.searchPeople(query).url {
+            request(url: url, completion: { (result: Result<[SearchPersonCodable], Error>) in
+                completion(result)
+            })
+        }
     }
     
     func searchTVShow(query: String, completion: @escaping(SearchShowResult) -> Void) {
-        let url = Endpoints.searchTvShow(query).url
-        
-        request(url: url, completion: { result in
-            completion(result)
-        })
+        if let url = Endpoints.searchTvShow(query).url {
+            request(url: url, completion: { result in
+                completion(result)
+            })
+        }
     }
 }
 

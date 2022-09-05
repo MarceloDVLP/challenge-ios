@@ -4,13 +4,13 @@ import Foundation
 final class TVShowInteractor: TVShowInteractorProtocol {
     
     private var manager: FavoriteManagerProtocol
-    private var service: ServiceAPIProtocol
+    private var service: ServiceAPITVShowProtocol
     private var presenter: TVShowPresenterProtocol
     private var page: Int
-    private var shows: [TVShowCodable]
+    private var shows: [TVShowModel]
     private var isSearching: Bool
     
-    init (manager: FavoriteManagerProtocol, service: ServiceAPIProtocol, presenter: TVShowPresenterProtocol) {
+    init (manager: FavoriteManagerProtocol, service: ServiceAPITVShowProtocol, presenter: TVShowPresenterProtocol) {
         self.service = service
         self.presenter = presenter
         self.page = 0
@@ -28,7 +28,7 @@ final class TVShowInteractor: TVShowInteractorProtocol {
         fetchEpisodes()
     }
     
-    func didTapAddFavorite(_ show: TVShowCodable) {
+    func didTapAddFavorite(_ show: TVShowModel) {
         if manager.isFavorited(id: show.id ?? 0) {
             manager.removeFavorite(with: show.id ?? 0)
         } else {

@@ -25,7 +25,7 @@ final class PersonDetailInteractor: PersonDetailInteractorProtocol {
             
             switch result {
             case .success(let shows):
-                let tvShows: [TVShowCodable] = shows.compactMap({ return $0.embedded?.show })
+                let tvShows: [TVShowModel] = shows.compactMap({ return $0.embedded?.show })
                 self.presenter.show(tvShows)
             case .failure(let error):
                 self.presenter.showError(error)

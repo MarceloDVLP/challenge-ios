@@ -4,7 +4,7 @@ import UIKit
 
 final class PersonDetailCell: UICollectionViewCell {
     
-    var didTapTVShow: ((TVShowCodable)->())?
+    var didTapTVShow: ((TVShowModel)->())?
 
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()

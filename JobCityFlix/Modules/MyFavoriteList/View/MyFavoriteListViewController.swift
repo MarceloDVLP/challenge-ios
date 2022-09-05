@@ -48,7 +48,7 @@ final class MyFavoriteListViewController: UIViewController {
 extension MyFavoriteListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let item = items[indexPath.item]
-        let show = TVShowCodable(Int(item.showId))
+        let show = TVShowModel(Int(item.showId))
         let viewController = TVShowDetailConfigurator.make(show)
         navigationController?.pushViewController(viewController, animated: true)
     }

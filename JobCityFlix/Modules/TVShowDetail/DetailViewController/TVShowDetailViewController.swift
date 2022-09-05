@@ -3,7 +3,7 @@ import UIKit
 final class TVShowDetailViewController: UIViewController {
 
     private var interactor: TVShowDetailInteractorProtocol
-    private var tvShowDetail: TVShowCodable!
+    private var tvShowDetail: TVShowModel!
     private var seasons: [String] = []
     private var selectedSeasonIndex: Int = 0
     
@@ -39,7 +39,7 @@ extension TVShowDetailViewController: TVShowDetailViewControllerProtocol {
         view.addSubview(loadingView)
     }
 
-    func show(_ tvShow: TVShowCodable, _ isFavorited: Bool) {
+    func show(_ tvShow: TVShowModel, _ isFavorited: Bool) {
         tvShowView.tvShow = tvShow
         tvShowView.show(tvShow, isFavorited)
     }

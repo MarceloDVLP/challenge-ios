@@ -2,15 +2,15 @@ import UIKit
 import SDWebImage
 
 protocol TVShowMainHeaderDelegate: AnyObject {
-    func didTapMore(_ show: TVShowCodable)
-    func didTapAddFavorite(_ show: TVShowCodable)
+    func didTapMore(_ show: TVShowModel)
+    func didTapAddFavorite(_ show: TVShowModel)
 }
 
 final class TVShowMainHeader: UICollectionReusableView {
 
     weak var delegate: TVShowMainHeaderDelegate?
     
-    var show: TVShowCodable?
+    var show: TVShowModel?
     
     let addedTitle = " + Favorite"
     let removeTitle = " - Favorite"
@@ -80,7 +80,7 @@ final class TVShowMainHeader: UICollectionReusableView {
         favoriteButton.layer.cornerRadius = 8
     }
     
-    func configure(_ tvShow: TVShowCodable?) {
+    func configure(_ tvShow: TVShowModel?) {
         guard let tvShow = tvShow else {
             return
         }

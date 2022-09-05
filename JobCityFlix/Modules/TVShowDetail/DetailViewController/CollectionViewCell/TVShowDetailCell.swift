@@ -135,7 +135,7 @@ final class TVShowDetailCell: UICollectionViewCell {
         }
     }
     
-    func configure(_ tvShow: TVShowCodable?, isFavorited: Bool) {
+    func configure(_ tvShow: TVShowModel?, isFavorited: Bool) {
         guard let tvShow = tvShow else { return }
         titleLabel.text = tvShow.name
         

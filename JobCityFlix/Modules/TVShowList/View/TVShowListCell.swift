@@ -42,7 +42,7 @@ final class TVShowListCell: UICollectionViewCell {
         imageView.image = nil
     }
         
-    func configure(_ tvShow: TVShowCodable) {
+    func configure(_ tvShow: TVShowModel) {
         titleLabel.text = tvShow.name
         if let url = tvShow.image?.medium {
             loadImageWith(url)

@@ -23,20 +23,20 @@ final class TVShowListConfigurator {
 
 protocol TVShowPresenterProtocol: AnyObject {
     func willStartFetch()
-    func show(_ tvShows: [TVShowCodable])
+    func show(_ tvShows: [TVShowModel])
     func showError(_ error: Error)
 }
 
 protocol SearchShowPresenterProtocol: AnyObject {
     func willStartFetch()
-    func show(_ tvShows: [TVShowCodable])
+    func show(_ tvShows: [TVShowModel])
     func show(_ persons: [Person])
     func show(_ error: Error)
 }
 
 protocol SearchShowViewControllerProtocol: AnyObject {
     func showLoadig()
-    func show(_ tvShows: [TVShowCodable])
+    func show(_ tvShows: [TVShowModel])
     func show(_ persons: [Person])
     func showError(_ error: Error)
     func removeLoading()
@@ -45,12 +45,12 @@ protocol SearchShowViewControllerProtocol: AnyObject {
 protocol TVShowInteractorProtocol {
     func viewDidLoad()
     func didFinishPage()
-    func didTapAddFavorite(_ show: TVShowCodable)
+    func didTapAddFavorite(_ show: TVShowModel)
 }
 
 protocol TVShowListViewControllerProtocol: AnyObject {
     func showLoadig()
-    func showEpisodes(_ tvShows: [TVShowCodable])
+    func showEpisodes(_ tvShows: [TVShowModel])
     func showError(_ error: Error)
     func removeLoading()
 }

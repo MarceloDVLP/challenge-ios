@@ -1,6 +1,6 @@
 import Foundation
 
-protocol ServiceAPIProtocol {func fetchTVShowList(page:Int?, completion: @escaping(Result<[TVShowCodable], Error>) -> Void)
+protocol ServiceAPIProtocol {func fetchTVShowList(page:Int?, completion: @escaping(Result<[TVShowModel], Error>) -> Void)
 }
 
 final class ServiceAPI: ServiceAPIProtocol {

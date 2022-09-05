@@ -1,13 +1,13 @@
 import UIKit
 
 protocol PersonDetailViewDelegate: AnyObject {
-    func didTapShow(_ tvShow: TVShowCodable)
+    func didTapShow(_ tvShow: TVShowModel)
 }
 
 final class PersonDetailView: UIView {
 
     var person: Person?
-    var shows: [TVShowCodable] = []
+    var shows: [TVShowModel] = []
     weak var delegate: PersonDetailViewDelegate?
     
     public lazy var collectionView: UICollectionView = {
@@ -42,7 +42,7 @@ final class PersonDetailView: UIView {
         collectionView.register(PersonDetailCell.self, forCellWithReuseIdentifier: "PersonDetailCell")
     }
     
-    public func show(_ shows: [TVShowCodable]) {
+    public func show(_ shows: [TVShowModel]) {
         self.shows = shows
         collectionView.reloadData()
     }

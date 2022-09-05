@@ -6,10 +6,10 @@ final class TVShowDetailInteractor: TVShowDetailInteractorProtocol {
     
     private var service: ServiceAPI
     private var presenter: TVShowDetailPresenterProtocol
-    private var tvShow: TVShowCodable
+    private var tvShow: TVShowModel
     private var manager: FavoriteManagerProtocol
     
-    init (service: ServiceAPI, manager: FavoriteManagerProtocol, presenter: TVShowDetailPresenterProtocol, tvShow: TVShowCodable) {
+    init (service: ServiceAPI, manager: FavoriteManagerProtocol, presenter: TVShowDetailPresenterProtocol, tvShow: TVShowModel) {
         self.service = service
         self.presenter = presenter
         self.tvShow = tvShow

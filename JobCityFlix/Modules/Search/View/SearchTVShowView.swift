@@ -4,7 +4,7 @@ import UIKit
 protocol SearchTVShowViewDelegate: AnyObject {
     func didTapFilter(_ selectedFilter: SearchFilter)
     func didSelectCast(_ person: Person)
-    func didSelectShow(_ show: TVShowCodable)
+    func didSelectShow(_ show: TVShowModel)
 }
 
 final class SearchTVShowView: UIView {
@@ -27,7 +27,7 @@ final class SearchTVShowView: UIView {
         return collection
     }()
 
-    var shows: [TVShowCodable] = []
+    var shows: [TVShowModel] = []
     var persons: [Person] = []
 
     init() {
@@ -62,7 +62,7 @@ final class SearchTVShowView: UIView {
         collectionView.register(SearchPersonCell.self, forCellWithReuseIdentifier: "SearchPersonCell")
     }
     
-    func show(_ tvShows: [TVShowCodable]) {
+    func show(_ tvShows: [TVShowModel]) {
         self.shows = tvShows
         collectionView.reloadData()
     }

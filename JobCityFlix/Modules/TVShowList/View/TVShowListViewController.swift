@@ -43,7 +43,7 @@ extension TVShowListViewController: TVShowListViewControllerProtocol {
         view.addActivityIndicatorView()
     }
 
-    func showEpisodes(_ tvShows: [TVShowCodable]) {
+    func showEpisodes(_ tvShows: [TVShowModel]) {
         tvShowView.items = tvShows
         tvShowView.collectionView.reloadData()
     }

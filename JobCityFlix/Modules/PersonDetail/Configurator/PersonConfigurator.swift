@@ -21,7 +21,7 @@ final class PersonDetailConfigurator {
 protocol PersonDetailPresenterProtocol: AnyObject {
     func willStartFetch()
     func show(_ person: Person)
-    func show(_ shows: [TVShowCodable])
+    func show(_ shows: [TVShowModel])
     func showError(_ error: Error)
 }
 
@@ -31,7 +31,7 @@ protocol PersonDetailInteractorProtocol {
 
 protocol PersonDetailViewControllerProtocol: AnyObject {
     func showLoadig()
-    func show(_ episodes: [TVShowCodable])
+    func show(_ episodes: [TVShowModel])
     func show(_ person: Person)
     func showError(_ error: Error)
     func removeLoading()

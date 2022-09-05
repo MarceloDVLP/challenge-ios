@@ -2,7 +2,7 @@ import UIKit
 
 final class TVShowDetailConfigurator {
     
-    static func make(_ tvShow: TVShowCodable) -> UIViewController {
+    static func make(_ tvShow: TVShowModel) -> UIViewController {
         let session = URLSession.shared
         let service = ServiceAPI(client: HTTPClient(session: session))
         let container = PersistentContainer.shared.persistentContainer
@@ -21,7 +21,7 @@ final class TVShowDetailConfigurator {
 
 protocol TVShowDetailPresenterProtocol: AnyObject {
     func willStartFetch()
-    func show(_ tvShow: TVShowCodable, _ isFavorited: Bool)
+    func show(_ tvShow: TVShowModel, _ isFavorited: Bool)
     func show(_ episodes: [Episode])
     func showError(_ error: Error)
     
@@ -35,7 +35,7 @@ protocol TVShowDetailInteractorProtocol {
 protocol TVShowDetailViewControllerProtocol: AnyObject {
     func showLoadig()
     func show(_ episodes: [[Episode]], _ seasons: [String])
-    func show(_ tvShow: TVShowCodable, _ isFavorited: Bool)
+    func show(_ tvShow: TVShowModel, _ isFavorited: Bool)
     func showError(_ error: Error)
     func removeLoading()
 }

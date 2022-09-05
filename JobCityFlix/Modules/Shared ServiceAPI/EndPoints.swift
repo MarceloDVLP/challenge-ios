@@ -9,31 +9,51 @@ enum Endpoints {
     case searchPeople(String)
     case castCredits(Int)
     
-    var baseURL: String {
-        "http://api.tvmaze.com/"
+    var baseURL: URLComponents {
+        return URLComponents(string:"http://api.tvmaze.com/")!
     }
 
-    var url: URL {
+    var url: URL? {
         
         switch self {
 
         case .tvShowList(let page):
-            return URL(string: "\(baseURL)shows?page=\(page)")!
-
+            var urlComponentes = URLComponents(string: "\(baseURL)shows")
+            let params = [URLQueryItem(name: "page", value: String(page))]
+            urlComponentes?.queryItems = params
+            return urlComponentes?.url
+            
         case .tvShowDetail(let id):
-            return URL(string: "\(baseURL)shows/\(id)")!
+            var urlComponentes = URLComponents(string: "\(baseURL)shows/")
+            urlComponentes?.path += "\(id)"
+            return urlComponentes?.url
+
 
         case .tvShowEpisodeList(let id):
-            return URL(string: "\(baseURL)shows/\(id)/episodes")!
-            
-        case .searchTvShow(let query):
-            return URL(string: "\(baseURL)search/shows?q=\(query)")!
+            var urlComponentes = URLComponents(string: "\(baseURL)")
+            urlComponentes?.path += "shows/\(id)/episodes"
+            return urlComponentes?.url
 
+        case .searchTvShow(let query):
+            var urlComponentes = URLComponents(string: "\(baseURL)")
+            urlComponentes?.path += "search/shows"
+            let params = [URLQueryItem(name: "q", value: query)]
+            urlComponentes?.queryItems = params
+            return urlComponentes?.url
+            
         case .searchPeople(let query):
-            return URL(string: "\(baseURL)search/people?q=\(query)")!
+            var urlComponentes = URLComponents(string: "\(baseURL)")
+            urlComponentes?.path += "search/people"
+            let params = [URLQueryItem(name: "q", value: query)]
+            urlComponentes?.queryItems = params
+            return urlComponentes?.url
             
         case .castCredits(let id):
-            return URL(string: "\(baseURL)people/\(id)/castcredits?embed=show")!
+            var urlComponentes = URLComponents(string: "\(baseURL)")
+            urlComponentes?.path += "people/\(id)/castcredits"
+            let params = [URLQueryItem(name: "embed", value: "show")]
+            urlComponentes?.queryItems = params
+            return urlComponentes?.url
         }
     }
 }

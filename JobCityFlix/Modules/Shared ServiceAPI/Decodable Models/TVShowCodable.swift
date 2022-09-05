@@ -1,36 +1,28 @@
 import Foundation
 
-struct TVShowCodable: Decodable, Equatable {
+struct TVShowModel: Decodable, Equatable {
 
-    static func == (lhs: TVShowCodable, rhs: TVShowCodable) -> Bool {
+    static func == (lhs: TVShowModel, rhs: TVShowModel) -> Bool {
         return lhs.name == rhs.name &&
         lhs.id == rhs.id
     }
     
-    let id:Int?
-    let url:String?
-    let type:String?
-    let name:String?
-    let language:String?
-    let genres:[String]?
-    let status:String?
-    let runtime:Int?
-    let premiered:String?
-    let schedule:Schedule?
-    let rating:Rating?
-    let network:Network?
-    let image:Media?
-    let summary:String?
-    let updated:Int?
-    
-    var premierDate: Date? {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        return dateFormatter.date(from: premiered ?? "")
-    }
-    
-    var isFavorited: Bool = false
-    
+    let id: Int?
+    let url: String?
+    let type: String?
+    let name: String?
+    let language: String?
+    let genres: [String]?
+    let status: String?
+    let runtime: Int?
+    let premiered: String?
+    let schedule: Schedule?
+    let rating: Rating?
+    let network: Network?
+    let image: Media?
+    let summary: String?
+    let updated: Int?
+            
     enum CodingKeys: String, CodingKey {
         case id
         case url
@@ -69,28 +61,28 @@ struct TVShowCodable: Decodable, Equatable {
     
 }
 
-struct Schedule:Decodable {
+struct Schedule: Decodable {
     let time:String?
     let days:[String]?
 }
 
-struct Rating:Decodable {
+struct Rating: Decodable {
     let average:Double?
 }
 
-struct Media:Decodable {
+struct Media: Decodable {
     let medium: URL?
     let original: URL?
 }
 
-struct Network:Decodable {
-    let id:Int?
-    let name:String?
+struct Network: Decodable {
+    let id: Int?
+    let name: String?
     let country: Country?
 }
 
-struct Country:Decodable {
-    let name:String?
-    let code:String?
-    let timezone:String?
+struct Country: Decodable {
+    let name: String?
+    let code: String?
+    let timezone: String?
 }

@@ -3,8 +3,8 @@ import UIKit
 
 final class TVShowListView: UIView {
     
-    var didSelectTVShow: ((TVShowCodable) ->())?
-    var didFavoriteTVShow: ((TVShowCodable) ->())?
+    var didSelectTVShow: ((TVShowModel) ->())?
+    var didFavoriteTVShow: ((TVShowModel) ->())?
     var didFinishPage: (() -> ())?
     var scrollViewWillBeginDecelerating: ((UIScrollView) -> ())?
 
@@ -21,7 +21,7 @@ final class TVShowListView: UIView {
         return collection
     }()
     
-    var items: [TVShowCodable] = []
+    var items: [TVShowModel] = []
     
     init() {
         super.init(frame: .zero)
@@ -130,11 +130,11 @@ extension TVShowListView: UICollectionViewDelegateFlowLayout {
 
 extension TVShowListView: TVShowMainHeaderDelegate {
 
-    func didTapMore(_ show: TVShowCodable) {
+    func didTapMore(_ show: TVShowModel) {
         didSelectTVShow?(show )
     }
     
-    func didTapAddFavorite(_ show: TVShowCodable) {
+    func didTapAddFavorite(_ show: TVShowModel) {
         didFavoriteTVShow?(show)
     }
     

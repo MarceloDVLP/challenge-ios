@@ -9,5 +9,5 @@ struct PersonCastCodable: Decodable {
 }
 
 struct PersonEmbedCodable: Decodable {
-    var show: TVShowCodable?
+    var show: TVShowModel?
 }

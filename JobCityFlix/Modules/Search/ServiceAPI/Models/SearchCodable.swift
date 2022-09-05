@@ -1,7 +1,7 @@
 import Foundation
 
 public struct SearchShowCodable: Decodable {
-    let show: TVShowCodable
+    let show: TVShowModel
     let score: Double
     
     enum CodingKeys: String, CodingKey {

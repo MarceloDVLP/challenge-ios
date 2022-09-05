@@ -53,7 +53,7 @@ final class TVShowAboutCell: UICollectionViewCell {
         constrainSumaryValueLabel()
     }
     
-    func configure(_ tvShow: TVShowCodable?) {
+    func configure(_ tvShow: TVShowModel?) {
         guard let tvShow = tvShow else {
             return
         }

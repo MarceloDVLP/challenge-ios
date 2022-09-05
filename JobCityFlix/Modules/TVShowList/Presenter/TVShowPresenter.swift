@@ -10,7 +10,7 @@ final class TVShowPresenter: TVShowPresenterProtocol {
             self.viewController?.showLoadig()
         }
     }
-    func show(_ tvShows: [TVShowCodable]) {
+    func show(_ tvShows: [TVShowModel]) {
         Thread.executeOnMain { [weak self] in
             guard let self = self else { return }
             self.viewController?.removeLoading()

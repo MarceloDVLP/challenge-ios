@@ -71,7 +71,7 @@ extension SearchShowViewController: SearchShowViewControllerProtocol {
         view.addActivityIndicatorView()
     }
     
-    func show(_ tvShows: [TVShowCodable]) {
+    func show(_ tvShows: [TVShowModel]) {
         searchView.show(tvShows)
     }
     
@@ -107,7 +107,7 @@ extension SearchShowViewController: SearchTVShowViewDelegate {
         navigationController?.pushViewController(viewController, animated: true)
     }
     
-    func didSelectShow(_ show: TVShowCodable) {
+    func didSelectShow(_ show: TVShowModel) {
         let viewController = TVShowDetailConfigurator.make(show)
         navigationController?.pushViewController(viewController, animated: true)
     }

@@ -8,7 +8,7 @@ final class SearchShowPresenter: SearchShowPresenterProtocol {
         viewController?.showLoadig()
     }
 
-    func show(_ tvShows: [TVShowCodable]) {
+    func show(_ tvShows: [TVShowModel]) {
         viewController?.removeLoading()
         viewController?.show(tvShows)
     }

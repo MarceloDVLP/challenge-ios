@@ -33,7 +33,7 @@ final class TVShowDetailView: UIView {
     var episodes: [[Episode]] = [[]]
     var seasons: [String] = []
     var selectedSeason = 0
-    var tvShow: TVShowCodable?
+    var tvShow: TVShowModel?
     var selectedMenu = TVShowDetailMenu.episodes
     
     init() {
@@ -71,7 +71,7 @@ final class TVShowDetailView: UIView {
         collectionView.reloadData()
     }
     
-    public func show(_ detail: TVShowCodable, _ isFavorited: Bool) {
+    public func show(_ detail: TVShowModel, _ isFavorited: Bool) {
         self.tvShow = detail
         self.isFavorited = isFavorited
         collectionView.reloadData()
@@ -140,7 +140,10 @@ extension TVShowDetailView: UICollectionViewDataSource {
     
     private func dequeueSeasonCell(_ collectionView: UICollectionView, _ indexPath: IndexPath) -> SeasonButtonCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SeasonButtonCell", for: indexPath) as! SeasonButtonCell
-        cell.show(season: selectedSeason+1, episodes: episodes[selectedSeason].count)
+        
+        if episodes.indices.contains(selectedSeason) {
+            cell.show(season: selectedSeason+1, episodes: episodes[selectedSeason].count)
+        }        
         
         cell.didTapSeasonButton = { [weak self] in
             self?.didTapSeasonButton()

@@ -3,7 +3,7 @@ import UIKit
 final class PersonDetailViewController: UIViewController {
 
     private var interactor: PersonDetailInteractorProtocol
-    private var tvShowDetail: TVShowCodable!
+    private var tvShowDetail: TVShowModel!
     private var seasons: [String] = []
     private var selectedSeasonIndex: Int = 0
     
@@ -41,7 +41,7 @@ extension PersonDetailViewController: PersonDetailViewControllerProtocol {
         personDetailView.show(person)
     }
     
-    func show(_ shows: [TVShowCodable]) {
+    func show(_ shows: [TVShowModel]) {
         personDetailView.show(shows)
     }
 
@@ -84,7 +84,7 @@ extension PersonDetailViewController {
 
 extension PersonDetailViewController: PersonDetailViewDelegate {
 
-    func didTapShow(_ tvShow: TVShowCodable) {
+    func didTapShow(_ tvShow: TVShowModel) {
         let viewController = TVShowDetailConfigurator.make(tvShow)
         navigationController?.pushViewController(viewController, animated: true)
     }

@@ -8,7 +8,7 @@ final class TVShowDetailPresenter: TVShowDetailPresenterProtocol {
         viewController?.showLoadig()
     }
 
-    func show(_ tvShow: TVShowCodable, _ isFavorited: Bool) {
+    func show(_ tvShow: TVShowModel, _ isFavorited: Bool) {
         Thread.executeOnMain { [weak self] in
             self?.viewController?.removeLoading()
             self?.viewController?.show(tvShow, isFavorited)

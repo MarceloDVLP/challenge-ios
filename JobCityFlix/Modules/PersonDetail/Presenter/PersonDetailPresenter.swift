@@ -19,7 +19,7 @@ final class PersonDetailPresenter: PersonDetailPresenterProtocol {
         viewController?.showError(error)
     }
     
-    func show(_ shows: [TVShowCodable]) {
+    func show(_ shows: [TVShowModel]) {
         Thread.executeOnMain { [weak self] in
             self?.viewController?.removeLoading()
             self?.viewController?.show(shows)
