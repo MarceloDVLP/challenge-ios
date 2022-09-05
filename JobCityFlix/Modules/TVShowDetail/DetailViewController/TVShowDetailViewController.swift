@@ -2,6 +2,10 @@ import UIKit
 
 final class TVShowDetailViewController: UIViewController {
 
+    deinit {
+        print("did Release TVShowDetailViewController")
+    }
+
     private var interactor: TVShowDetailInteractorProtocol
     private var tvShowDetail: TVShowModel!
     private var seasons: [String] = []
