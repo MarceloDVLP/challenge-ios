@@ -2,7 +2,7 @@ import Foundation
 
 final class UserAuthenticationPresenter {
     
-    var viewController: UserAuthenticationViewController!
+    weak var viewController: UserAuthenticationViewController!
     
     func showLoginFailure(_ error: LoginError) {
         Thread.executeOnMain { [weak self] in

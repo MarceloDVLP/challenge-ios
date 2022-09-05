@@ -2,19 +2,32 @@ import UIKit
 
 final class UserAuthenticationViewController: UIViewController {
         
-    var interactor: UserAuthenticationInteractor!
+    deinit {
+        print("did Release UserAuthenticationViewController")
+    }
+    
+    var interactor: UserAuthenticationInteractor
 
     private lazy var authenticationView: UserAuthenticationView = {
         let authenticationView = UserAuthenticationView()
         authenticationView.delegate = self
         return authenticationView
     }()
-
+    
+    init(interactor: UserAuthenticationInteractor) {
+        self.interactor = interactor
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         constraintAuthenticationView()
     }
-    
+            
     private func constraintAuthenticationView() {
         view.constrainSubView(view: authenticationView, top: 0, bottom: 0, left: 0, right: 0)
     }
@@ -43,7 +56,7 @@ final class UserAuthenticationViewController: UIViewController {
     }
     
     public func showLogin() {
-        authenticationView.showLogin()
+         authenticationView.showLogin()
     }
     
     public func showRegister() {
