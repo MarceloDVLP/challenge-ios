@@ -7,13 +7,13 @@ protocol SearchShowInteractorProtocol {
 
 final class SearchShowInteractor: SearchShowInteractorProtocol {
 
-    private var service: ServiceAPI
+    private var service: ServiceAPISearch
     private var presenter: SearchShowPresenterProtocol
     private var isSearching: Bool
     private var query: String
     private var selectedFilter: SearchFilter
     
-    init (service: ServiceAPI, presenter: SearchShowPresenterProtocol) {
+    init (service: ServiceAPISearch, presenter: SearchShowPresenterProtocol) {
         self.service = service
         self.presenter = presenter
         self.isSearching = false
@@ -62,7 +62,7 @@ final class SearchShowInteractor: SearchShowInteractorProtocol {
         }
     }
     
-    private func present(_ result: ServiceAPI.SearchPersonResult) {
+    private func present(_ result: SearchPersonResult) {
         switch result {
         case .success(let result):
 

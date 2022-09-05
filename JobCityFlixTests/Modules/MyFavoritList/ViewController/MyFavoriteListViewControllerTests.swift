@@ -8,7 +8,7 @@ final class MyFavoriteListViewControllerTests: XCTestCase {
         .iPhoneX(.portrait)
     ]
     
-    let record = true
+    let record = false
     
     private func makeSUT() -> UINavigationController {
         let manager = FavoriteManagerMock()

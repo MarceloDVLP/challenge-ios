@@ -75,13 +75,21 @@ final class TVShowEPisodeDetailViewController: UIViewController {
         return button
     }()
             
-    let scrollView = UIScrollView()
-    let contentSumaryView = UIView()
-
+    private lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.alwaysBounceVertical = true
+        scrollView.isDirectionalLockEnabled = true
+        return scrollView
+    }()
+    
+    private lazy var contentSumaryView: UIView = {
+        let contentSumaryView = UIView()
+        return contentSumaryView
+    }()
+    
     public init(episode: Episode) {
         super.init(nibName: nil, bundle: nil)
         constrainSubviews()
-        scrollView.isDirectionalLockEnabled = true 
         configure(episode)
     }
     
@@ -95,15 +103,7 @@ final class TVShowEPisodeDetailViewController: UIViewController {
         constraintSubtitleLabel()
         constraintSumaryLabel()
         constrainCloseButton()
-        
-        containerView.constrainSubView(view: scrollView, bottom: 0, left: 0, right: 0)
-        scrollView.constrainSubView(view: contentSumaryView, top: 0, bottom:0, left: 0, right: 0)
-
-        NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: qualityImageView.bottomAnchor, constant: 10),
-            contentSumaryView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-        ])
-        scrollView.alwaysBounceVertical = true
+        constrainScrollView()
     }
     
     override func viewDidLayoutSubviews() {
@@ -153,14 +153,24 @@ final class TVShowEPisodeDetailViewController: UIViewController {
     
     func color(for rating: Double) -> UIColor {
         if rating <= 5 {
-            return UIColor.red
+            return UIColor.systemRed
         } else if rating <= 6.5 {
-            return UIColor.blue
+            return UIColor.systemOrange
         } else if rating <= 8 {
             return UIColor.systemBlue
         } else {
-            return UIColor.green
+            return UIColor.systemGreen
         }
+    }
+    
+    func constrainScrollView() {
+        containerView.constrainSubView(view: scrollView, bottom: 0, left: 0, right: 0)
+        scrollView.constrainSubView(view: contentSumaryView, top: 0, bottom:0, left: 0, right: 0)
+
+        NSLayoutConstraint.activate([
+            scrollView.topAnchor.constraint(equalTo: qualityImageView.bottomAnchor, constant: 10),
+            contentSumaryView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+        ])
     }
     
     func configure(_ episode: Episode) {
@@ -172,16 +182,20 @@ final class TVShowEPisodeDetailViewController: UIViewController {
         }        
 
         sumaryLabel.text = episode.summary?.htmlToString
-        setupScrollViewHeight(episode.summary!.htmlToString)
+        
+        if let summary = episode.summary?.htmlToString {
+            setupScrollViewHeight(summary)
+        }
     }
     
     func setupScrollViewHeight(_ summary: String) {
+        view.layoutIfNeeded()
         let height = summary.height(constraintedWidth: containerView.frame.width,
-                                    font: UIFont.systemFont(ofSize: 15, weight: .regular)) + 30
+                                    font: UIFont.systemFont(ofSize: 15, weight: .regular)) + 50
         view.layoutIfNeeded()
         NSLayoutConstraint.activate([
             contentSumaryView.heightAnchor.constraint(equalToConstant: height)
-        ])
+        ])        
     }
     
     func getYear(_ date: String) -> String {

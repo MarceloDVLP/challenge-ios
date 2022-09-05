@@ -1,6 +1,6 @@
 import Foundation
 
-struct SearchShowCodable: Decodable {
+public struct SearchShowCodable: Decodable {
     let show: TVShowCodable
     let score: Double
     
@@ -10,7 +10,7 @@ struct SearchShowCodable: Decodable {
     }
 }
 
-struct SearchPersonCodable: Decodable {
+public struct SearchPersonCodable: Decodable {
     let person: Person
     let score: Double
     
