@@ -28,10 +28,15 @@ final class TVShowInteractor: TVShowInteractorProtocol {
         fetchEpisodes()
     }
     
-    func didTapAddFavorite(_ show: TVShowCodable) {        
-        manager.save(showName: show.name ?? "",
-                     showId: show.id ?? 0,
-                     imageURL: show.image?.medium?.absoluteString)
+    func didTapAddFavorite(_ show: TVShowCodable) {
+        if manager.isFavorited(id: show.id ?? 0) {
+            manager.removeFavorite(with: show.id ?? 0)
+        } else {
+            manager.save(showName: show.name ?? "",
+                         showId: show.id ?? 0,
+                         imageURL: show.image?.medium?.absoluteString)
+        }
+        
     }
     
     private func fetchEpisodes() {

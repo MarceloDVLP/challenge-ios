@@ -12,6 +12,10 @@ final class TVShowMainHeader: UICollectionReusableView {
     
     var show: TVShowCodable?
     
+    let addedTitle = " + Favorite"
+    let removeTitle = " - Favorite"
+
+    
     lazy var imageView: UIImageView = {
         let view = UIImageView()
         view.contentMode = .scaleAspectFill
@@ -22,7 +26,7 @@ final class TVShowMainHeader: UICollectionReusableView {
     private lazy var detailButton: UIButton = {
         let button = UIButton()
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
-        button.setTitle("Veja mais", for: .normal)
+        button.setTitle("More", for: .normal)
         
         button.setTitleColor(UIColor.darkGray, for: .normal)
         button.setTitleColor(UIColor.lightGray, for: .highlighted)
@@ -34,7 +38,7 @@ final class TVShowMainHeader: UICollectionReusableView {
     private lazy var favoriteButton: UIButton = {
         let button = UIButton()
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
-        button.setTitle(" + Adicionar", for: .normal)
+        button.setTitle(addedTitle, for: .normal)
         
         button.setupWithMainColors()
 
@@ -85,8 +89,9 @@ final class TVShowMainHeader: UICollectionReusableView {
             imageView.sd_setImage(with: url)
         }
         
-        let text = "Não perca HOJE a série \(tvShow.name ?? "")!"
+        let text = "\(tvShow.name ?? "")!"
         titleLabel.text = text
+        titleLabel.font = UIFont.titleFont()
         self.show = tvShow
     }
    
@@ -128,19 +133,24 @@ final class TVShowMainHeader: UICollectionReusableView {
     func setGradientBackground() {
         let colorTop =  UIColor.clear.cgColor
         let colorBottom = Colors.backGroundColor.cgColor
-                    
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.colors = [colorTop, colorBottom]
-        gradientLayer.locations = [0.8, 1.0]
-        gradientLayer.frame = self.bounds
-                
-        imageView.layer.insertSublayer(gradientLayer, at:0)
+        imageView.gradientLayer(colorTop: colorTop, colorBottom: colorBottom)
+//        let gradientLayer = CAGradientLayer()
+//        gradientLayer.colors = [colorTop, colorBottom]
+//        gradientLayer.locations = [0.8, 1.0]
+//        gradientLayer.frame = self.bounds
+//
+//        imageView.layer.insertSublayer(gradientLayer, at:0)
     }
     
     @objc func didTapFavorite() {
+        if favoriteButton.titleLabel?.text == addedTitle {
+            favoriteButton.setTitle(removeTitle, for: .normal)
+        } else {
+            favoriteButton.setTitle(addedTitle, for: .normal)
+        }
+        
         if let show = show {
             delegate?.didTapAddFavorite(show)
-
         }
     }
     

@@ -33,7 +33,7 @@ final class SearchShowViewController: UIViewController {
         setupBackButton()
         view.backgroundColor = Colors.backGroundColor
     }
-    
+        
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         searchController.isActive = true

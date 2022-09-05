@@ -47,7 +47,7 @@ final class TVShowDetailInteractor: TVShowDetailInteractorProtocol {
             
             switch result {
             case .success(let tvShow):
-                
+                self.tvShow = tvShow
                 self.presenter.show(tvShow, self.isTVShowFavorited())
                 
             case .failure(let error):

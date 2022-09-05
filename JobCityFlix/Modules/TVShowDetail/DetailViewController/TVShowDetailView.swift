@@ -36,7 +36,6 @@ final class TVShowDetailView: UIView {
     var tvShow: TVShowCodable?
     var selectedMenu = TVShowDetailMenu.episodes
     
-    
     init() {
         super.init(frame: .zero)
         constrainCollectionView()
@@ -69,13 +68,13 @@ final class TVShowDetailView: UIView {
     
     public func show(_ seasonIndex: Int) {
         self.selectedSeason = seasonIndex
-        collectionView.reloadSections([TVShowDetailSection.season.rawValue, TVShowDetailSection.episodes.rawValue])
+        collectionView.reloadData()
     }
     
     public func show(_ detail: TVShowCodable, _ isFavorited: Bool) {
         self.tvShow = detail
         self.isFavorited = isFavorited
-        collectionView.reloadData()// reloadSections([TVShowDetailSection.detail.rawValue])
+        collectionView.reloadData()
     }
     
     
@@ -174,7 +173,7 @@ extension TVShowDetailView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         
         switch TVShowDetailSection.init(rawValue: section) {
-        case .about, .detail: return .zero
+        case .detail: return .zero
         default: return UIEdgeInsets(top: 20, left: 16, bottom: 0, right: 16)
         }
     }

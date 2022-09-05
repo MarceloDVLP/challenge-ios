@@ -12,9 +12,9 @@ final class MyFavoriteListInteractor: MyFavoriteListInteractorProtocol {
     
     var delegate: MyFavoriteListInteractorDelegate?
     
-    var manager: FavoriteManager
+    var manager: FavoriteManagerProtocol
 
-    init(manager: FavoriteManager) {
+    init(manager: FavoriteManagerProtocol) {
         self.manager = manager
     }
     

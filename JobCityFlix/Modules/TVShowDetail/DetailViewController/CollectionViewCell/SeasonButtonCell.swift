@@ -39,9 +39,9 @@ final class SeasonButtonCell: UICollectionViewCell {
        }
        
     func show(season: Int, episodes: Int) {
-        let seasonTitle = "\(season)ª Temporada   "
+        let seasonTitle = "Season \(season) "
         seasonButton.setTitle(seasonTitle, for: .normal)
-        totalEpisodeLabel.text = "\(episodes) episódios"
+        totalEpisodeLabel.text = "\(episodes) episodes"
     }
         
     @objc func didTapSeasonButtonFunc(_ sender: UIButton) {

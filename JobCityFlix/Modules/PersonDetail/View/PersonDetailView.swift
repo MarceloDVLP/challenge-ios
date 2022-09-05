@@ -49,7 +49,7 @@ final class PersonDetailView: UIView {
     
     public func show(_ person: Person) {
         self.person = person
-        collectionView.reloadData()//reloadSections([Section.detail.rawValue])
+        collectionView.reloadData()
     }
 }
 

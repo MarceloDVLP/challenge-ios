@@ -24,6 +24,12 @@ final class MyFavoriteListViewController: UIViewController {
         collectionView.register(TVShowListCell.self, forCellWithReuseIdentifier: "TVShowListCell")
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupTabBarItem(title: "My List", imageName: "heart-icon")
+        setupNavigationBar()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         interactor.viewWillAppear()
@@ -31,6 +37,11 @@ final class MyFavoriteListViewController: UIViewController {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setupNavigationBar() {
+        setupNavigationImage("logo-home")
+        setupBackButton()
     }
 }
 

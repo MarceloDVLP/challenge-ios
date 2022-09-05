@@ -48,7 +48,7 @@ final class TVShowDetailPresenter: TVShowDetailPresenterProtocol {
         guard count > 0 else { return [] }
         
         for season in 1...count {
-            result.append("\(season)ª Temporada")
+            result.append("Season \(season)")
         }
         
         return result

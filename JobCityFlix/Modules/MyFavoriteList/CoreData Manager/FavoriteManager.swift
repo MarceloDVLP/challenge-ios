@@ -31,7 +31,9 @@ final class FavoriteManager: FavoriteManagerProtocol {
         self.persistentContainer = persistentContainer
     }
                                     
-    func save(showName: String, showId: Int, imageURL: String?) {
+    func save(showName: String, showId: Int, imageURL: String?) {        
+        guard !isFavorited(id: showId) else { return }
+        
         let desc = NSEntityDescription.entity(forEntityName: "FavoriteEntity", in: persistentContainer.viewContext)!
         let entity = FavoriteEntity(entity: desc, insertInto: persistentContainer.viewContext)
         entity.showId = Int32(showId)

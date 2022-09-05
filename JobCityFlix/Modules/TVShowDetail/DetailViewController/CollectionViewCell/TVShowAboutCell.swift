@@ -15,21 +15,21 @@ final class TVShowAboutCell: UICollectionViewCell {
         var title: String {
             switch self {
             case .originalTitle:
-                return "Titulo Original: "
+                return "Original Title: "
             case .gender:
-                return "Genero: "
+                return "Gender: "
             case .language:
-                return "Idioma: "
+                return "Language: "
             case .runtime:
-                return "Duração média: "
+                return "Duration: "
             case .schedule:
-                return "Data de Exibição: "
+                return "Air Date: "
             case .country:
-                return "País: "
+                return "Country: "
             case .channel:
-                return "Canal: "
+                return "Channel: "
             case .year:
-                return "Ano de lançamento: "
+                return "Release Year: "
             }
         }
     }
@@ -43,8 +43,8 @@ final class TVShowAboutCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        titleLabel = makeTitleLabel("Ficha Técnica")
-        sumaryLabel = makeTitleLabel("Sinopse")
+        titleLabel = makeTitleLabel("")
+        sumaryLabel = makeTitleLabel("Summary")
         setupMainStackView()
         setupSumaryLabel()
         contentView.constrainSubView(view: titleLabel, top: 0, left: 0)
@@ -154,6 +154,7 @@ final class TVShowAboutCell: UICollectionViewCell {
         label.text = labelSting
         label.textAlignment = .left
 
+        
         let value = UILabel()
         value.textColor = Colors.titleInactiveColor
         value.font = UIFont.systemFont(ofSize: 14, weight: .heavy)

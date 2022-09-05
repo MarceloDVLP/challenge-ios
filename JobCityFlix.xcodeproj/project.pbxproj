@@ -42,6 +42,9 @@
 		C728D1FB28C54B6600CC6FAF /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C728D1FA28C54B6600CC6FAF /* Media.xcassets */; };
 		C728D1FE28C550FB00CC6FAF /* TVShowEpisodeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C728D1FD28C550FB00CC6FAF /* TVShowEpisodeDetailViewController.swift */; };
 		C728D20228C555D000CC6FAF /* MyFavoriteManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C728D20128C555D000CC6FAF /* MyFavoriteManagerTests.swift */; };
+		C728D20628C561FA00CC6FAF /* MyFavoriteListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C728D20528C561FA00CC6FAF /* MyFavoriteListInteractor.swift */; };
+		C728D20928C5647400CC6FAF /* MyFavoritePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C728D20828C5647400CC6FAF /* MyFavoritePresenterTests.swift */; };
+		C728D20C28C5659500CC6FAF /* MyFavoriteListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C728D20B28C5659500CC6FAF /* MyFavoriteListViewControllerTests.swift */; };
 		C74B384228BAC068000E728D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74B384128BAC068000E728D /* AppDelegate.swift */; };
 		C74B384628BAC068000E728D /* TVShowListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74B384528BAC068000E728D /* TVShowListViewController.swift */; };
 		C74B384B28BAC069000E728D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C74B384A28BAC069000E728D /* Assets.xcassets */; };
@@ -152,6 +155,9 @@
 		C728D1FA28C54B6600CC6FAF /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		C728D1FD28C550FB00CC6FAF /* TVShowEpisodeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowEpisodeDetailViewController.swift; sourceTree = "<group>"; };
 		C728D20128C555D000CC6FAF /* MyFavoriteManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFavoriteManagerTests.swift; sourceTree = "<group>"; };
+		C728D20528C561FA00CC6FAF /* MyFavoriteListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFavoriteListInteractor.swift; sourceTree = "<group>"; };
+		C728D20828C5647400CC6FAF /* MyFavoritePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFavoritePresenterTests.swift; sourceTree = "<group>"; };
+		C728D20B28C5659500CC6FAF /* MyFavoriteListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFavoriteListViewControllerTests.swift; sourceTree = "<group>"; };
 		C74B383E28BAC068000E728D /* JobCityFlix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JobCityFlix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C74B384128BAC068000E728D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C74B384528BAC068000E728D /* TVShowListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowListViewController.swift; sourceTree = "<group>"; };
@@ -412,7 +418,10 @@
 		C728D1FF28C5534700CC6FAF /* MyFavoritList */ = {
 			isa = PBXGroup;
 			children = (
-				C728D20128C555D000CC6FAF /* MyFavoriteManagerTests.swift */,
+				C728D20A28C5658000CC6FAF /* ViewController */,
+				C728D20728C5645E00CC6FAF /* Presenter */,
+				C728D20428C561EA00CC6FAF /* Interactor */,
+				C728D20328C561E100CC6FAF /* CoreData Manager */,
 			);
 			path = MyFavoritList;
 			sourceTree = "<group>";
@@ -424,6 +433,47 @@
 				C70D4E6628C4C51100991B3C /* FavoriteEntity+CoreDataProperties.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		C728D20328C561E100CC6FAF /* CoreData Manager */ = {
+			isa = PBXGroup;
+			children = (
+				C728D20128C555D000CC6FAF /* MyFavoriteManagerTests.swift */,
+			);
+			path = "CoreData Manager";
+			sourceTree = "<group>";
+		};
+		C728D20428C561EA00CC6FAF /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				C728D20528C561FA00CC6FAF /* MyFavoriteListInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		C728D20728C5645E00CC6FAF /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				C728D20828C5647400CC6FAF /* MyFavoritePresenterTests.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		C728D20A28C5658000CC6FAF /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C728D20B28C5659500CC6FAF /* MyFavoriteListViewControllerTests.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		C728D20D28C56F5500CC6FAF /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				C74B384128BAC068000E728D /* AppDelegate.swift */,
+				C74B386528BBB8A6000E728D /* SceneDelegate.swift */,
+			);
+			path = AppDelegate;
 			sourceTree = "<group>";
 		};
 		C74B383528BAC068000E728D = {
@@ -483,11 +533,10 @@
 		C74B386428BBB7D7000E728D /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				C728D20D28C56F5500CC6FAF /* AppDelegate */,
 				C7D2F7FE28BC016200EEC146 /* TabBar */,
 				C7D2F81828BD649D00EEC146 /* Shared Resources */,
 				C74B384C28BAC069000E728D /* LaunchScreen.storyboard */,
-				C74B384128BAC068000E728D /* AppDelegate.swift */,
-				C74B386528BBB8A6000E728D /* SceneDelegate.swift */,
 				C74B384A28BAC069000E728D /* Assets.xcassets */,
 				C74B384F28BAC069000E728D /* Info.plist */,
 			);
@@ -1125,13 +1174,16 @@
 			files = (
 				C728D1FE28C550FB00CC6FAF /* TVShowEpisodeDetailViewController.swift in Sources */,
 				C7668E5D28C50A220029FD9B /* ServiceAPI.swift in Sources */,
+				C728D20928C5647400CC6FAF /* MyFavoritePresenterTests.swift in Sources */,
 				C728D1F328C52ACC00CC6FAF /* TVShowListInteractorTests.swift in Sources */,
 				C728D20228C555D000CC6FAF /* MyFavoriteManagerTests.swift in Sources */,
 				C7668E5228C509960029FD9B /* JobCityFlixTests.swift in Sources */,
 				C7668E6728C5257E0029FD9B /* ServiceAPI+TVShowTests.swift in Sources */,
+				C728D20C28C5659500CC6FAF /* MyFavoriteListViewControllerTests.swift in Sources */,
 				C7668E6428C518DF0029FD9B /* HTTPClientTests.swift in Sources */,
 				C728D1F628C53E4800CC6FAF /* TVShowListPresenterTests.swift in Sources */,
 				C7668E5F28C50E0D0029FD9B /* TVShowListJSON.json in Sources */,
+				C728D20628C561FA00CC6FAF /* MyFavoriteListInteractor.swift in Sources */,
 				C728D1F828C5430900CC6FAF /* TVShowListViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

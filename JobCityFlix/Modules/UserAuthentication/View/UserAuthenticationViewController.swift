@@ -32,7 +32,6 @@ final class UserAuthenticationViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now()+3, execute: {
             
             self.dismiss(animated: true)
-//            self.userTextField.becomeFirstResponder()
         })
     }
     

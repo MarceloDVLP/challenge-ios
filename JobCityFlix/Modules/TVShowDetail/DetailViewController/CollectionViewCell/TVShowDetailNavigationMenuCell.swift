@@ -25,8 +25,8 @@ final class TVShowDetailNavigationMenuCell: UICollectionViewCell {
     private func setupButtons() {
         contentView.constrainSubView(view: stackView, top: 0, bottom: 0, left: 0, right: 0)
         
-        let menus = [  (makeButton("Episódios", true), TVShowDetailMenu.episodes),
-                       (makeButton("Detalhes", false), TVShowDetailMenu.about),
+        let menus = [  (makeButton("Episodes", true), TVShowDetailMenu.episodes),
+                       (makeButton("About", false), TVShowDetailMenu.about),
                        (makeButton("", false), TVShowDetailMenu.empty),
                        (makeButton("", false), TVShowDetailMenu.empty)]
         
