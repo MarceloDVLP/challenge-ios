@@ -58,9 +58,9 @@ final class MyFavoriteListViewControllerTests: XCTestCase {
         
     }
     class ServiceAPIMock: ServiceAPIProtocol {
-        var shows: [TVShowCodable] = []
+        var shows: [TVShowModel] = []
         
-        func fetchTVShowList(page: Int?, completion: @escaping (Result<[TVShowCodable], Error>) -> Void) {
+        func fetchTVShowList(page: Int?, completion: @escaping (Result<[TVShowModel], Error>) -> Void) {
             completion(.success(shows))
         }
         

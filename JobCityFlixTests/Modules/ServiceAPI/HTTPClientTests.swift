@@ -29,7 +29,7 @@ final class HTTPClientTests: XCTestCase {
     func testRequestReturnsDataForValidURL() {
         let session = URLSession.shared
         let sut = HTTPClient(session: session)
-        let url = Endpoints.tvShowList(1).url
+        let url = Endpoints.tvShowList(1).url!
 
         let expectation = expectation(description: "EXP")
 

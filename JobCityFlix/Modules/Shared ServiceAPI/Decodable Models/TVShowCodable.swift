@@ -1,8 +1,8 @@
 import Foundation
 
-struct TVShowModel: Decodable, Equatable {
+public struct TVShowModel: Decodable, Equatable {
 
-    static func == (lhs: TVShowModel, rhs: TVShowModel) -> Bool {
+    public static func == (lhs: TVShowModel, rhs: TVShowModel) -> Bool {
         return lhs.name == rhs.name &&
         lhs.id == rhs.id
     }

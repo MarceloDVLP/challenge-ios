@@ -15,7 +15,7 @@ extension ServiceAPITests {
         let url = URL(string: "http://api.tvmaze.com/shows?page=1")!
         let page = 1
 
-        sut.fetchTVShowList(page: page, completion: { (result: Result<[TVShowCodable], Error>) in
+        sut.fetchTVShowList(page: page, completion: { (result: Result<[TVShowModel], Error>) in
             
         })
 
@@ -28,12 +28,12 @@ extension ServiceAPITests {
         let showsMock = makeJSONMockArray()
         let page = 1
 
-        var showsResult: [TVShowCodable] = []
-        sut.fetchTVShowList(page: page, completion: { (result: Result<[TVShowCodable], Error>) in
+        var showsResult: [TVShowModel] = []
+        sut.fetchTVShowList(page: page, completion: { (result: Result<[TVShowModel], Error>) in
             switch result {
             case .success(let shows):
                 showsResult = shows
-            case .failure(let failure):
+            case .failure(_):
                 XCTFail()
             }
         })
@@ -47,7 +47,7 @@ extension ServiceAPITests {
         let page = 1
 
         var errorResult: Error?
-        sut.fetchTVShowList(page: page, completion: { (result: Result<[TVShowCodable], Error>) in
+        sut.fetchTVShowList(page: page, completion: { (result: Result<[TVShowModel], Error>) in
             switch result {
             case .success(_):
                 XCTFail()

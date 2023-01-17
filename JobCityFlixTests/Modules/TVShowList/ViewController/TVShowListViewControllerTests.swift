@@ -30,7 +30,7 @@ final class TVShowListViewControllerTests: XCTestCase {
         let view = TVShowListCell(frame: CGRect(x: 0, y: 0, width: TVShowListCell.size.width, height: TVShowListCell.size.height))
         let imageMock = UIImage(named: "4601", in: Bundle(for: TVShowListViewControllerTests.self), compatibleWith: nil)
         
-        let tvShow = TVShowCodable(1, name: "Teste Movie")
+        let tvShow = TVShowModel(1, name: "Teste Movie")
         view.imageView.image = imageMock
         view.configure(tvShow)
         assertSnapshot(matching: view, as: .image)
@@ -40,7 +40,7 @@ final class TVShowListViewControllerTests: XCTestCase {
         let view = TVShowMainHeader(frame: CGRect(x: 0, y: 0, width: 428, height: 555.6))
         let imageMock = UIImage(named: "4601", in: Bundle(for: TVShowListViewControllerTests.self), compatibleWith: nil)
         
-        let tvShow = TVShowCodable(1, name: "Teste Movie")
+        let tvShow = TVShowModel(1, name: "Teste Movie")
         view.imageView.image = imageMock
         view.configure(tvShow)
         assertSnapshot(matching: view, as: .image)
@@ -51,7 +51,10 @@ final class TVShowListViewControllerTests: XCTestCase {
         let manager = FavoriteManagerMock()
         let presenter = TVShowPresenter()
         
-        let interactor = TVShowInteractor(manager: manager, service: service, presenter: presenter)
+        let interactor = TVShowInteractor(manager: manager,
+                                          service: service,
+                                          presenter: presenter)
+        
         let viewController = TVShowListViewController(interactor: interactor)
 
         presenter.viewController = viewController
@@ -84,10 +87,10 @@ final class TVShowListViewControllerTests: XCTestCase {
         
         
     }
-    class ServiceAPIMock: ServiceAPIProtocol {
-        var shows: [TVShowCodable] = []
+    class ServiceAPIMock: ServiceAPITVShowProtocol {
+        var shows: [TVShowModel] = []
         
-        func fetchTVShowList(page: Int?, completion: @escaping (Result<[TVShowCodable], Error>) -> Void) {
+        func fetchTVShowList(page: Int?, completion: @escaping (Result<[TVShowModel], Error>) -> Void) {
             completion(.success(shows))
         }
         

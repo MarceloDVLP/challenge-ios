@@ -21,9 +21,9 @@ extension XCTestCase {
         return string.data(using: .utf8)!
     }
     
-    func makeJSONMockArray() -> [TVShowCodable] {
+    func makeJSONMockArray() -> [TVShowModel] {
         let jsonData = makeValidJSONData()
-        let shows = try! JSONDecoder().decode([TVShowCodable].self, from: jsonData)
+        let shows = try! JSONDecoder().decode([TVShowModel].self, from: jsonData)
         return shows
     }
 }

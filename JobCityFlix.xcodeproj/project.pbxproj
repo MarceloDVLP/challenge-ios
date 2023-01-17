@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3B1A138FFEA0F4C7418C4AE8 /* libPods-JobCityFlixTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 10F95DA7DFF00211F1BB1287 /* libPods-JobCityFlixTests.a */; };
-		6724437603C19F1434E2F6AC /* Pods_JobCityFlix.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 925F6920E9DE9A3E7E3F41FC /* Pods_JobCityFlix.framework */; };
+		71E5B6F4CF13C97E42EDB3A8 /* libPods-JobCityFlixTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FCC5F01DD6D165C628EC1EA /* libPods-JobCityFlixTests.a */; };
+		AD841AAE22AF9DB13E74F83E /* Pods_JobCityFlix.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43084FC951EDE71ACF9DDD79 /* Pods_JobCityFlix.framework */; };
 		C70D4E1528C2319900991B3C /* TextFieldWithPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70D4E1428C2319900991B3C /* TextFieldWithPadding.swift */; };
 		C70D4E1B28C2667C00991B3C /* UserAutheticationConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70D4E1A28C2667C00991B3C /* UserAutheticationConfigurator.swift */; };
 		C70D4E1D28C2669000991B3C /* UserAuthenticationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70D4E1C28C2669000991B3C /* UserAuthenticationPresenter.swift */; };
@@ -63,8 +63,6 @@
 		C7668E4A28C4D6710029FD9B /* MyFavoriteListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7668E4928C4D6710029FD9B /* MyFavoriteListInteractor.swift */; };
 		C7668E5228C509960029FD9B /* JobCityFlixTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7668E5128C509960029FD9B /* JobCityFlixTests.swift */; };
 		C7668E5D28C50A220029FD9B /* ServiceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7668E5C28C50A220029FD9B /* ServiceAPI.swift */; };
-		C7668E5F28C50E0D0029FD9B /* TVShowListJSON.json in Sources */ = {isa = PBXBuildFile; fileRef = C7668E5E28C50E0D0029FD9B /* TVShowListJSON.json */; };
-		C7668E6028C50F850029FD9B /* TVShowListJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = C7668E5E28C50E0D0029FD9B /* TVShowListJSON.json */; };
 		C7668E6128C510B20029FD9B /* TVShowListJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = C7668E5E28C50E0D0029FD9B /* TVShowListJSON.json */; };
 		C7668E6428C518DF0029FD9B /* HTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7668E6328C518DF0029FD9B /* HTTPClientTests.swift */; };
 		C7668E6728C5257E0029FD9B /* ServiceAPI+TVShowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7668E6628C5257E0029FD9B /* ServiceAPI+TVShowTests.swift */; };
@@ -118,10 +116,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		10F95DA7DFF00211F1BB1287 /* libPods-JobCityFlixTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JobCityFlixTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		1776F33703C4A976428A0579 /* Pods-JobCityFlix.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JobCityFlix.release.xcconfig"; path = "Target Support Files/Pods-JobCityFlix/Pods-JobCityFlix.release.xcconfig"; sourceTree = "<group>"; };
-		925F6920E9DE9A3E7E3F41FC /* Pods_JobCityFlix.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JobCityFlix.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9FC7F7A8D54B39D249685378 /* Pods-JobCityFlixTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JobCityFlixTests.release.xcconfig"; path = "Target Support Files/Pods-JobCityFlixTests/Pods-JobCityFlixTests.release.xcconfig"; sourceTree = "<group>"; };
+		07C7E1E0C5DEEC06CD32D4A5 /* Pods-JobCityFlixTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JobCityFlixTests.release.xcconfig"; path = "Target Support Files/Pods-JobCityFlixTests/Pods-JobCityFlixTests.release.xcconfig"; sourceTree = "<group>"; };
+		0FCC5F01DD6D165C628EC1EA /* libPods-JobCityFlixTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JobCityFlixTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1874265FCE3D69754C21BB82 /* Pods-JobCityFlix.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JobCityFlix.debug.xcconfig"; path = "Target Support Files/Pods-JobCityFlix/Pods-JobCityFlix.debug.xcconfig"; sourceTree = "<group>"; };
+		3219C9BDB3B829EB44CCA4F1 /* Pods-JobCityFlixTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JobCityFlixTests.debug.xcconfig"; path = "Target Support Files/Pods-JobCityFlixTests/Pods-JobCityFlixTests.debug.xcconfig"; sourceTree = "<group>"; };
+		43084FC951EDE71ACF9DDD79 /* Pods_JobCityFlix.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JobCityFlix.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0B7C06BDF9BE2C2B1C2B0B7 /* Pods-JobCityFlix.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JobCityFlix.release.xcconfig"; path = "Target Support Files/Pods-JobCityFlix/Pods-JobCityFlix.release.xcconfig"; sourceTree = "<group>"; };
 		C70D4E1428C2319900991B3C /* TextFieldWithPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithPadding.swift; sourceTree = "<group>"; };
 		C70D4E1A28C2667C00991B3C /* UserAutheticationConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAutheticationConfigurator.swift; sourceTree = "<group>"; };
 		C70D4E1C28C2669000991B3C /* UserAuthenticationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthenticationPresenter.swift; sourceTree = "<group>"; };
@@ -213,8 +213,6 @@
 		C7D2F84A28C159E200EEC146 /* ServiceAPI+SearchTVShow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ServiceAPI+SearchTVShow.swift"; sourceTree = "<group>"; };
 		C7D2F84C28C15A6A00EEC146 /* UIViewController+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Helpers.swift"; sourceTree = "<group>"; };
 		C7D2F85028C1666300EEC146 /* UserAuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthenticationViewController.swift; sourceTree = "<group>"; };
-		EA2480B1D6BD3EA992F52851 /* Pods-JobCityFlixTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JobCityFlixTests.debug.xcconfig"; path = "Target Support Files/Pods-JobCityFlixTests/Pods-JobCityFlixTests.debug.xcconfig"; sourceTree = "<group>"; };
-		FAC9E4BE89C48DD2B326686E /* Pods-JobCityFlix.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JobCityFlix.debug.xcconfig"; path = "Target Support Files/Pods-JobCityFlix/Pods-JobCityFlix.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,7 +227,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6724437603C19F1434E2F6AC /* Pods_JobCityFlix.framework in Frameworks */,
+				AD841AAE22AF9DB13E74F83E /* Pods_JobCityFlix.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,7 +235,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B1A138FFEA0F4C7418C4AE8 /* libPods-JobCityFlixTests.a in Frameworks */,
+				71E5B6F4CF13C97E42EDB3A8 /* libPods-JobCityFlixTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,19 +245,19 @@
 		6966C37EE359664E8216E85E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				FAC9E4BE89C48DD2B326686E /* Pods-JobCityFlix.debug.xcconfig */,
-				1776F33703C4A976428A0579 /* Pods-JobCityFlix.release.xcconfig */,
-				EA2480B1D6BD3EA992F52851 /* Pods-JobCityFlixTests.debug.xcconfig */,
-				9FC7F7A8D54B39D249685378 /* Pods-JobCityFlixTests.release.xcconfig */,
+				1874265FCE3D69754C21BB82 /* Pods-JobCityFlix.debug.xcconfig */,
+				B0B7C06BDF9BE2C2B1C2B0B7 /* Pods-JobCityFlix.release.xcconfig */,
+				3219C9BDB3B829EB44CCA4F1 /* Pods-JobCityFlixTests.debug.xcconfig */,
+				07C7E1E0C5DEEC06CD32D4A5 /* Pods-JobCityFlixTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		8F30F8F0EACFF1153982E4EB /* Frameworks */ = {
+		779C2504381173D046FD8654 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				925F6920E9DE9A3E7E3F41FC /* Pods_JobCityFlix.framework */,
-				10F95DA7DFF00211F1BB1287 /* libPods-JobCityFlixTests.a */,
+				43084FC951EDE71ACF9DDD79 /* Pods_JobCityFlix.framework */,
+				0FCC5F01DD6D165C628EC1EA /* libPods-JobCityFlixTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -496,7 +494,7 @@
 				C7668E5028C509960029FD9B /* JobCityFlixTests */,
 				C74B383F28BAC068000E728D /* Products */,
 				6966C37EE359664E8216E85E /* Pods */,
-				8F30F8F0EACFF1153982E4EB /* Frameworks */,
+				779C2504381173D046FD8654 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -924,11 +922,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C74B385228BAC069000E728D /* Build configuration list for PBXNativeTarget "JobCityFlix" */;
 			buildPhases = (
-				56E0B679B75B31FBBF032C3A /* [CP] Check Pods Manifest.lock */,
+				2A49440138052574ACBB06B8 /* [CP] Check Pods Manifest.lock */,
 				C74B383A28BAC068000E728D /* Sources */,
 				C74B383B28BAC068000E728D /* Frameworks */,
 				C74B383C28BAC068000E728D /* Resources */,
-				DFE11A7A3932FC3F74278EBE /* [CP] Embed Pods Frameworks */,
+				95F03D8EF95A67CC06F1AEDB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -943,7 +941,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C7668E5528C509960029FD9B /* Build configuration list for PBXNativeTarget "JobCityFlixTests" */;
 			buildPhases = (
-				A98ED23A5D8F53DC286540B0 /* [CP] Check Pods Manifest.lock */,
+				136192E56B32F225FA227B35 /* [CP] Check Pods Manifest.lock */,
 				C7668E4B28C509960029FD9B /* Sources */,
 				C7668E4C28C509960029FD9B /* Frameworks */,
 				C7668E4D28C509960029FD9B /* Resources */,
@@ -1024,36 +1022,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				C728D1FB28C54B6600CC6FAF /* Media.xcassets in Resources */,
-				C7668E6028C50F850029FD9B /* TVShowListJSON.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		56E0B679B75B31FBBF032C3A /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-JobCityFlix-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A98ED23A5D8F53DC286540B0 /* [CP] Check Pods Manifest.lock */ = {
+		136192E56B32F225FA227B35 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1075,7 +1050,29 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		DFE11A7A3932FC3F74278EBE /* [CP] Embed Pods Frameworks */ = {
+		2A49440138052574ACBB06B8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-JobCityFlix-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		95F03D8EF95A67CC06F1AEDB /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1194,7 +1191,6 @@
 				C728D20C28C5659500CC6FAF /* MyFavoriteListViewControllerTests.swift in Sources */,
 				C7668E6428C518DF0029FD9B /* HTTPClientTests.swift in Sources */,
 				C728D1F628C53E4800CC6FAF /* TVShowListPresenterTests.swift in Sources */,
-				C7668E5F28C50E0D0029FD9B /* TVShowListJSON.json in Sources */,
 				C728D20628C561FA00CC6FAF /* MyFavoriteListInteractor.swift in Sources */,
 				C728D1F828C5430900CC6FAF /* TVShowListViewControllerTests.swift in Sources */,
 			);
@@ -1379,7 +1375,7 @@
 		};
 		C74B385328BAC069000E728D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FAC9E4BE89C48DD2B326686E /* Pods-JobCityFlix.debug.xcconfig */;
+			baseConfigurationReference = 1874265FCE3D69754C21BB82 /* Pods-JobCityFlix.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1407,7 +1403,7 @@
 		};
 		C74B385428BAC069000E728D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1776F33703C4A976428A0579 /* Pods-JobCityFlix.release.xcconfig */;
+			baseConfigurationReference = B0B7C06BDF9BE2C2B1C2B0B7 /* Pods-JobCityFlix.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1435,7 +1431,7 @@
 		};
 		C7668E5628C509960029FD9B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EA2480B1D6BD3EA992F52851 /* Pods-JobCityFlixTests.debug.xcconfig */;
+			baseConfigurationReference = 3219C9BDB3B829EB44CCA4F1 /* Pods-JobCityFlixTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -1454,7 +1450,7 @@
 		};
 		C7668E5728C509960029FD9B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9FC7F7A8D54B39D249685378 /* Pods-JobCityFlixTests.release.xcconfig */;
+			baseConfigurationReference = 07C7E1E0C5DEEC06CD32D4A5 /* Pods-JobCityFlixTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;

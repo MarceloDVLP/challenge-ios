@@ -6,7 +6,7 @@ final class ServiceAPITests: XCTestCase {
     func testRequestMakeRequestsWithValidURL() {
         let (sut, url, spy) = makeSUT(completeWith: .success(makeValidJSONData()))
         
-        sut.request(url: url, completion: { (result: Result<TVShowCodable, Error>) in  })
+        sut.request(url: url, completion: { (result: Result<TVShowModel, Error>) in  })
         
         XCTAssertEqual(spy.urls, [url])
     }
@@ -18,7 +18,7 @@ final class ServiceAPITests: XCTestCase {
 
         //WHEN
         var error: Error?
-        sut.request(url: url, completion: { (result: Result<TVShowCodable, Error>) in
+        sut.request(url: url, completion: { (result: Result<TVShowModel, Error>) in
             switch result {
             case .success(_):
                 XCTFail()
@@ -36,9 +36,9 @@ final class ServiceAPITests: XCTestCase {
         let (sut, urlAPI, _) = makeSUT(completeWith: .success(jsonData))
 
         //WHEN
-        var shows: [TVShowCodable] = []
+        var shows: [TVShowModel] = []
         
-        sut.request(url: urlAPI, completion: { (result: Result<[TVShowCodable], Error>) in
+        sut.request(url: urlAPI, completion: { (result: Result<[TVShowModel], Error>) in
             switch result {
             case .success(let result):
                 shows = result
@@ -57,10 +57,10 @@ final class ServiceAPITests: XCTestCase {
         let (sut, urlAPI, _) = makeSUT(completeWith: .success(jsonData))
 
         //WHEN
-        var shows: [TVShowCodable] = []
+        var shows: [TVShowModel] = []
         var errorResult: Error?
         
-        sut.request(url: urlAPI, completion: { (result: Result<[TVShowCodable], Error>) in
+        sut.request(url: urlAPI, completion: { (result: Result<[TVShowModel], Error>) in
             switch result {
             case .success(let result):
                 shows = result

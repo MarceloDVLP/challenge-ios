@@ -48,14 +48,14 @@ final class TVShowListPresenterTests: XCTestCase {
     class TVShowListViewMock: TVShowListViewControllerProtocol {
         var didCallShowLoading: Bool = false
         var didCallRemoveLoading: Bool = false
-        var tvShows: [TVShowCodable]?
+        var tvShows: [TVShowModel]?
         var error: Error?
 
         func showLoadig() {
             didCallShowLoading = true
         }
         
-        func showEpisodes(_ tvShows: [TVShowCodable]) {
+        func showEpisodes(_ tvShows: [TVShowModel]) {
             self.tvShows = tvShows
         }
         

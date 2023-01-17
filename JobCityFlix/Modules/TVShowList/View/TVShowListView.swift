@@ -137,6 +137,4 @@ extension TVShowListView: TVShowMainHeaderDelegate {
     func didTapAddFavorite(_ show: TVShowModel) {
         didFavoriteTVShow?(show)
     }
-    
-    
 }

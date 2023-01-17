@@ -50,7 +50,7 @@ final class TVShowListInteractorTests: XCTestCase {
     
     func testePaginationOnListShouldFetchEpisodes() {
         //GIVEN
-        let (sut, presenterMock, serviceMock) = makeSUT()
+        let (sut, _, serviceMock) = makeSUT()
         serviceMock.expectedResult = .success([])
         //WHEN
         sut.viewDidLoad()
@@ -86,11 +86,11 @@ final class TVShowListInteractorTests: XCTestCase {
         }
     }
     
-    class ServiceAPIMock: ServiceAPIProtocol {
+    class ServiceAPIMock: ServiceAPITVShowProtocol {
         var page: Int?
-        var shows: [TVShowCodable] = []
-        var expectedResult: Result<[TVShowCodable], Error>?
-        func fetchTVShowList(page: Int?, completion: @escaping (Result<[TVShowCodable], Error>) -> Void) {
+        var shows: [TVShowModel] = []
+        var expectedResult: Result<[TVShowModel], Error>?
+        func fetchTVShowList(page: Int?, completion: @escaping (Result<[TVShowModel], Error>) -> Void) {
             self.page = page
             
             if let expectedResult = expectedResult {
@@ -101,14 +101,14 @@ final class TVShowListInteractorTests: XCTestCase {
     
     class PresenterMock: TVShowPresenterProtocol {
         var didCallWillStartFetch: Bool = false
-        var tvShows: [TVShowCodable]?
+        var tvShows: [TVShowModel]?
         var error: Error?
         
         func willStartFetch() {
             didCallWillStartFetch = true
         }
         
-        func show(_ tvShows: [TVShowCodable]) {
+        func show(_ tvShows: [TVShowModel]) {
             self.tvShows = tvShows
         }
         
