@@ -2,68 +2,54 @@
 
 ## Goal
 
-The goal of this project was to create an app that access an API and show information about TV series. ALL the mandatory features and bonus features were accomplished! 
-
-The app contains the following main modules:
-
-- Authentication (PIN Screen)
-- TV Show List
-- TV Show Detail
-- Episode List
-- Episode Detail
-- Favorite Episode List
-- Search Feature by Actors and TVShows
-
-
-The App Architecture is based on VIP Clean Arch. Each module has the following components:
-
-View: responsible for view (UIKit) specific logic
-ServiceAPI: responsible comunicate with network/core service
-Interactor: Responsible for business logic and 
-Presenter: Responsible for presentation logic
-Configurator: is the entry point of each module. Responsible to instantiate the viewController and inject all the module dependencies.  
-
+The goal of this project was to create an app that access an API and show information about the weather
 
 ## Project minimum requirements:
 
-- MacOS Monterey 12.3.1 +
-- iOS 15 +
-- Swift 5 +
-- XCode 13.3
+- MacOS Ventura 13.1 +
+- iOS 16
+- Swift 5
+- XCode 14
 
-## Project Dependencies:
+the project doest not have any 3rd libs, just open the .project on xcode :) 
 
-This project runs using 3rd party code libraries managed by Cocoapods, to install
-it you must:
+The Project Architecture is based on Clean Arch concepts. 
 
-- **sudo gem install Cocoapods**
+These are the main layers of our project:
 
-in the root folder of the project:
+![Screenshot](architecture.png)
 
-- **pod install**
+ClientHTTP: responsible to make http requests using URL Session. 
 
-Installed Pods:
+RemoteService: responsible to handle the ClientHTTP results and map the data result into a struct model. 
 
-- **SDWebImage**: cache image data and improve the user experience;
-- **SnapshotTesting**: build powerful UI Tests! ;
+Interactor: Responsible for business logic, he talks to the RemoteService to get the weather data and ask to the presenter to present the received data. 
 
-Run the new **JobCityFlix.xcworkspace** file.
+Presenter: Responsible for presentation logic. Prepare the data to be presented in the View. 
 
-## About the Project
+View: responsible for handling UIKit logic. Shows the received formatted data from the Presenter.
 
-All API calls are handled on the generic request in ServicesAPI.swift.  
+RemoteService: responsible comunicate with network/core service
+ 
+Factory: is the entry point of the Detail Scene. Responsible to instantiate the UIViewController and inject all the module dependencies.  
 
-The design of the application were inspired on Netflix APP.  
 
-To store the information about the user's Favorte Shows it was used **CoreData**.
+Why do we choose that architecture? 
+
+The goal here is to show an way to build an escalable project. Since is very easy to have classes with a lot responsabilites, things can get complicated a long the way if we not start right. 
+
+we can easly change things on the network layer, like start to using an lib like Alamofire or Moya, without breaking ou r business logic or the UI. 
+
+we can also easly change our UI without any impact on the other layers, would be pretty simple to build that screen with SwiftUI for example, withou breaking the other modules.
+
+each layer use protocols to talk to another, so it's pretty simple to test them in isolation. 
+
+## Observations 
+
+The weather screen is 100% viewcoded.
 
 ## Unit Tests
 
+We Build Unit tests for the ClientHTTP, RemoteService e Interactor. Each layer was tested isolated, that means their dependencies were all mocked, so we can have fast and reliable tests.     
 
-All the module layers has isolated united tests. Since our ViewControllers does not have any logic (business/network/coredata/presentation), is really safe to test them with powerful SnapShot tests and also our UIView components. 
-
-The next step to this project is to separe each kind of test in specific modules. It's not good to run integrated tests (coredata and snapshot) with our core domain tests (interactor, presenter, services).
-
-All the screens are 100% viewcoded. 
-
-All the modules are following the SOLID principles, so it's pretty easy to main, extended and test them in isolation. 
+ 
